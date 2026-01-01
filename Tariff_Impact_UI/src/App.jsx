@@ -6,6 +6,7 @@ import UserLogin from "./pages/ReferenceData/UserLogin";
 import Signup from "./pages/ReferenceData/Signup";
 import AdminDashboardPage from "./pages/ReferenceData/AdminDashboardPage"; 
 import UserDashboard from "./pages/ReferenceData/UserDashboardPage";
+import CountryDatabasePage from "./pages/ReferenceData/CountryDatabasePage"; // Import the new page
 import "./App.css";
 
 function AuthShell() {
@@ -92,8 +93,11 @@ function App() {
         {/* User Dashboard */}
         <Route path="/user-dashboard" element={<UserDashboard />} />
 
-        {/* Admin Dashboard */}
+        {/* Admin Dashboard & Routes */}
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+        
+        {/* Country Database Page (Admin only) */}
+        <Route path="/admin/countries" element={<CountryDatabasePage />} />
 
         {/* Fallback */}
         <Route path="*" element={<AuthShell />} />
