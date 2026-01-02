@@ -1,6 +1,6 @@
-import AuthAPI, { ENDPOINTS } from './ApiConfig';
+import AuthAPI from './ApiConfig';
+import { ENDPOINTS } from './ApiConfig';
 
-// ========== ADMIN LOGIN ==========
 export const adminLogin = async (data) => {
   try {
     const response = await AuthAPI.post(ENDPOINTS.AUTH.ADMIN_LOGIN, {
@@ -16,12 +16,12 @@ export const adminLogin = async (data) => {
     
     return response.data;
   } catch (error) {
-    console.error('Admin login error:', error.response?.data || error.message);
-    throw error.response?.data || { success: false, error: error.message };
+    console.error('Admin login error:', error);
+    const errorData = error.response?.data || { success: false, error: error.message };
+    throw errorData;
   }
 };
 
-// ========== USER LOGIN ==========
 export const userLogin = async (data) => {
   try {
     const response = await AuthAPI.post(ENDPOINTS.AUTH.USER_LOGIN, {
@@ -37,12 +37,12 @@ export const userLogin = async (data) => {
     
     return response.data;
   } catch (error) {
-    console.error('User login error:', error.response?.data || error.message);
-    throw error.response?.data || { success: false, error: error.message };
+    console.error('User login error:', error);
+    const errorData = error.response?.data || { success: false, error: error.message };
+    throw errorData;
   }
 };
 
-// ========== SIGNUP ==========
 export const signup = async (data) => {
   try {
     const response = await AuthAPI.post(ENDPOINTS.AUTH.SIGNUP, {
@@ -53,12 +53,12 @@ export const signup = async (data) => {
     });
     return response.data;
   } catch (error) {
-    console.error('Signup error:', error.response?.data || error.message);
-    throw error.response?.data || { success: false, error: error.message };
+    console.error('Signup error:', error);
+    const errorData = error.response?.data || { success: false, error: error.message };
+    throw errorData;
   }
 };
 
-// ========== LOGOUT ==========
 export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('adminToken');
@@ -66,11 +66,9 @@ export const logout = () => {
   localStorage.removeItem('role');
 };
 
-// ========== CHECK AUTH ==========
 export const checkAuth = () => {
   const token = localStorage.getItem('token');
   const user = localStorage.getItem('user');
-  
   return {
     isAuthenticated: !!token,
     user: user ? JSON.parse(user) : null,

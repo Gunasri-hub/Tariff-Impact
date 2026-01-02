@@ -1,15 +1,10 @@
 import axios from 'axios';
 
-// Base URLs
-export const API_BASE_URL = 'http://localhost:8080';           // For auth routes (without /api)
-export const API_DATA_URL = 'http://localhost:8080/api';       // For data routes (with /api)
+export const API_BASE_URL = 'http://localhost:8080';
+export const API_DATA_URL = 'http://localhost:8080/api';
 
-// Endpoints
 export const ENDPOINTS = {
-  // Data endpoints (used with API_DATA_URL)
   COUNTRIES: '/countries',
-  
-  // Auth endpoints (used with API_BASE_URL)
   AUTH: {
     ADMIN_LOGIN: '/admin/login',
     USER_LOGIN: '/user/login',
@@ -17,25 +12,22 @@ export const ENDPOINTS = {
   }
 };
 
-// Main API instance for AUTHENTICATION (without /api)
 const AuthAPI = axios.create({
-  baseURL: API_BASE_URL, // http://localhost:8080
+  baseURL: API_BASE_URL,
   headers: { 
     'Content-Type': 'application/json',
     'Accept': 'application/json'
-  },
+  }
 });
 
-// Data API instance for DATA endpoints (with /api)
 const DataAPI = axios.create({
-  baseURL: API_DATA_URL, // http://localhost:8080/api
+  baseURL: API_DATA_URL,
   headers: { 
     'Content-Type': 'application/json',
     'Accept': 'application/json'
-  },
+  }
 });
 
-// Auto token interceptor for both APIs
 const setupTokenInterceptor = (instance) => {
   instance.interceptors.request.use((config) => {
     const token = localStorage.getItem('token') || localStorage.getItem('adminToken');
@@ -43,23 +35,22 @@ const setupTokenInterceptor = (instance) => {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-  }, (error) => {
-    return Promise.reject(error);
   });
 };
 
 setupTokenInterceptor(AuthAPI);
 setupTokenInterceptor(DataAPI);
 
-// Response interceptor for error handling
 const setupResponseInterceptor = (instance) => {
   instance.interceptors.response.use(
     (response) => response,
     (error) => {
-      console.error('API Error:', error.response?.status, error.message);
+      console.error('API Error:', error.response?.status || 'Network error', error.message);
       if (error.response?.status === 401) {
         localStorage.removeItem('token');
         localStorage.removeItem('adminToken');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
         window.location.href = '/login';
       }
       return Promise.reject(error);
@@ -70,6 +61,5 @@ const setupResponseInterceptor = (instance) => {
 setupResponseInterceptor(AuthAPI);
 setupResponseInterceptor(DataAPI);
 
-// Export both APIs
 export default AuthAPI;
-export { DataAPI };
+export { DataAPI };  // ✅ FIXED: Removed ENDPOINTS (already exported above)
