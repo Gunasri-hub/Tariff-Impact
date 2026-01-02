@@ -4,34 +4,43 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import AdminLogin from "./pages/ReferenceData/AdminLogin";
 import UserLogin from "./pages/ReferenceData/UserLogin";
 import Signup from "./pages/ReferenceData/Signup";
-import AdminDashboardPage from "./pages/ReferenceData/AdminDashboardPage"; 
-import UserDashboard from "./pages/ReferenceData/UserDashboardPage";
-import CountryDatabasePage from "./pages/ReferenceData/CountryDatabasePage"; // Import the new page
+import AdminDashboardPage from "./pages/ReferenceData/AdminDashboardPage";
+import UserDashboardPage from "./pages/ReferenceData/UserDashboardPage";
+
 import "./App.css";
 
+/* =========================
+   AUTH SHELL
+========================= */
 function AuthShell() {
-  const [mode, setMode] = useState("auth");
+  const [mode, setMode] = useState("auth"); // auth | signup
   const [activeTab, setActiveTab] = useState("admin");
   const navigate = useNavigate();
 
-  const handleSignupSuccess = (role) => {
-    setMode("auth");
-    setActiveTab(role === "admin" ? "admin" : "user");
+  const handleAdminLoginSuccess = () => {
+    navigate("/admin-dashboard");
   };
 
   const handleUserLoginSuccess = () => {
     navigate("/user-dashboard");
   };
 
-  const handleAdminLoginSuccess = () => {
-    navigate("/admin-dashboard");
+  const handleSignupSuccess = (role) => {
+    setMode("auth");
+    setActiveTab(role === "admin" ? "admin" : "user");
   };
 
   return (
     <div className="app">
       <div className="card">
         <div className="logo">TI</div>
-        <h2>{mode === "auth" ? "Tariff Impact Analyzer" : "Create Account"}</h2>
+
+        <h2>
+          {mode === "auth"
+            ? "Tariff Impact Analyzer"
+            : "Create Account"}
+        </h2>
+
         <p className="subtitle">
           {mode === "auth"
             ? "Trump Tariff Intelligence Platform"
@@ -47,6 +56,7 @@ function AuthShell() {
               >
                 Admin Login
               </button>
+
               <button
                 className={activeTab === "user" ? "tab active" : "tab"}
                 onClick={() => setActiveTab("user")}
@@ -82,22 +92,20 @@ function AuthShell() {
   );
 }
 
+/* =========================
+   MAIN APP
+========================= */
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login + Signup */}
+        {/* Auth */}
         <Route path="/" element={<AuthShell />} />
         <Route path="/login" element={<AuthShell />} />
 
-        {/* User Dashboard */}
-        <Route path="/user-dashboard" element={<UserDashboard />} />
-
-        {/* Admin Dashboard & Routes */}
+        {/* Dashboards */}
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
-        
-        {/* Country Database Page (Admin only) */}
-        <Route path="/admin/countries" element={<CountryDatabasePage />} />
+        <Route path="/user-dashboard" element={<UserDashboardPage />} />
 
         {/* Fallback */}
         <Route path="*" element={<AuthShell />} />
