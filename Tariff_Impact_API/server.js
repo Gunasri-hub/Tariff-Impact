@@ -1,25 +1,44 @@
 const express = require("express");
 const cors = require("cors");
-const routes = require('./src/routes');
-const { sequelize } = require('./models');
-const port = 8080;
-const app = express();
+const { sequelize } = require("./models");
 
+// Metadata routes only
+const metadataRoutes = require("./src/routes/metadata");
+
+const app = express();
+const PORT = 8080;
+
+/* =========================
+   MIDDLEWARE
+========================= */
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 100000 }));
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Tariff Impact API Running ✅' });
+/* =========================
+   BASE ROUTE
+========================= */
+app.get("/", (req, res) => {
+  res.json({ message: "Tariff Impact API Running ✅" });
 });
 
-sequelize.sync().then(() => {
-  console.log('✅ Database synced');
-  app.use('/api', routes);
-  app.listen(port, () => {
-    console.log(`📱 http://localhost:${port}/`);
-    console.log(`🔐 Signup: http://localhost:${port}/api/metadata/user/register`);
+/* =========================
+   ROUTES
+========================= */
+app.use("/api/metadata", metadataRoutes);
+
+/* =========================
+   START SERVER
+========================= */
+sequelize
+  .sync()
+  .then(() => {
+    console.log("✅ Database synced");
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+      console.log(`✓ Metadata API: http://localhost:${PORT}/api/metadata`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ DB Error:", err);
   });
-}).catch(err => {
-  console.error('❌ DB Error:', err);
-});
