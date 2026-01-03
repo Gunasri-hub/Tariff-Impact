@@ -3,6 +3,15 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const { User, Admin } = require('../../models');
 
+const BASE = "";   // empty string
+
+const db = require('../../models');  // adjust the path if needed
+const { Country } = db;
+
+
+
+
+
 // Log all requests
 router.use((req, res, next) => {
   console.log('REQUEST:', req.method, req.url, req.body);
@@ -112,6 +121,15 @@ router.post('/user/login', async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 });
+
+// ========== COUNTRY MASTER ==========
+const countryController = require("../controller/metadata/country");
+
+router.get("/admin/country", countryController.getCountries);
+router.post("/admin/country", countryController.createCountry);
+router.get("/admin/country/:id", countryController.getCountryById);
+router.put("/admin/country/:id", countryController.updateCountry);
+router.delete("/admin/country/:id", countryController.deleteCountry);
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));
