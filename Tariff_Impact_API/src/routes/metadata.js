@@ -112,6 +112,13 @@ router.post('/user/login', async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 });
+// ==========  TARIFF IMPACT ANALYSIS ==========
+
+const controller = require("../controller/metadata/impact_analysis.controller");
+
+router.get("/impact-analysis/currency", controller.getCurrencyData);
+router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
+router.get("/impact-analysis/tariff", controller.getTariffData);
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));

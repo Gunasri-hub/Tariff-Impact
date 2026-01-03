@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { userLogin } from '../../Apis/authApi';  // ✅ FIXED path
+import { userLogin } from '../../Apis/authApi';
 
 const UserLogin = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -12,11 +12,9 @@ const UserLogin = ({ onLoginSuccess }) => {
     setError('');
 
     try {
-      // ✅ FIXED: Use userLogin from authApi
       const res = await userLogin({ email, password });
       localStorage.setItem('userToken', res.token);
-
-      if (onLoginSuccess) onLoginSuccess(res);
+      if (onLoginSuccess) onLoginSuccess();
       alert('User logged in successfully!');
     } catch (err) {
       setError(err.response?.data?.error || 'Login failed');
