@@ -173,6 +173,17 @@ router.get('/currencies', (req, res) => {
 // main analysis endpoint
 router.post('/analyze', forexController.analyze);
 
+// ========== AGREEMENT MASTER ==========
+const agreementController = require("../controller/metadata/agreementController");
+
+router.post("/admin/agreement", agreementController.createAgreement);
+router.get("/admin/agreement", agreementController.getAllAgreements);
+router.get("/admin/agreement/:code", agreementController.getAgreementByCode);
+router.put("/admin/agreement/:code", agreementController.updateAgreement);
+router.delete("/admin/agreement/:code", agreementController.deleteAgreement);
+
+
+
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));
 
