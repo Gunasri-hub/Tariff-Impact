@@ -13,6 +13,9 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 import CountryDatabasePage from "./CountryDatabasePage";
+import AgreementsManagementPage from "./AgreementsManagementPage";
+
+
 
 function AdminDashboardPage() {
   const navigate = useNavigate();
@@ -155,7 +158,7 @@ function AdminDashboardPage() {
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
         {currentPage === "users" && <UserManagement />}
-        {currentPage === "agreements" && <AgreementsManagement />}
+        {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibrary />}
         {currentPage === "reports" && <Reports />}
