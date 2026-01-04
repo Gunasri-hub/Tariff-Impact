@@ -12,7 +12,7 @@ import {
   Cell,
 } from "recharts";
 import Select from "react-select";
-import API from "../../Apis/authapi";
+import API from "../../Apis/authApi";
        
 
 const YEARS = [2021, 2022, 2023, 2024, 2025];
