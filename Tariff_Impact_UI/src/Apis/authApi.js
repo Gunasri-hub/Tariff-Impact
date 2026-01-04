@@ -94,7 +94,7 @@ export const deleteAgreement = (code) =>
   API.delete(`/metadata/admin/agreement/${code}`);
 
 
-export default API;
+
 
 // UPDATE product
 export const updateProduct = async (id, data) => {
