@@ -47,13 +47,7 @@ export const getCurrencies = () =>
 export const getDutyTypes = () =>
   API.get("/impact-analysis/duty-type");
 
-// get currencies
-export const getForexCurrencies = () =>
-  API.get("/currencies");
 
-// analyze forex
-export const analyzeForex = (payload) =>
-  API.post("/analyze", payload);
 // ========== AgreementManagementPage ==========
 
 export const getAgreements = () =>

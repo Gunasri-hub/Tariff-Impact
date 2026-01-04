@@ -1,6 +1,6 @@
 // src/components/ForexAnalysis.js
 import React, { useEffect, useState } from "react";
-import { getForexCurrencies, analyzeForex } from "../../Apis/authpi"; // forexAnalysis
+import { getForexCurrencies, analyzeForex } from "../../Apis/authapi"; // forexAnalysis
 import {
   LineChart,
   Line,

@@ -11,7 +11,7 @@ import {
   FiFileText,
 } from "react-icons/fi";
 import TariffImpactAnalysis from "./TariffImpactAnalysis";
-import ForexAnalysis from "./ForexAnalysis";
+
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: <FiHome /> },
@@ -46,6 +46,15 @@ const UserDashboard = () => {
       <section className="welcome-strip">
         <h1>💰 Taxation Module</h1>
         <p>Complete tax calculation including VAT, GST, duties, and levies</p>
+      </section>
+    </div>
+  );
+
+  const ForexAnalysis = () => (
+    <div className="page-padding">
+      <section className="welcome-strip">
+        <h1>💱 Forex Analysis</h1>
+        <p>Track currency trends and exchange rate impacts</p>
       </section>
     </div>
   );
