@@ -11,7 +11,7 @@ import {
   FiFileText,
 } from "react-icons/fi";
 import TariffImpactAnalysis from "./TariffImpactAnalysis";
-import ForexAnalysis from "./ForexAnalysis";
+
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: <FiHome /> },
