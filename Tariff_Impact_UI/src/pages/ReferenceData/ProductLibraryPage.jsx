@@ -25,7 +25,6 @@ function ProductLibraryPage() {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(emptyForm);
 
-  /* ================= LOAD ================= */
   const loadProducts = async () => {
     setLoading(true);
     const data = await getProducts();
@@ -38,17 +37,13 @@ function ProductLibraryPage() {
     loadProducts();
   }, []);
 
-  /* ================= SEARCH ================= */
   useEffect(() => {
     const f = products.filter((p) =>
-      `${p.hts_code} ${p.product}`
-        .toLowerCase()
-        .includes(search.toLowerCase())
+      `${p.hts_code} ${p.product}`.toLowerCase().includes(search.toLowerCase())
     );
     setFiltered(f);
   }, [search, products]);
 
-  /* ================= HANDLERS ================= */
   const openAdd = () => {
     setEditing(null);
     setForm(emptyForm);
@@ -57,22 +52,12 @@ function ProductLibraryPage() {
 
   const openEdit = (p) => {
     setEditing(p);
-    setForm({
-      hts_code: p.hts_code,
-      product: p.product,
-      general_rate_of_duty: p.general_rate_of_duty,
-      special_rate_of_duty: p.special_rate_of_duty,
-      column2_rate_of_duty: p.column2_rate_of_duty,
-    });
+    setForm(p);
     setShowForm(true);
   };
 
   const saveProduct = async () => {
-    if (editing) {
-      await updateProduct(editing.id, form);
-    } else {
-      await createProduct(form);
-    }
+    editing ? await updateProduct(editing.id, form) : await createProduct(form);
     setShowForm(false);
     loadProducts();
   };
@@ -87,13 +72,11 @@ function ProductLibraryPage() {
     <div style={styles.page}>
       {/* HEADER */}
       <div style={styles.header}>
-        <div>
-          <h2>Product Library</h2>
-          <p>Manage HS-based product master data</p>
-        </div>
+        <h2>Product Library</h2>
+        <p>Manage HS-based product master data</p>
       </div>
 
-      {/* SEARCH + ADD PRODUCT (STRAIGHT LINE) */}
+      {/* TOOLBAR */}
       <div style={styles.toolbar}>
         <input
           style={styles.search}
@@ -109,43 +92,54 @@ function ProductLibraryPage() {
       {/* TABLE */}
       <div style={styles.card}>
         {loading ? (
-          <p>Loading...</p>
+          <p style={{ padding: 12 }}>Loading...</p>
         ) : (
           <table style={styles.table}>
+            <colgroup>
+              <col style={{ width: "12%" }} />
+              <col style={{ width: "22%" }} />
+              <col style={{ width: "10%" }} />
+              <col style={{ width: "28%" }} /> {/* SPECIAL */}
+              <col style={{ width: "18%" }} /> {/* COLUMN 2 */}
+              <col style={{ width: "10%" }} />
+            </colgroup>
+
             <thead>
               <tr>
-                <th>HTS Code</th>
-                <th>Product</th>
-                <th>General</th>
-                <th>Special</th>
-                <th>Column 2</th>
-                <th>Action</th>
+                <th style={styles.th}>HTS Code</th>
+                <th style={styles.th}>Product</th>
+                <th style={styles.th}>General</th>
+                <th style={styles.th}>Special</th>
+                <th style={styles.th}>Column 2</th>
+                <th style={styles.th}>Action</th>
               </tr>
             </thead>
+
             <tbody>
               {filtered.map((p) => (
                 <tr key={p.id}>
-                  <td>{p.hts_code}</td>
-                  <td>{p.product}</td>
-                  <td>{p.general_rate_of_duty}</td>
-                  <td>{p.special_rate_of_duty}</td>
-                  <td>{p.column2_rate_of_duty}</td>
-                  <td>
-                    <button
-                      style={styles.iconBtn}
-                      onClick={() => openEdit(p)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      style={styles.iconBtnDanger}
-                      onClick={() => {
-                        setEditing(p);
-                        setShowDelete(true);
-                      }}
-                    >
-                      Delete
-                    </button>
+                  <td style={styles.td}>{p.hts_code}</td>
+                  <td style={{ ...styles.td, textAlign: "left" }}>
+                    {p.product}
+                  </td>
+                  <td style={styles.td}>{p.general_rate_of_duty}</td>
+                  <td style={styles.td}>{p.special_rate_of_duty}</td>
+                  <td style={styles.td}>{p.column2_rate_of_duty}</td>
+                  <td style={styles.td}>
+                    <div style={styles.actionCell}>
+                      <button style={styles.iconBtn} onClick={() => openEdit(p)}>
+                        ✏️
+                      </button>
+                      <button
+                        style={styles.iconBtnDanger}
+                        onClick={() => {
+                          setEditing(p);
+                          setShowDelete(true);
+                        }}
+                      >
+                        🗑️
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -154,58 +148,21 @@ function ProductLibraryPage() {
         )}
       </div>
 
-      {/* ADD / EDIT MODAL (RECTANGULAR) */}
+      {/* ADD / EDIT MODAL */}
       {showForm && (
         <div style={styles.overlay}>
           <div style={styles.modal}>
             <h3>{editing ? "Edit Product" : "Add Product"}</h3>
 
-            <div style={styles.formGrid}>
+            {Object.keys(emptyForm).map((k) => (
               <input
-                placeholder="HTS Code"
-                value={form.hts_code}
-                onChange={(e) =>
-                  setForm({ ...form, hts_code: e.target.value })
-                }
+                key={k}
+                style={styles.input}
+                placeholder={k.replaceAll("_", " ").toUpperCase()}
+                value={form[k]}
+                onChange={(e) => setForm({ ...form, [k]: e.target.value })}
               />
-              <input
-                placeholder="Product"
-                value={form.product}
-                onChange={(e) =>
-                  setForm({ ...form, product: e.target.value })
-                }
-              />
-              <input
-                placeholder="General Rate"
-                value={form.general_rate_of_duty}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    general_rate_of_duty: e.target.value,
-                  })
-                }
-              />
-              <input
-                placeholder="Special Rate"
-                value={form.special_rate_of_duty}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    special_rate_of_duty: e.target.value,
-                  })
-                }
-              />
-              <input
-                placeholder="Column 2 Rate"
-                value={form.column2_rate_of_duty}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    column2_rate_of_duty: e.target.value,
-                  })
-                }
-              />
-            </div>
+            ))}
 
             <div style={styles.modalActions}>
               <button onClick={() => setShowForm(false)}>Cancel</button>
@@ -251,7 +208,6 @@ const styles = {
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
     marginBottom: 16,
   },
 
@@ -272,6 +228,47 @@ const styles = {
   table: {
     width: "100%",
     borderCollapse: "collapse",
+    tableLayout: "fixed",
+  },
+
+  th: {
+    textAlign: "center",
+    padding: 12,
+    fontWeight: 600,
+    borderBottom: "1px solid #e5e7eb",
+  },
+
+  td: {
+    textAlign: "center",
+    padding: 12,
+    verticalAlign: "top",
+    borderBottom: "1px solid #f1f5f9",
+    whiteSpace: "normal",
+    wordBreak: "break-word",
+  },
+
+  actionCell: {
+    display: "flex",
+    justifyContent: "center",
+    gap: 8,
+  },
+
+  iconBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 6,
+    border: "1px solid #c7d2fe",
+    background: "#eef2ff",
+    cursor: "pointer",
+  },
+
+  iconBtnDanger: {
+    width: 32,
+    height: 32,
+    borderRadius: 6,
+    border: "1px solid #fecaca",
+    background: "#fee2e2",
+    cursor: "pointer",
   },
 
   primaryBtn: {
@@ -280,7 +277,6 @@ const styles = {
     border: "none",
     padding: "10px 16px",
     borderRadius: 8,
-    cursor: "pointer",
   },
 
   dangerBtn: {
@@ -289,23 +285,6 @@ const styles = {
     border: "none",
     padding: "10px 16px",
     borderRadius: 8,
-  },
-
-  iconBtn: {
-    marginRight: 8,
-    background: "#e5edff",
-    border: "1px solid #c7d2fe",
-    padding: "6px 10px",
-    borderRadius: 6,
-    cursor: "pointer",
-  },
-
-  iconBtnDanger: {
-    background: "#fee2e2",
-    border: "1px solid #fecaca",
-    padding: "6px 10px",
-    borderRadius: 6,
-    cursor: "pointer",
   },
 
   overlay: {
@@ -321,14 +300,15 @@ const styles = {
     background: "#fff",
     padding: 24,
     borderRadius: 12,
-    width: 520,
+    width: 420,
   },
 
-  formGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 12,
-    marginBottom: 20,
+  input: {
+    width: "100%",
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 8,
+    border: "1px solid #d1d5db",
   },
 
   modalActions: {
