@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "abikutty@123",
+    "password": "102006",
     "database": "trump_tariff",
     "host": "127.0.0.1",
     "dialect": "mysql"
