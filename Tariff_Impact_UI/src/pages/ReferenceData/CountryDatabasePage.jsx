@@ -381,7 +381,7 @@ function CountryDatabasePage() {
       zIndex: "1"
     },
     contentContainer: {
-      padding: "24px"
+      padding: "8px 24px 24px 24px"
     },
     errorBox: {
       backgroundColor: "#f8d7da",
@@ -653,23 +653,14 @@ function CountryDatabasePage() {
   };
 
   return (
-    <div style={styles.page}>
-      {/* Blue Header Bar with Icon */}
-      <div style={styles.blueHeader}>
-        {/* Decorative circles */}
-        <div style={styles.decorationCircle}></div>
-        <div style={styles.decorationCircle2}></div>
-        
-        <div style={styles.headerContent}>
-          <div style={styles.headerIcon}>
-            <span>🌍</span>
-          </div>
-          <div style={styles.headerText}>
-            <h3 style={styles.pageTitle}>Country Database</h3>
-            <p style={styles.pageSubtitle}>Manage country tariff profiles and regulations</p>
-          </div>
-        </div>
-      </div>
+  <div style={styles.page}>
+    {/* NEW HERO HEADER */}
+    <div style={{ padding: "20px 0" }}>
+      <section className="admin-hero">
+        <h1>🌍 Country Database</h1>
+        <p>Manage country tariff profiles and regulations</p>
+      </section>
+    </div>
 
       <div style={styles.contentContainer}>
         {apiError && (

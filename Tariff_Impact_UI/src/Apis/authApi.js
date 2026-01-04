@@ -47,5 +47,20 @@ export const getCurrencies = () =>
 export const getDutyTypes = () =>
   API.get("/impact-analysis/duty-type");
 
+// ========== AgreementManagementPage ==========
+
+export const getAgreements = () =>
+  API.get("/metadata/admin/agreement");
+
+export const createAgreement = (data) =>
+  API.post("/metadata/admin/agreement", data);
+
+export const updateAgreement = (code, data) =>
+  API.put(`/metadata/admin/agreement/${code}`, data);
+
+export const deleteAgreement = (code) =>
+  API.delete(`/metadata/admin/agreement/${code}`);
+
+
 export default API;
 
