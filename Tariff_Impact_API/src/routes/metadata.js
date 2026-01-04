@@ -3,6 +3,15 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const { User, Admin } = require('../../models');
 
+const BASE = "";   // empty string
+
+const db = require('../../models');  // adjust the path if needed
+const { Country } = db;
+
+
+
+
+
 // Log all requests
 router.use((req, res, next) => {
   console.log('REQUEST:', req.method, req.url, req.body);
@@ -128,6 +137,60 @@ router.get("/products/:id", productController.getById);
 router.post("/products", productController.create);
 router.put("/products/:id", productController.update);
 router.delete("/products/:id", productController.remove);
+// ========== COUNTRY MASTER ==========
+const countryController = require("../controller/metadata/country");
+
+router.get("/admin/country", countryController.getCountries);
+router.post("/admin/country", countryController.createCountry);
+router.get("/admin/country/:id", countryController.getCountryById);
+router.put("/admin/country/:id", countryController.updateCountry);
+router.delete("/admin/country/:id", countryController.deleteCountry);
+// =======forex analysis ====//
+// simple currencies list for dropdowns
+const forexController = require("../controller/metadata/forexController");
+
+router.get('/currencies', (req, res) => {
+  const currencies = {
+    USD: 'US Dollar',
+    EUR: 'Euro',
+    GBP: 'British Pound',
+    INR: 'Indian Rupee',
+    JPY: 'Japanese Yen',
+    AUD: 'Australian Dollar',
+    CAD: 'Canadian Dollar',
+    CHF: 'Swiss Franc',
+    CNY: 'Chinese Yuan',
+    SGD: 'Singapore Dollar',
+    NZD: 'New Zealand Dollar',
+    ZAR: 'South African Rand',
+    BRL: 'Brazilian Real',
+    HKD: 'Hong Kong Dollar',
+    SEK: 'Swedish Krona',
+    NOK: 'Norwegian Krone',
+    DKK: 'Danish Krone',
+    MXN: 'Mexican Peso',
+    KRW: 'South Korean Won',
+    TRY: 'Turkish Lira',
+    SAR: 'Saudi Riyal',
+    AED: 'UAE Dirham',
+  };
+
+  res.json({ currencies });
+});
+
+// main analysis endpoint
+router.post('/analyze', forexController.analyze);
+
+// ========== AGREEMENT MASTER ==========
+const agreementController = require("../controller/metadata/agreementController");
+
+router.post("/admin/agreement", agreementController.createAgreement);
+router.get("/admin/agreement", agreementController.getAllAgreements);
+router.get("/admin/agreement/:code", agreementController.getAgreementByCode);
+router.put("/admin/agreement/:code", agreementController.updateAgreement);
+router.delete("/admin/agreement/:code", agreementController.deleteAgreement);
+
+
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));

@@ -14,6 +14,10 @@ import {
   FiMessageSquare,
   FiLogOut,
 } from "react-icons/fi";
+import CountryDatabasePage from "./CountryDatabasePage";
+import AgreementsManagementPage from "./AgreementsManagementPage";
+
+
 
 function AdminDashboardPage() {
   const navigate = useNavigate();
@@ -159,6 +163,9 @@ function AdminDashboardPage() {
         {currentPage === "agreements" && <AgreementsManagement />}
         {currentPage === "countries" && <CountryTable />}
         {currentPage === "products" && <ProductLibraryPage />}
+        {currentPage === "agreements" && <AgreementsManagementPage />}
+        {currentPage === "countries" && <CountryDatabasePage />}
+        {currentPage === "products" && <ProductLibrary />}
         {currentPage === "reports" && <Reports />}
         {currentPage === "feedback" && <FeedbackInbox />}
 
