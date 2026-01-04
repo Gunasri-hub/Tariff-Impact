@@ -120,6 +120,15 @@ router.get("/impact-analysis/currency", controller.getCurrencyData);
 router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
+const productController = require("../controller/metadata/productController");
+
+/* PRODUCTS */
+router.get("/products", productController.getAll);
+router.get("/products/:id", productController.getById);
+router.post("/products", productController.create);
+router.put("/products/:id", productController.update);
+router.delete("/products/:id", productController.remove);
+
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));
 

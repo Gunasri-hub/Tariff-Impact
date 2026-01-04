@@ -1,39 +1,59 @@
-import API from './ApiConfig';
+import API from "./ApiConfig";
 
-// ========== ADMIN LOGIN ==========
+// ADMIN LOGIN
 export const adminLogin = async (data) => {
-  const response = await API.post('/admin/login', {
-    email: data.email,
-    password: data.password
-  });
-  localStorage.setItem('token', response.data.token);
+  const response = await API.post("/admin/login", data);
+  localStorage.setItem("token", response.data.token);
   return response.data;
 };
 
-// ========== USER LOGIN ==========
+// USER LOGIN
 export const userLogin = async (data) => {
-  const response = await API.post('/user/login', {
-    email: data.email,
-    password: data.password
-  });
-  localStorage.setItem('token', response.data.token);
+  const response = await API.post("/user/login", data);
+  localStorage.setItem("token", response.data.token);
   return response.data;
 };
 
-// ========== LOGOUT ==========
+// LOGOUT
 export const logout = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem("token");
 };
 
-// ========== TARIFF IMPACT ANALYSIS ==========
-export const getTariffs = () =>
-  API.get("/impact-analysis/tariff");
+// TARIFF DATA
+export const getTariffs = () => API.get("/impact-analysis/tariff");
+export const getCurrencies = () => API.get("/impact-analysis/currency");
+export const getDutyTypes = () => API.get("/impact-analysis/duty-type");
 
-export const getCurrencies = () =>
-  API.get("/impact-analysis/currency");
+// PRODUCT CRUD
+// GET all products
+export const getProducts = async (params = {}) => {
+  const response = await API.get("/products", { params });
+  return response.data;
+};
 
-export const getDutyTypes = () =>
-  API.get("/impact-analysis/duty-type");
+// GET single product
+export const getProductById = async (id) => {
+  const response = await API.get(`/products/${id}`);
+  return response.data;
+};
+
+// CREATE product
+export const createProduct = async (data) => {
+  const response = await API.post("/products", data);
+  return response.data;
+};
+
+// UPDATE product
+export const updateProduct = async (id, data) => {
+  const response = await API.put(`/products/${id}`, data);
+  return response.data;
+};
+
+// DELETE product
+export const deleteProduct = async (id) => {
+  const response = await API.delete(`/products/${id}`);
+  return response.data;
+};
+
 
 export default API;
-

@@ -1,0 +1,960 @@
+2026-01-02 23:09:18,796 [INFO] Directory ready: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters
+2026-01-02 23:09:20,199 [INFO] Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-01-02 23:09:20,199 [INFO] NumExpr defaulting to 8 threads.
+2026-01-02 23:09:21,094 [INFO] Directory ready: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\parsed
+2026-01-02 23:09:21,256 [INFO] ===== Starting HTS Pipeline =====
+2026-01-02 23:09:21,257 [INFO] Directory ready: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters
+2026-01-02 23:09:33,364 [INFO] Downloading chapter 1
+2026-01-02 23:09:33,366 [INFO] Fetching range for chapter 1
+2026-01-02 23:09:35,349 [INFO] Requesting export: from=0101 to=0106.90.01.80
+2026-01-02 23:09:37,469 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx.part
+2026-01-02 23:09:37,471 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:37,471 [INFO] Completed Chapter 1 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-02 23:09:37,975 [INFO] Downloading chapter 2
+2026-01-02 23:09:37,975 [INFO] Fetching range for chapter 2
+2026-01-02 23:09:39,221 [INFO] Requesting export: from=0201 to=0210.99.91.00
+2026-01-02 23:09:40,954 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx.part
+2026-01-02 23:09:40,959 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:40,959 [INFO] Completed Chapter 2 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-02 23:09:41,460 [INFO] Downloading chapter 3
+2026-01-02 23:09:41,460 [INFO] Fetching range for chapter 3
+2026-01-02 23:09:42,685 [INFO] Requesting export: from=0301 to=0309.90.90.00
+2026-01-02 23:09:44,525 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx.part
+2026-01-02 23:09:45,445 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:45,447 [INFO] Completed Chapter 3 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-02 23:09:45,948 [INFO] Downloading chapter 4
+2026-01-02 23:09:45,948 [INFO] Fetching range for chapter 4
+2026-01-02 23:09:47,285 [INFO] Requesting export: from=0401 to=0410.90.00.00
+2026-01-02 23:09:47,990 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx.part
+2026-01-02 23:09:48,016 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:48,017 [INFO] Completed Chapter 4 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-02 23:09:48,519 [INFO] Downloading chapter 5
+2026-01-02 23:09:48,519 [INFO] Fetching range for chapter 5
+2026-01-02 23:09:50,303 [INFO] Requesting export: from=0501.00.00.00 to=0511.99.40.70
+2026-01-02 23:09:52,098 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx.part
+2026-01-02 23:09:52,101 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:52,103 [INFO] Completed Chapter 5 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-02 23:09:52,604 [INFO] Downloading chapter 6
+2026-01-02 23:09:52,604 [INFO] Fetching range for chapter 6
+2026-01-02 23:09:54,165 [INFO] Requesting export: from=0601 to=0604.90.60.00
+2026-01-02 23:09:55,419 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx.part
+2026-01-02 23:09:55,425 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx (content-type=application/octet-stream)
+2026-01-02 23:09:55,425 [INFO] Completed Chapter 6 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-02 23:09:55,927 [INFO] Downloading chapter 7
+2026-01-02 23:09:55,927 [INFO] Fetching range for chapter 7
+2026-01-02 23:09:59,657 [INFO] Requesting export: from=0701 to=0714.90.61.00
+2026-01-02 23:10:01,546 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx.part
+2026-01-02 23:10:01,717 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:01,717 [INFO] Completed Chapter 7 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-02 23:10:02,219 [INFO] Downloading chapter 8
+2026-01-02 23:10:02,219 [INFO] Fetching range for chapter 8
+2026-01-02 23:10:03,093 [INFO] Requesting export: from=0801 to=0814.00.80.00
+2026-01-02 23:10:05,181 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx.part
+2026-01-02 23:10:05,186 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:05,186 [INFO] Completed Chapter 8 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-02 23:10:05,687 [INFO] Downloading chapter 9
+2026-01-02 23:10:05,687 [INFO] Fetching range for chapter 9
+2026-01-02 23:10:06,669 [INFO] Requesting export: from=0901 to=0910.99.60.00
+2026-01-02 23:10:07,571 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx.part
+2026-01-02 23:10:07,572 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:07,572 [INFO] Completed Chapter 9 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-02 23:10:08,077 [INFO] Downloading chapter 10
+2026-01-02 23:10:08,077 [INFO] Fetching range for chapter 10
+2026-01-02 23:10:08,850 [INFO] Requesting export: from=1001 to=1008.90.01.40
+2026-01-02 23:10:09,311 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx.part
+2026-01-02 23:10:09,313 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:09,313 [INFO] Completed Chapter 10 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-02 23:10:09,816 [INFO] Downloading chapter 11
+2026-01-02 23:10:09,816 [INFO] Fetching range for chapter 11
+2026-01-02 23:10:10,235 [INFO] Requesting export: from=1101.00.00 to=1109.00.90.20
+2026-01-02 23:10:10,704 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx.part
+2026-01-02 23:10:10,708 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:10,708 [INFO] Completed Chapter 11 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-02 23:10:11,210 [INFO] Downloading chapter 12
+2026-01-02 23:10:11,210 [INFO] Fetching range for chapter 12
+2026-01-02 23:10:11,765 [INFO] Requesting export: from=1201 to=1214.90.00.90
+2026-01-02 23:10:12,365 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx.part
+2026-01-02 23:10:12,368 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:12,370 [INFO] Completed Chapter 12 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-02 23:10:12,872 [INFO] Downloading chapter 13
+2026-01-02 23:10:12,872 [INFO] Fetching range for chapter 13
+2026-01-02 23:10:13,289 [INFO] Requesting export: from=1301 to=1302.39.00.90
+2026-01-02 23:10:13,823 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx.part
+2026-01-02 23:10:13,827 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:13,828 [INFO] Completed Chapter 13 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-02 23:10:14,329 [INFO] Downloading chapter 14
+2026-01-02 23:10:14,329 [INFO] Fetching range for chapter 14
+2026-01-02 23:10:14,731 [INFO] Requesting export: from=1401 to=1404.90.90.90
+2026-01-02 23:10:15,176 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx.part
+2026-01-02 23:10:15,181 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:15,181 [INFO] Completed Chapter 14 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-02 23:10:15,684 [INFO] Downloading chapter 15
+2026-01-02 23:10:15,684 [INFO] Fetching range for chapter 15
+2026-01-02 23:10:16,181 [INFO] Requesting export: from=1501 to=1522.00.00.00
+2026-01-02 23:10:17,008 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx.part
+2026-01-02 23:10:17,010 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:17,013 [INFO] Completed Chapter 15 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-02 23:10:17,515 [INFO] Downloading chapter 16
+2026-01-02 23:10:17,515 [INFO] Fetching range for chapter 16
+2026-01-02 23:10:18,126 [INFO] Requesting export: from=1601.00 to=1605.69.00.00
+2026-01-02 23:10:20,020 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx.part
+2026-01-02 23:10:20,025 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:20,025 [INFO] Completed Chapter 16 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-02 23:10:20,527 [INFO] Downloading chapter 17
+2026-01-02 23:10:20,528 [INFO] Fetching range for chapter 17
+2026-01-02 23:10:20,931 [INFO] Requesting export: from=1701 to=1704.90.90.00
+2026-01-02 23:10:21,512 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx.part
+2026-01-02 23:10:21,512 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:21,516 [INFO] Completed Chapter 17 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-02 23:10:22,023 [INFO] Downloading chapter 18
+2026-01-02 23:10:22,023 [INFO] Fetching range for chapter 18
+2026-01-02 23:10:22,436 [INFO] Requesting export: from=1801.00.00.00 to=1806.90.90.90
+2026-01-02 23:10:22,865 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx.part
+2026-01-02 23:10:22,876 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:22,876 [INFO] Completed Chapter 18 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-02 23:10:23,379 [INFO] Downloading chapter 19
+2026-01-02 23:10:23,379 [INFO] Fetching range for chapter 19
+2026-01-02 23:10:23,817 [INFO] Requesting export: from=1901 to=1905.90.90.90
+2026-01-02 23:10:24,555 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx.part
+2026-01-02 23:10:24,569 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:24,571 [INFO] Completed Chapter 19 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-02 23:10:25,072 [INFO] Downloading chapter 20
+2026-01-02 23:10:25,075 [INFO] Fetching range for chapter 20
+2026-01-02 23:10:25,743 [INFO] Requesting export: from=2001 to=2009.90.40.00
+2026-01-02 23:10:27,249 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx.part
+2026-01-02 23:10:27,253 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:27,253 [INFO] Completed Chapter 20 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-02 23:10:27,756 [INFO] Downloading chapter 21
+2026-01-02 23:10:27,756 [INFO] Fetching range for chapter 21
+2026-01-02 23:10:28,377 [INFO] Requesting export: from=2101 to=2106.90.99.98
+2026-01-02 23:10:28,927 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx.part
+2026-01-02 23:10:28,930 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:28,930 [INFO] Completed Chapter 21 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-02 23:10:29,432 [INFO] Downloading chapter 22
+2026-01-02 23:10:29,432 [INFO] Fetching range for chapter 22
+2026-01-02 23:10:30,824 [INFO] Requesting export: from=2201 to=2209.00.00.00
+2026-01-02 23:10:31,411 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx.part
+2026-01-02 23:10:31,415 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:31,417 [INFO] Completed Chapter 22 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-02 23:10:31,919 [INFO] Downloading chapter 23
+2026-01-02 23:10:31,919 [INFO] Fetching range for chapter 23
+2026-01-02 23:10:32,520 [INFO] Requesting export: from=2301 to=2309.90.95.00
+2026-01-02 23:10:33,985 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx.part
+2026-01-02 23:10:34,003 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:34,003 [INFO] Completed Chapter 23 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-02 23:10:34,504 [INFO] Downloading chapter 24
+2026-01-02 23:10:34,504 [INFO] Fetching range for chapter 24
+2026-01-02 23:10:35,771 [INFO] Requesting export: from=2401 to=2404.99.00.00
+2026-01-02 23:10:36,567 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx.part
+2026-01-02 23:10:36,572 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:36,572 [INFO] Completed Chapter 24 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-02 23:10:37,074 [INFO] Downloading chapter 25
+2026-01-02 23:10:37,074 [INFO] Fetching range for chapter 25
+2026-01-02 23:10:37,567 [INFO] Requesting export: from=2501.00.00.00 to=2530.90.80.50
+2026-01-02 23:10:38,229 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx.part
+2026-01-02 23:10:38,233 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:38,236 [INFO] Completed Chapter 25 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-02 23:10:38,737 [INFO] Downloading chapter 26
+2026-01-02 23:10:38,737 [INFO] Fetching range for chapter 26
+2026-01-02 23:10:39,135 [INFO] Requesting export: from=2601 to=2621.90.00.00
+2026-01-02 23:10:39,667 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx.part
+2026-01-02 23:10:39,669 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:39,672 [INFO] Completed Chapter 26 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-02 23:10:40,174 [INFO] Downloading chapter 27
+2026-01-02 23:10:40,174 [INFO] Fetching range for chapter 27
+2026-01-02 23:10:40,817 [INFO] Requesting export: from=2701 to=2716.00.00.00
+2026-01-02 23:10:41,484 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx.part
+2026-01-02 23:10:41,490 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:41,490 [INFO] Completed Chapter 27 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-02 23:10:41,992 [INFO] Downloading chapter 28
+2026-01-02 23:10:41,993 [INFO] Fetching range for chapter 28
+2026-01-02 23:10:42,767 [INFO] Requesting export: from=2801 to=2853.90.90.90
+2026-01-02 23:10:44,659 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx.part
+2026-01-02 23:10:44,712 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:44,714 [INFO] Completed Chapter 28 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-02 23:10:45,216 [INFO] Downloading chapter 29
+2026-01-02 23:10:45,217 [INFO] Fetching range for chapter 29
+2026-01-02 23:10:46,486 [INFO] Requesting export: from=2901 to=2942.00.50.00
+2026-01-02 23:10:47,650 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx.part
+2026-01-02 23:10:47,967 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:47,967 [INFO] Completed Chapter 29 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-02 23:10:48,473 [INFO] Downloading chapter 30
+2026-01-02 23:10:48,473 [INFO] Fetching range for chapter 30
+2026-01-02 23:10:49,458 [INFO] Requesting export: from=3001 to=3006.93.80.00
+2026-01-02 23:10:50,100 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx.part
+2026-01-02 23:10:50,105 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:50,105 [INFO] Completed Chapter 30 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-02 23:10:50,609 [INFO] Downloading chapter 31
+2026-01-02 23:10:50,610 [INFO] Fetching range for chapter 31
+2026-01-02 23:10:51,047 [INFO] Requesting export: from=3101.00.00.00 to=3105.90.00.50
+2026-01-02 23:10:52,299 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx.part
+2026-01-02 23:10:52,302 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:52,304 [INFO] Completed Chapter 31 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-02 23:10:52,806 [INFO] Downloading chapter 32
+2026-01-02 23:10:52,806 [INFO] Fetching range for chapter 32
+2026-01-02 23:10:53,352 [INFO] Requesting export: from=3201 to=3215.90.50.00
+2026-01-02 23:10:53,875 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx.part
+2026-01-02 23:10:53,879 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:53,879 [INFO] Completed Chapter 32 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-02 23:10:54,381 [INFO] Downloading chapter 33
+2026-01-02 23:10:54,382 [INFO] Fetching range for chapter 33
+2026-01-02 23:10:56,689 [INFO] Requesting export: from=3301 to=3307.90.00.00
+2026-01-02 23:10:58,465 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx.part
+2026-01-02 23:10:58,484 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx (content-type=application/octet-stream)
+2026-01-02 23:10:58,484 [INFO] Completed Chapter 33 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-02 23:10:58,987 [INFO] Downloading chapter 34
+2026-01-02 23:10:58,987 [INFO] Fetching range for chapter 34
+2026-01-02 23:11:00,392 [INFO] Requesting export: from=3401 to=3407.00.40.00
+2026-01-02 23:11:00,969 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx.part
+2026-01-02 23:11:00,972 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:00,972 [INFO] Completed Chapter 34 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-02 23:11:01,474 [INFO] Downloading chapter 35
+2026-01-02 23:11:01,474 [INFO] Fetching range for chapter 35
+2026-01-02 23:11:02,097 [INFO] Requesting export: from=3501 to=3507.90.70.00
+2026-01-02 23:11:03,499 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx.part
+2026-01-02 23:11:03,500 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:03,500 [INFO] Completed Chapter 35 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-02 23:11:04,005 [INFO] Downloading chapter 36
+2026-01-02 23:11:04,005 [INFO] Fetching range for chapter 36
+2026-01-02 23:11:05,223 [INFO] Requesting export: from=3601.00.00.00 to=3606.90.80.00
+2026-01-02 23:11:06,386 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx.part
+2026-01-02 23:11:06,390 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:06,390 [INFO] Completed Chapter 36 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-02 23:11:06,892 [INFO] Downloading chapter 37
+2026-01-02 23:11:06,892 [INFO] Fetching range for chapter 37
+2026-01-02 23:11:07,648 [INFO] Requesting export: from=3701 to=3707.90.60.00
+2026-01-02 23:11:09,537 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx.part
+2026-01-02 23:11:09,541 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:09,543 [INFO] Completed Chapter 37 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-02 23:11:10,044 [INFO] Downloading chapter 38
+2026-01-02 23:11:10,044 [INFO] Fetching range for chapter 38
+2026-01-02 23:11:10,421 [INFO] Requesting export: from=3801 to=3827.90.90.00
+2026-01-02 23:11:11,061 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx.part
+2026-01-02 23:11:11,065 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:11,065 [INFO] Completed Chapter 38 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-02 23:11:11,570 [INFO] Downloading chapter 39
+2026-01-02 23:11:11,570 [INFO] Fetching range for chapter 39
+2026-01-02 23:11:11,986 [INFO] Requesting export: from=3901 to=3926.90.99.89
+2026-01-02 23:11:12,570 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx.part
+2026-01-02 23:11:12,581 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:12,583 [INFO] Completed Chapter 39 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-02 23:11:13,084 [INFO] Downloading chapter 40
+2026-01-02 23:11:13,084 [INFO] Fetching range for chapter 40
+2026-01-02 23:11:13,813 [INFO] Requesting export: from=4001 to=4017.00.00.00
+2026-01-02 23:11:14,313 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx.part
+2026-01-02 23:11:14,313 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:14,319 [INFO] Completed Chapter 40 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-02 23:11:14,819 [INFO] Downloading chapter 41
+2026-01-02 23:11:14,819 [INFO] Fetching range for chapter 41
+2026-01-02 23:11:15,291 [INFO] Requesting export: from=4101 to=4115.20.00.00
+2026-01-02 23:11:15,815 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx.part
+2026-01-02 23:11:15,817 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:15,817 [INFO] Completed Chapter 41 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-02 23:11:16,321 [INFO] Downloading chapter 42
+2026-01-02 23:11:16,321 [INFO] Fetching range for chapter 42
+2026-01-02 23:11:16,755 [INFO] Requesting export: from=4201.00 to=4206.00.90.00
+2026-01-02 23:11:17,513 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx.part
+2026-01-02 23:11:17,517 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:17,518 [INFO] Completed Chapter 42 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-02 23:11:18,019 [INFO] Downloading chapter 43
+2026-01-02 23:11:18,019 [INFO] Fetching range for chapter 43
+2026-01-02 23:11:18,419 [INFO] Requesting export: from=4301 to=4304.00.00.00
+2026-01-02 23:11:18,904 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx.part
+2026-01-02 23:11:18,909 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:18,909 [INFO] Completed Chapter 43 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-02 23:11:19,411 [INFO] Downloading chapter 44
+2026-01-02 23:11:19,416 [INFO] Fetching range for chapter 44
+2026-01-02 23:11:20,041 [INFO] Requesting export: from=4401 to=4421.99.98.80
+2026-01-02 23:11:20,859 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx.part
+2026-01-02 23:11:20,895 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:20,895 [INFO] Completed Chapter 44 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-02 23:11:21,397 [INFO] Downloading chapter 45
+2026-01-02 23:11:21,397 [INFO] Fetching range for chapter 45
+2026-01-02 23:11:21,768 [INFO] Requesting export: from=4501 to=4504.90.00.00
+2026-01-02 23:11:22,141 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx.part
+2026-01-02 23:11:22,146 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:22,146 [INFO] Completed Chapter 45 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-02 23:11:22,651 [INFO] Downloading chapter 46
+2026-01-02 23:11:22,651 [INFO] Fetching range for chapter 46
+2026-01-02 23:11:23,270 [INFO] Requesting export: from=4601 to=4602.90.00.00
+2026-01-02 23:11:23,925 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx.part
+2026-01-02 23:11:23,925 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:23,934 [INFO] Completed Chapter 46 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-02 23:11:24,439 [INFO] Downloading chapter 47
+2026-01-02 23:11:24,443 [INFO] Fetching range for chapter 47
+2026-01-02 23:11:24,866 [INFO] Requesting export: from=4701.00.00.00 to=4707.90.00.00
+2026-01-02 23:11:25,385 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx.part
+2026-01-02 23:11:25,398 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:25,400 [INFO] Completed Chapter 47 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-02 23:11:25,901 [INFO] Downloading chapter 48
+2026-01-02 23:11:25,902 [INFO] Fetching range for chapter 48
+2026-01-02 23:11:26,446 [INFO] Requesting export: from=4801.00.01 to=4823.90.86.80
+2026-01-02 23:11:27,556 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx.part
+2026-01-02 23:11:27,574 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:27,576 [INFO] Completed Chapter 48 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-02 23:11:28,077 [INFO] Downloading chapter 49
+2026-01-02 23:11:28,077 [INFO] Fetching range for chapter 49
+2026-01-02 23:11:28,427 [INFO] Requesting export: from=4901 to=4911.99.80.00
+2026-01-02 23:11:28,951 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx.part
+2026-01-02 23:11:28,959 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:28,959 [INFO] Completed Chapter 49 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-02 23:11:29,464 [INFO] Downloading chapter 50
+2026-01-02 23:11:29,464 [INFO] Fetching range for chapter 50
+2026-01-02 23:11:29,850 [INFO] Requesting export: from=5001.00.00.00 to=5007.90.60.90
+2026-01-02 23:11:30,261 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx.part
+2026-01-02 23:11:30,265 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:30,265 [INFO] Completed Chapter 50 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-02 23:11:30,769 [INFO] Downloading chapter 51
+2026-01-02 23:11:30,770 [INFO] Fetching range for chapter 51
+2026-01-02 23:11:31,370 [INFO] Requesting export: from=5101 to=5113.00.00.00
+2026-01-02 23:11:32,297 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx.part
+2026-01-02 23:11:32,300 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:32,301 [INFO] Completed Chapter 51 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-02 23:11:32,802 [INFO] Downloading chapter 52
+2026-01-02 23:11:32,802 [INFO] Fetching range for chapter 52
+2026-01-02 23:11:33,526 [INFO] Requesting export: from=5201.00 to=5212.25.60.90
+2026-01-02 23:11:34,304 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx.part
+2026-01-02 23:11:34,346 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:34,348 [INFO] Completed Chapter 52 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-02 23:11:34,850 [INFO] Downloading chapter 53
+2026-01-02 23:11:34,851 [INFO] Fetching range for chapter 53
+2026-01-02 23:11:35,275 [INFO] Requesting export: from=5301 to=5311.00.60.00
+2026-01-02 23:11:35,692 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx.part
+2026-01-02 23:11:35,705 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:35,705 [INFO] Completed Chapter 53 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-02 23:11:36,207 [INFO] Downloading chapter 54
+2026-01-02 23:11:36,207 [INFO] Fetching range for chapter 54
+2026-01-02 23:11:36,730 [INFO] Requesting export: from=5401 to=5408.34.90.95
+2026-01-02 23:11:37,306 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx.part
+2026-01-02 23:11:37,315 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:37,315 [INFO] Completed Chapter 54 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-02 23:11:37,817 [INFO] Downloading chapter 55
+2026-01-02 23:11:37,817 [INFO] Fetching range for chapter 55
+2026-01-02 23:11:38,293 [INFO] Requesting export: from=5501 to=5516.94.00.90
+2026-01-02 23:11:38,817 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx.part
+2026-01-02 23:11:38,821 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:38,821 [INFO] Completed Chapter 55 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-02 23:11:39,324 [INFO] Downloading chapter 56
+2026-01-02 23:11:39,324 [INFO] Fetching range for chapter 56
+2026-01-02 23:11:39,807 [INFO] Requesting export: from=5601 to=5609.00.40.00
+2026-01-02 23:11:40,394 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx.part
+2026-01-02 23:11:40,394 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:40,399 [INFO] Completed Chapter 56 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-02 23:11:40,900 [INFO] Downloading chapter 57
+2026-01-02 23:11:40,900 [INFO] Fetching range for chapter 57
+2026-01-02 23:11:42,540 [INFO] Requesting export: from=5701 to=5705.00.20.90
+2026-01-02 23:11:43,220 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx.part
+2026-01-02 23:11:43,222 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:43,222 [INFO] Completed Chapter 57 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-02 23:11:43,725 [INFO] Downloading chapter 58
+2026-01-02 23:11:43,725 [INFO] Fetching range for chapter 58
+2026-01-02 23:11:44,176 [INFO] Requesting export: from=5801 to=5811.00.40.00
+2026-01-02 23:11:44,707 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx.part
+2026-01-02 23:11:44,708 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:44,711 [INFO] Completed Chapter 58 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-02 23:11:45,213 [INFO] Downloading chapter 59
+2026-01-02 23:11:45,213 [INFO] Fetching range for chapter 59
+2026-01-02 23:11:45,682 [INFO] Requesting export: from=5901 to=5911.90.00.80
+2026-01-02 23:11:46,391 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx.part
+2026-01-02 23:11:46,393 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:46,395 [INFO] Completed Chapter 59 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-02 23:11:46,896 [INFO] Downloading chapter 60
+2026-01-02 23:11:46,896 [INFO] Fetching range for chapter 60
+2026-01-02 23:11:47,647 [INFO] Requesting export: from=6001 to=6006.90.90.00
+2026-01-02 23:11:49,491 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx.part
+2026-01-02 23:11:49,495 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:49,496 [INFO] Completed Chapter 60 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-02 23:11:49,997 [INFO] Downloading chapter 61
+2026-01-02 23:11:49,997 [INFO] Fetching range for chapter 61
+2026-01-02 23:11:51,503 [INFO] Requesting export: from=6101 to=6117.90.90.95
+2026-01-02 23:11:53,534 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx.part
+2026-01-02 23:11:53,572 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:53,574 [INFO] Completed Chapter 61 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-02 23:11:54,075 [INFO] Downloading chapter 62
+2026-01-02 23:11:54,075 [INFO] Fetching range for chapter 62
+2026-01-02 23:11:55,850 [INFO] Requesting export: from=6201 to=6217.90.90.95
+2026-01-02 23:11:57,491 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx.part
+2026-01-02 23:11:57,615 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:57,616 [INFO] Completed Chapter 62 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-02 23:11:58,118 [INFO] Downloading chapter 63
+2026-01-02 23:11:58,120 [INFO] Fetching range for chapter 63
+2026-01-02 23:11:58,565 [INFO] Requesting export: from=6301 to=6310.90.20.00
+2026-01-02 23:11:59,314 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx.part
+2026-01-02 23:11:59,319 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx (content-type=application/octet-stream)
+2026-01-02 23:11:59,319 [INFO] Completed Chapter 63 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-02 23:11:59,821 [INFO] Downloading chapter 64
+2026-01-02 23:11:59,821 [INFO] Fetching range for chapter 64
+2026-01-02 23:12:00,377 [INFO] Requesting export: from=6401 to=6406.90.90.00
+2026-01-02 23:12:01,700 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx.part
+2026-01-02 23:12:01,704 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:01,706 [INFO] Completed Chapter 64 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-02 23:12:02,206 [INFO] Downloading chapter 65
+2026-01-02 23:12:02,206 [INFO] Fetching range for chapter 65
+2026-01-02 23:12:02,589 [INFO] Requesting export: from=6501.00 to=6507.00.00.00
+2026-01-02 23:12:03,251 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx.part
+2026-01-02 23:12:03,264 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:03,265 [INFO] Completed Chapter 65 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-02 23:12:03,766 [INFO] Downloading chapter 66
+2026-01-02 23:12:03,766 [INFO] Fetching range for chapter 66
+2026-01-02 23:12:04,133 [INFO] Requesting export: from=6601 to=6603.90.81.00
+2026-01-02 23:12:04,535 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx.part
+2026-01-02 23:12:04,535 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:04,535 [INFO] Completed Chapter 66 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-02 23:12:05,045 [INFO] Downloading chapter 67
+2026-01-02 23:12:05,045 [INFO] Fetching range for chapter 67
+2026-01-02 23:12:05,406 [INFO] Requesting export: from=6701.00 to=6704.90.00.00
+2026-01-02 23:12:05,811 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx.part
+2026-01-02 23:12:05,812 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:05,814 [INFO] Completed Chapter 67 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-02 23:12:06,316 [INFO] Downloading chapter 68
+2026-01-02 23:12:06,316 [INFO] Fetching range for chapter 68
+2026-01-02 23:12:06,726 [INFO] Requesting export: from=6801.00.00.00 to=6815.99.41.70
+2026-01-02 23:12:07,223 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx.part
+2026-01-02 23:12:07,227 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:07,237 [INFO] Completed Chapter 68 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-02 23:12:07,741 [INFO] Downloading chapter 69
+2026-01-02 23:12:07,741 [INFO] Fetching range for chapter 69
+2026-01-02 23:12:08,610 [INFO] Requesting export: from=6901.00.00.00 to=6914.90.80.00
+2026-01-02 23:12:09,111 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx.part
+2026-01-02 23:12:09,115 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:09,116 [INFO] Completed Chapter 69 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-02 23:12:09,617 [INFO] Downloading chapter 70
+2026-01-02 23:12:09,617 [INFO] Fetching range for chapter 70
+2026-01-02 23:12:10,169 [INFO] Requesting export: from=7001.00 to=7020.00.60.00
+2026-01-02 23:12:10,775 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx.part
+2026-01-02 23:12:10,785 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:10,785 [INFO] Completed Chapter 70 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-02 23:12:11,289 [INFO] Downloading chapter 71
+2026-01-02 23:12:11,289 [INFO] Fetching range for chapter 71
+2026-01-02 23:12:11,667 [INFO] Requesting export: from=7101 to=7118.90.00.55
+2026-01-02 23:12:12,173 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx.part
+2026-01-02 23:12:12,177 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:12,178 [INFO] Completed Chapter 71 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-02 23:12:12,679 [INFO] Downloading chapter 72
+2026-01-02 23:12:12,679 [INFO] Fetching range for chapter 72
+2026-01-02 23:12:13,429 [INFO] Requesting export: from=7201 to=7229.90.90.00
+2026-01-02 23:12:14,104 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx.part
+2026-01-02 23:12:14,146 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:14,148 [INFO] Completed Chapter 72 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-02 23:12:14,648 [INFO] Downloading chapter 73
+2026-01-02 23:12:14,648 [INFO] Fetching range for chapter 73
+2026-01-02 23:12:15,688 [INFO] Requesting export: from=7301 to=7326.90.86.88
+2026-01-02 23:12:16,648 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx.part
+2026-01-02 23:12:16,668 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:16,671 [INFO] Completed Chapter 73 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-02 23:12:17,172 [INFO] Downloading chapter 74
+2026-01-02 23:12:17,172 [INFO] Fetching range for chapter 74
+2026-01-02 23:12:18,220 [INFO] Requesting export: from=7401.00.00.00 to=7419.80.50.50
+2026-01-02 23:12:18,751 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx.part
+2026-01-02 23:12:18,756 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:18,756 [INFO] Completed Chapter 74 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-02 23:12:19,258 [INFO] Downloading chapter 75
+2026-01-02 23:12:19,258 [INFO] Fetching range for chapter 75
+2026-01-02 23:12:21,048 [INFO] Requesting export: from=7501 to=7508.90.50.00
+2026-01-02 23:12:21,483 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx.part
+2026-01-02 23:12:21,488 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:21,492 [INFO] Completed Chapter 75 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-02 23:12:21,992 [INFO] Downloading chapter 76
+2026-01-02 23:12:21,993 [INFO] Fetching range for chapter 76
+2026-01-02 23:12:22,624 [INFO] Requesting export: from=7601 to=7616.99.51.90
+2026-01-02 23:12:23,173 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx.part
+2026-01-02 23:12:23,177 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:23,177 [INFO] Completed Chapter 76 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-02 23:12:23,685 [INFO] Downloading chapter 77
+2026-01-02 23:12:23,685 [INFO] Fetching range for chapter 77
+2026-01-02 23:12:26,463 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 1/3)
+2026-01-02 23:12:29,465 [INFO] Fetching range for chapter 77
+2026-01-02 23:12:33,978 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 2/3)
+2026-01-02 23:12:36,980 [INFO] Fetching range for chapter 77
+2026-01-02 23:12:39,270 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 3/3)
+2026-01-02 23:12:39,270 [ERROR] Failed to download Chapter 77: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77
+Traceback (most recent call last):
+  File "c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\downloader.py", line 105, in download_all_chapters
+    data = get_chapter_range(session, ch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\utils.py", line 20, in wrapper
+    raise last_exc
+  File "c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\utils.py", line 14, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\downloader.py", line 45, in get_chapter_range
+    r.raise_for_status()
+  File "C:\Users\venga\anaconda3\Lib\site-packages\requests\models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77
+2026-01-02 23:12:39,275 [INFO] Downloading chapter 78
+2026-01-02 23:12:39,275 [INFO] Fetching range for chapter 78
+2026-01-02 23:12:40,299 [INFO] Requesting export: from=7801 to=7806.00.80.00
+2026-01-02 23:12:40,827 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx.part
+2026-01-02 23:12:40,830 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:40,831 [INFO] Completed Chapter 78 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-02 23:12:41,333 [INFO] Downloading chapter 79
+2026-01-02 23:12:41,333 [INFO] Fetching range for chapter 79
+2026-01-02 23:12:41,690 [INFO] Requesting export: from=7901 to=7907.00.60.00
+2026-01-02 23:12:42,182 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx.part
+2026-01-02 23:12:42,185 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:42,185 [INFO] Completed Chapter 79 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-02 23:12:42,687 [INFO] Downloading chapter 80
+2026-01-02 23:12:42,687 [INFO] Fetching range for chapter 80
+2026-01-02 23:12:43,090 [INFO] Requesting export: from=8001 to=8007.00.50.00
+2026-01-02 23:12:43,563 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx.part
+2026-01-02 23:12:43,574 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:43,574 [INFO] Completed Chapter 80 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-02 23:12:44,076 [INFO] Downloading chapter 81
+2026-01-02 23:12:44,076 [INFO] Fetching range for chapter 81
+2026-01-02 23:12:44,508 [INFO] Requesting export: from=8101 to=8113.00.00.00
+2026-01-02 23:12:45,065 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx.part
+2026-01-02 23:12:45,076 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:45,079 [INFO] Completed Chapter 81 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-02 23:12:45,580 [INFO] Downloading chapter 82
+2026-01-02 23:12:45,580 [INFO] Fetching range for chapter 82
+2026-01-02 23:12:45,995 [INFO] Requesting export: from=8201 to=8215.99.50.00
+2026-01-02 23:12:46,633 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx.part
+2026-01-02 23:12:46,635 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:46,635 [INFO] Completed Chapter 82 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-02 23:12:47,140 [INFO] Downloading chapter 83
+2026-01-02 23:12:47,140 [INFO] Fetching range for chapter 83
+2026-01-02 23:12:48,192 [INFO] Requesting export: from=8301 to=8311.90.00.00
+2026-01-02 23:12:49,606 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx.part
+2026-01-02 23:12:49,612 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:49,612 [INFO] Completed Chapter 83 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-02 23:12:50,114 [INFO] Downloading chapter 84
+2026-01-02 23:12:50,114 [INFO] Fetching range for chapter 84
+2026-01-02 23:12:50,607 [INFO] Requesting export: from=8401 to=8487.90.00.80
+2026-01-02 23:12:52,454 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx.part
+2026-01-02 23:12:52,794 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:52,794 [INFO] Completed Chapter 84 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-02 23:12:53,297 [INFO] Downloading chapter 85
+2026-01-02 23:12:53,297 [INFO] Fetching range for chapter 85
+2026-01-02 23:12:53,849 [INFO] Requesting export: from=8501 to=8549.99.00.00
+2026-01-02 23:12:54,697 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx.part
+2026-01-02 23:12:54,832 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:54,836 [INFO] Completed Chapter 85 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-02 23:12:55,337 [INFO] Downloading chapter 86
+2026-01-02 23:12:55,338 [INFO] Fetching range for chapter 86
+2026-01-02 23:12:55,817 [INFO] Requesting export: from=8601 to=8609.00.00.00
+2026-01-02 23:12:56,857 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx.part
+2026-01-02 23:12:56,860 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:56,860 [INFO] Completed Chapter 86 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-02 23:12:57,362 [INFO] Downloading chapter 87
+2026-01-02 23:12:57,362 [INFO] Fetching range for chapter 87
+2026-01-02 23:12:58,122 [INFO] Requesting export: from=8701 to=8716.90.50.60
+2026-01-02 23:12:58,778 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx.part
+2026-01-02 23:12:58,798 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx (content-type=application/octet-stream)
+2026-01-02 23:12:58,798 [INFO] Completed Chapter 87 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-02 23:12:59,300 [INFO] Downloading chapter 88
+2026-01-02 23:12:59,300 [INFO] Fetching range for chapter 88
+2026-01-02 23:12:59,877 [INFO] Requesting export: from=8801.00.00 to=8807.90.90.60
+2026-01-02 23:13:00,416 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx.part
+2026-01-02 23:13:00,422 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:00,424 [INFO] Completed Chapter 88 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-02 23:13:00,926 [INFO] Downloading chapter 89
+2026-01-02 23:13:00,926 [INFO] Fetching range for chapter 89
+2026-01-02 23:13:01,336 [INFO] Requesting export: from=8901 to=8908.00.00.00
+2026-01-02 23:13:01,771 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx.part
+2026-01-02 23:13:01,778 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:01,778 [INFO] Completed Chapter 89 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-02 23:13:02,283 [INFO] Downloading chapter 90
+2026-01-02 23:13:02,283 [INFO] Fetching range for chapter 90
+2026-01-02 23:13:02,706 [INFO] Requesting export: from=9001 to=9033.00.90.00
+2026-01-02 23:13:03,249 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx.part
+2026-01-02 23:13:03,264 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:03,265 [INFO] Completed Chapter 90 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-02 23:13:03,766 [INFO] Downloading chapter 91
+2026-01-02 23:13:03,766 [INFO] Fetching range for chapter 91
+2026-01-02 23:13:04,152 [INFO] Requesting export: from=9101 to=9114.90.50.00
+2026-01-02 23:13:04,904 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx.part
+2026-01-02 23:13:04,910 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:04,910 [INFO] Completed Chapter 91 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-02 23:13:05,412 [INFO] Downloading chapter 92
+2026-01-02 23:13:05,412 [INFO] Fetching range for chapter 92
+2026-01-02 23:13:05,823 [INFO] Requesting export: from=9201 to=9209.99.80.00
+2026-01-02 23:13:06,337 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx.part
+2026-01-02 23:13:06,353 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:06,356 [INFO] Completed Chapter 92 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-02 23:13:06,856 [INFO] Downloading chapter 93
+2026-01-02 23:13:06,858 [INFO] Fetching range for chapter 93
+2026-01-02 23:13:07,224 [INFO] Requesting export: from=9301 to=9307.00.00.00
+2026-01-02 23:13:07,781 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx.part
+2026-01-02 23:13:07,784 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:07,786 [INFO] Completed Chapter 93 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-02 23:13:08,287 [INFO] Downloading chapter 94
+2026-01-02 23:13:08,287 [INFO] Fetching range for chapter 94
+2026-01-02 23:13:08,781 [INFO] Requesting export: from=9401 to=9406.90.01.90
+2026-01-02 23:13:09,980 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx.part
+2026-01-02 23:13:09,984 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:09,984 [INFO] Completed Chapter 94 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-02 23:13:10,487 [INFO] Downloading chapter 95
+2026-01-02 23:13:10,487 [INFO] Fetching range for chapter 95
+2026-01-02 23:13:10,912 [INFO] Requesting export: from=9503.00.00 to=9508.40.00.00
+2026-01-02 23:13:11,505 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx.part
+2026-01-02 23:13:11,510 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:11,512 [INFO] Completed Chapter 95 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-02 23:13:12,013 [INFO] Downloading chapter 96
+2026-01-02 23:13:12,013 [INFO] Fetching range for chapter 96
+2026-01-02 23:13:12,930 [INFO] Requesting export: from=9601 to=9620.00.70.00
+2026-01-02 23:13:13,571 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx.part
+2026-01-02 23:13:13,575 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:13,576 [INFO] Completed Chapter 96 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-02 23:13:14,077 [INFO] Downloading chapter 97
+2026-01-02 23:13:14,077 [INFO] Fetching range for chapter 97
+2026-01-02 23:13:15,116 [INFO] Requesting export: from=9701 to=9706.90.00.60
+2026-01-02 23:13:16,128 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx.part
+2026-01-02 23:13:16,131 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:16,131 [INFO] Completed Chapter 97 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-02 23:13:16,635 [INFO] Downloading chapter 98
+2026-01-02 23:13:16,635 [INFO] Fetching range for chapter 98
+2026-01-02 23:13:16,997 [INFO] Requesting export: from=9801.00.10 to=9823.53.06
+2026-01-02 23:13:17,891 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx.part
+2026-01-02 23:13:18,009 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:18,009 [INFO] Completed Chapter 98 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-02 23:13:18,517 [INFO] Downloading chapter 99
+2026-01-02 23:13:18,518 [INFO] Fetching range for chapter 99
+2026-01-02 23:13:18,876 [INFO] Requesting export: from=9901.00.50 to=9922.52.12
+2026-01-02 23:13:19,898 [INFO] Saving to temporary file c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx.part
+2026-01-02 23:13:20,377 [INFO] Saved export to c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx (content-type=application/octet-stream)
+2026-01-02 23:13:20,381 [INFO] Completed Chapter 99 -> c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-02 23:13:20,885 [INFO] Downloaded 98 chapters successfully.
+2026-01-02 23:13:20,885 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-02 23:13:20,887 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-02 23:13:20,887 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-02 23:13:20,888 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-02 23:13:20,888 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-02 23:13:20,888 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-02 23:13:20,888 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-02 23:13:20,890 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-02 23:13:20,894 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-02 23:13:20,896 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-02 23:13:20,896 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-02 23:13:20,897 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-02 23:13:20,897 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-02 23:13:20,898 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-02 23:13:20,898 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-02 23:13:20,898 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-02 23:13:20,898 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-02 23:13:20,899 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-02 23:13:20,899 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-02 23:13:20,901 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-02 23:13:20,901 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-02 23:13:20,903 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-02 23:13:20,903 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-02 23:13:20,904 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-02 23:13:20,904 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-02 23:13:20,904 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-02 23:13:20,904 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-02 23:13:20,904 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-02 23:13:20,906 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-02 23:13:20,906 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-02 23:13:20,906 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-02 23:13:20,906 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-02 23:13:20,906 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-02 23:13:20,908 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-02 23:13:20,911 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-02 23:13:20,911 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-02 23:13:20,911 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-02 23:13:20,911 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-02 23:13:20,912 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-02 23:13:20,912 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-02 23:13:20,912 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-02 23:13:20,912 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-02 23:13:20,914 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-02 23:13:20,914 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-02 23:13:20,914 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-02 23:13:20,914 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-02 23:13:20,915 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-02 23:13:20,915 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-02 23:13:20,915 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-02 23:13:20,915 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-02 23:13:20,917 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-02 23:13:20,917 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-02 23:13:20,917 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-02 23:13:20,917 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-02 23:13:20,917 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-02 23:13:20,919 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-02 23:13:20,921 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-02 23:13:20,921 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-02 23:13:20,921 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-02 23:13:20,921 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-02 23:13:20,921 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-02 23:13:20,944 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-02 23:13:20,951 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-02 23:13:20,955 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-02 23:13:20,955 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-02 23:13:20,957 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-02 23:13:20,957 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-02 23:13:20,957 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-02 23:13:20,959 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-02 23:13:20,960 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-02 23:13:20,960 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-02 23:13:20,960 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-02 23:13:20,962 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-02 23:13:20,962 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-02 23:13:20,962 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-02 23:13:20,962 [INFO]  - c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-02 23:13:20,974 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-02 23:13:22,008 [INFO] Parsed 72 rows from Chapter_01.xlsx
+2026-01-02 23:13:22,008 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-02 23:13:22,145 [INFO] Parsed 134 rows from Chapter_02.xlsx
+2026-01-02 23:13:22,145 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-02 23:13:22,492 [INFO] Parsed 513 rows from Chapter_03.xlsx
+2026-01-02 23:13:22,492 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-02 23:13:22,720 [INFO] Parsed 328 rows from Chapter_04.xlsx
+2026-01-02 23:13:22,720 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-02 23:13:22,796 [INFO] Parsed 21 rows from Chapter_05.xlsx
+2026-01-02 23:13:22,796 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-02 23:13:22,887 [INFO] Parsed 62 rows from Chapter_06.xlsx
+2026-01-02 23:13:22,887 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-02 23:13:23,203 [INFO] Parsed 433 rows from Chapter_07.xlsx
+2026-01-02 23:13:23,203 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-02 23:13:23,402 [INFO] Parsed 203 rows from Chapter_08.xlsx
+2026-01-02 23:13:23,404 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-02 23:13:23,506 [INFO] Parsed 85 rows from Chapter_09.xlsx
+2026-01-02 23:13:23,506 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-02 23:13:23,599 [INFO] Parsed 50 rows from Chapter_10.xlsx
+2026-01-02 23:13:23,599 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-02 23:13:23,680 [INFO] Parsed 21 rows from Chapter_11.xlsx
+2026-01-02 23:13:23,680 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-02 23:13:23,820 [INFO] Parsed 138 rows from Chapter_12.xlsx
+2026-01-02 23:13:23,820 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-02 23:13:23,884 [INFO] Parsed 18 rows from Chapter_13.xlsx
+2026-01-02 23:13:23,884 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-02 23:13:23,937 [INFO] Parsed 9 rows from Chapter_14.xlsx
+2026-01-02 23:13:23,937 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-02 23:13:24,060 [INFO] Parsed 65 rows from Chapter_15.xlsx
+2026-01-02 23:13:24,063 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-02 23:13:24,246 [INFO] Parsed 237 rows from Chapter_16.xlsx
+2026-01-02 23:13:24,246 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-02 23:13:24,388 [INFO] Parsed 115 rows from Chapter_17.xlsx
+2026-01-02 23:13:24,388 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-02 23:13:24,493 [INFO] Parsed 123 rows from Chapter_18.xlsx
+2026-01-02 23:13:24,493 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-02 23:13:24,647 [INFO] Parsed 132 rows from Chapter_19.xlsx
+2026-01-02 23:13:24,647 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-02 23:13:24,876 [INFO] Parsed 323 rows from Chapter_20.xlsx
+2026-01-02 23:13:24,876 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-02 23:13:24,985 [INFO] Parsed 137 rows from Chapter_21.xlsx
+2026-01-02 23:13:24,988 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-02 23:13:25,101 [INFO] Parsed 126 rows from Chapter_22.xlsx
+2026-01-02 23:13:25,101 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-02 23:13:25,189 [INFO] Parsed 36 rows from Chapter_23.xlsx
+2026-01-02 23:13:25,189 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-02 23:13:25,336 [INFO] Parsed 260 rows from Chapter_24.xlsx
+2026-01-02 23:13:25,336 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-02 23:13:25,439 [INFO] Parsed 11 rows from Chapter_25.xlsx
+2026-01-02 23:13:25,440 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-02 23:13:25,543 [INFO] Parsed 37 rows from Chapter_26.xlsx
+2026-01-02 23:13:25,543 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-02 23:13:25,663 [INFO] Parsed 141 rows from Chapter_27.xlsx
+2026-01-02 23:13:25,664 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-02 23:13:25,923 [INFO] Parsed 135 rows from Chapter_28.xlsx
+2026-01-02 23:13:25,923 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-02 23:13:26,660 [INFO] Parsed 1140 rows from Chapter_29.xlsx
+2026-01-02 23:13:26,660 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-02 23:13:26,786 [INFO] Parsed 134 rows from Chapter_30.xlsx
+2026-01-02 23:13:26,786 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-02 23:13:26,844 [INFO] Parsed 2 rows from Chapter_31.xlsx
+2026-01-02 23:13:26,845 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-02 23:13:26,977 [INFO] Parsed 143 rows from Chapter_32.xlsx
+2026-01-02 23:13:26,977 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-02 23:13:27,065 [INFO] Parsed 51 rows from Chapter_33.xlsx
+2026-01-02 23:13:27,065 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-02 23:13:27,142 [INFO] Parsed 35 rows from Chapter_34.xlsx
+2026-01-02 23:13:27,142 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-02 23:13:27,212 [INFO] Parsed 7 rows from Chapter_35.xlsx
+2026-01-02 23:13:27,212 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-02 23:13:27,265 [INFO] Parsed 2 rows from Chapter_36.xlsx
+2026-01-02 23:13:27,265 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-02 23:13:27,346 [INFO] Parsed 40 rows from Chapter_37.xlsx
+2026-01-02 23:13:27,349 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-02 23:13:27,503 [INFO] Parsed 124 rows from Chapter_38.xlsx
+2026-01-02 23:13:27,503 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-02 23:13:27,767 [INFO] Parsed 215 rows from Chapter_39.xlsx
+2026-01-02 23:13:27,768 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-02 23:13:27,916 [INFO] Parsed 176 rows from Chapter_40.xlsx
+2026-01-02 23:13:27,916 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-02 23:13:28,117 [INFO] Parsed 231 rows from Chapter_41.xlsx
+2026-01-02 23:13:28,117 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-02 23:13:28,248 [INFO] Parsed 164 rows from Chapter_42.xlsx
+2026-01-02 23:13:28,251 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-02 23:13:28,322 [INFO] Parsed 20 rows from Chapter_43.xlsx
+2026-01-02 23:13:28,322 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-02 23:13:28,725 [INFO] Parsed 657 rows from Chapter_44.xlsx
+2026-01-02 23:13:28,725 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-02 23:13:28,787 [INFO] Parsed 6 rows from Chapter_45.xlsx
+2026-01-02 23:13:28,789 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-02 23:13:28,863 [INFO] Parsed 67 rows from Chapter_46.xlsx
+2026-01-02 23:13:28,865 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-02 23:13:28,923 [INFO] Parsed 4 rows from Chapter_47.xlsx
+2026-01-02 23:13:28,923 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-02 23:13:29,138 [INFO] Parsed 319 rows from Chapter_48.xlsx
+2026-01-02 23:13:29,138 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-02 23:13:29,208 [INFO] Parsed 37 rows from Chapter_49.xlsx
+2026-01-02 23:13:29,208 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-02 23:13:29,277 [INFO] Parsed 28 rows from Chapter_50.xlsx
+2026-01-02 23:13:29,277 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-02 23:13:29,401 [INFO] Parsed 120 rows from Chapter_51.xlsx
+2026-01-02 23:13:29,401 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-02 23:13:29,740 [INFO] Parsed 657 rows from Chapter_52.xlsx
+2026-01-02 23:13:29,743 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-02 23:13:29,834 [INFO] Parsed 53 rows from Chapter_53.xlsx
+2026-01-02 23:13:29,834 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-02 23:13:30,028 [INFO] Parsed 327 rows from Chapter_54.xlsx
+2026-01-02 23:13:30,028 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-02 23:13:30,254 [INFO] Parsed 386 rows from Chapter_55.xlsx
+2026-01-02 23:13:30,258 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-02 23:13:30,353 [INFO] Parsed 68 rows from Chapter_56.xlsx
+2026-01-02 23:13:30,353 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-02 23:13:30,444 [INFO] Parsed 67 rows from Chapter_57.xlsx
+2026-01-02 23:13:30,444 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-02 23:13:30,563 [INFO] Parsed 88 rows from Chapter_58.xlsx
+2026-01-02 23:13:30,563 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-02 23:13:30,673 [INFO] Parsed 57 rows from Chapter_59.xlsx
+2026-01-02 23:13:30,673 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-02 23:13:30,861 [INFO] Parsed 96 rows from Chapter_60.xlsx
+2026-01-02 23:13:30,862 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-02 23:13:31,392 [INFO] Parsed 1106 rows from Chapter_61.xlsx
+2026-01-02 23:13:31,392 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-02 23:13:32,194 [INFO] Parsed 1851 rows from Chapter_62.xlsx
+2026-01-02 23:13:32,194 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-02 23:13:32,386 [INFO] Parsed 264 rows from Chapter_63.xlsx
+2026-01-02 23:13:32,386 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-02 23:13:32,704 [INFO] Parsed 601 rows from Chapter_64.xlsx
+2026-01-02 23:13:32,704 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-02 23:13:32,796 [INFO] Parsed 86 rows from Chapter_65.xlsx
+2026-01-02 23:13:32,796 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-02 23:13:32,851 [INFO] Parsed 0 rows from Chapter_66.xlsx
+2026-01-02 23:13:32,851 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-02 23:13:32,910 [INFO] Parsed 2 rows from Chapter_67.xlsx
+2026-01-02 23:13:32,910 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-02 23:13:33,045 [INFO] Parsed 72 rows from Chapter_68.xlsx
+2026-01-02 23:13:33,045 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-02 23:13:33,162 [INFO] Parsed 131 rows from Chapter_69.xlsx
+2026-01-02 23:13:33,163 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-02 23:13:33,376 [INFO] Parsed 327 rows from Chapter_70.xlsx
+2026-01-02 23:13:33,376 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-02 23:13:33,524 [INFO] Parsed 127 rows from Chapter_71.xlsx
+2026-01-02 23:13:33,525 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-02 23:13:33,922 [INFO] Parsed 621 rows from Chapter_72.xlsx
+2026-01-02 23:13:33,922 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-02 23:13:34,332 [INFO] Parsed 714 rows from Chapter_73.xlsx
+2026-01-02 23:13:34,335 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-02 23:13:34,463 [INFO] Parsed 132 rows from Chapter_74.xlsx
+2026-01-02 23:13:34,463 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-02 23:13:34,528 [INFO] Parsed 16 rows from Chapter_75.xlsx
+2026-01-02 23:13:34,528 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-02 23:13:34,657 [INFO] Parsed 121 rows from Chapter_76.xlsx
+2026-01-02 23:13:34,658 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-02 23:13:34,709 [INFO] Parsed 4 rows from Chapter_78.xlsx
+2026-01-02 23:13:34,709 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-02 23:13:34,753 [INFO] Parsed 2 rows from Chapter_79.xlsx
+2026-01-02 23:13:34,753 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-02 23:13:34,809 [INFO] Parsed 0 rows from Chapter_80.xlsx
+2026-01-02 23:13:34,811 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-02 23:13:34,905 [INFO] Parsed 36 rows from Chapter_81.xlsx
+2026-01-02 23:13:34,905 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-02 23:13:35,089 [INFO] Parsed 155 rows from Chapter_82.xlsx
+2026-01-02 23:13:35,089 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-02 23:13:35,197 [INFO] Parsed 60 rows from Chapter_83.xlsx
+2026-01-02 23:13:35,199 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-02 23:13:36,189 [INFO] Parsed 1570 rows from Chapter_84.xlsx
+2026-01-02 23:13:36,189 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-02 23:13:36,827 [INFO] Parsed 910 rows from Chapter_85.xlsx
+2026-01-02 23:13:36,827 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-02 23:13:36,906 [INFO] Parsed 22 rows from Chapter_86.xlsx
+2026-01-02 23:13:36,906 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-02 23:13:37,213 [INFO] Parsed 405 rows from Chapter_87.xlsx
+2026-01-02 23:13:37,216 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-02 23:13:37,340 [INFO] Parsed 59 rows from Chapter_88.xlsx
+2026-01-02 23:13:37,341 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-02 23:13:37,429 [INFO] Parsed 53 rows from Chapter_89.xlsx
+2026-01-02 23:13:37,429 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-02 23:13:37,750 [INFO] Parsed 323 rows from Chapter_90.xlsx
+2026-01-02 23:13:37,751 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-02 23:13:37,932 [INFO] Parsed 197 rows from Chapter_91.xlsx
+2026-01-02 23:13:37,932 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-02 23:13:38,021 [INFO] Parsed 52 rows from Chapter_92.xlsx
+2026-01-02 23:13:38,025 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-02 23:13:38,121 [INFO] Parsed 57 rows from Chapter_93.xlsx
+2026-01-02 23:13:38,122 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-02 23:13:38,342 [INFO] Parsed 337 rows from Chapter_94.xlsx
+2026-01-02 23:13:38,342 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-02 23:13:38,470 [INFO] Parsed 102 rows from Chapter_95.xlsx
+2026-01-02 23:13:38,470 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-02 23:13:38,618 [INFO] Parsed 86 rows from Chapter_96.xlsx
+2026-01-02 23:13:38,618 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-02 23:13:38,681 [INFO] Parsed 10 rows from Chapter_97.xlsx
+2026-01-02 23:13:38,681 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-02 23:13:38,957 [INFO] Parsed 231 rows from Chapter_98.xlsx
+2026-01-02 23:13:38,957 [INFO] Parsing c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-02 23:13:40,408 [INFO] Parsed 361 rows from Chapter_99.xlsx
+2026-01-02 23:13:40,798 [INFO] Parsed CSV saved at: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\parsed\hts_all_chapters.csv
+2026-01-02 23:13:40,800 [INFO] Loading CSV into DB: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\parsed\hts_all_chapters.csv
+2026-01-02 23:13:40,801 [INFO] Directory ready: c:\Users\venga\Tariff-Impact\Tariff_Impact_API\pipeline\parsed
+2026-01-02 23:13:42,133 [INFO] Table product_table ready or already exists.
+2026-01-02 23:13:42,663 [INFO] Inserted records 1 to 500
+2026-01-02 23:13:42,819 [INFO] Inserted records 501 to 1000
+2026-01-02 23:13:42,905 [INFO] Inserted records 1001 to 1500
+2026-01-02 23:13:43,010 [INFO] Inserted records 1501 to 2000
+2026-01-02 23:13:43,076 [INFO] Inserted records 2001 to 2500
+2026-01-02 23:13:43,161 [INFO] Inserted records 2501 to 3000
+2026-01-02 23:13:43,229 [INFO] Inserted records 3001 to 3500
+2026-01-02 23:13:43,296 [INFO] Inserted records 3501 to 4000
+2026-01-02 23:13:43,362 [INFO] Inserted records 4001 to 4500
+2026-01-02 23:13:43,441 [INFO] Inserted records 4501 to 5000
+2026-01-02 23:13:43,518 [INFO] Inserted records 5001 to 5500
+2026-01-02 23:13:43,632 [INFO] Inserted records 5501 to 6000
+2026-01-02 23:13:43,717 [INFO] Inserted records 6001 to 6500
+2026-01-02 23:13:43,796 [INFO] Inserted records 6501 to 7000
+2026-01-02 23:13:43,873 [INFO] Inserted records 7001 to 7500
+2026-01-02 23:13:43,935 [INFO] Inserted records 7501 to 8000
+2026-01-02 23:13:43,998 [INFO] Inserted records 8001 to 8500
+2026-01-02 23:13:44,058 [INFO] Inserted records 8501 to 9000
+2026-01-02 23:13:44,117 [INFO] Inserted records 9001 to 9500
+2026-01-02 23:13:44,185 [INFO] Inserted records 9501 to 10000
+2026-01-02 23:13:44,264 [INFO] Inserted records 10001 to 10500
+2026-01-02 23:13:44,335 [INFO] Inserted records 10501 to 11000
+2026-01-02 23:13:44,458 [INFO] Inserted records 11001 to 11500
+2026-01-02 23:13:44,545 [INFO] Inserted records 11501 to 12000
+2026-01-02 23:13:44,617 [INFO] Inserted records 12001 to 12500
+2026-01-02 23:13:44,685 [INFO] Inserted records 12501 to 13000
+2026-01-02 23:13:44,766 [INFO] Inserted records 13001 to 13500
+2026-01-02 23:13:44,836 [INFO] Inserted records 13501 to 14000
+2026-01-02 23:13:44,910 [INFO] Inserted records 14001 to 14500
+2026-01-02 23:13:44,983 [INFO] Inserted records 14501 to 15000
+2026-01-02 23:13:45,062 [INFO] Inserted records 15001 to 15500
+2026-01-02 23:13:45,141 [INFO] Inserted records 15501 to 16000
+2026-01-02 23:13:45,209 [INFO] Inserted records 16001 to 16500
+2026-01-02 23:13:45,303 [INFO] Inserted records 16501 to 17000
+2026-01-02 23:13:45,401 [INFO] Inserted records 17001 to 17500
+2026-01-02 23:13:45,473 [INFO] Inserted records 17501 to 18000
+2026-01-02 23:13:45,547 [INFO] Inserted records 18001 to 18500
+2026-01-02 23:13:45,622 [INFO] Inserted records 18501 to 19000
+2026-01-02 23:13:45,692 [INFO] Inserted records 19001 to 19500
+2026-01-02 23:13:45,757 [INFO] Inserted records 19501 to 20000
+2026-01-02 23:13:45,829 [INFO] Inserted records 20001 to 20500
+2026-01-02 23:13:45,863 [INFO] Inserted records 20501 to 20689
+2026-01-02 23:13:45,865 [INFO] CSV data loaded into DB successfully.
+2026-01-02 23:13:45,868 [INFO] Database connection closed.
+2026-01-02 23:13:45,874 [INFO] Pipeline finished successfully!
