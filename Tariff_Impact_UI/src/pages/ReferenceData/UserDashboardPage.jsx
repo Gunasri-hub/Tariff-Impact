@@ -50,6 +50,15 @@ const UserDashboard = () => {
     </div>
   );
 
+  const ForexAnalysis = () => (
+    <div className="page-padding">
+      <section className="welcome-strip">
+        <h1>💱 Forex Analysis</h1>
+        <p>Track currency trends and exchange rate impacts</p>
+      </section>
+    </div>
+  );
+
   
 
   const CostCalculator = () => (
