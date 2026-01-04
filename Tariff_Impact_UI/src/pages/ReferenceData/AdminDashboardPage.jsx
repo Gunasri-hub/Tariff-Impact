@@ -1,6 +1,8 @@
 // src/components/AdminDashboardPage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProductLibraryPage from "./ProductLibraryPage";
+
 import {
   FiPieChart,
   FiUsers,
@@ -158,6 +160,9 @@ function AdminDashboardPage() {
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
         {currentPage === "users" && <UserManagement />}
+        {currentPage === "agreements" && <AgreementsManagement />}
+        {currentPage === "countries" && <CountryTable />}
+        {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibrary />}
