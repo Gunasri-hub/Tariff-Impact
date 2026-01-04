@@ -32,6 +32,16 @@ export const updateCountry = (id, data) =>
 export const deleteCountry = (id) =>
   API.delete(`/metadata/admin/country/${id}`);
 
+// ====== FOREX ANALYSIS ======
+
+// get currencies
+export const getForexCurrencies = () =>
+  API.get("/currencies");
+
+// analyze forex
+export const analyzeForex = (payload) =>
+  API.post("/analyze", payload);
+
 // ========== LOGOUT ==========
 export const logout = () => {
   localStorage.removeItem('token');
