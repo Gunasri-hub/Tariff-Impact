@@ -8,7 +8,7 @@ const BASE = "";   // empty string
 const db = require('../../models');  // adjust the path if needed
 const { Country } = db;
 
-
+const userController = require('../controller/metadata/userController');
 
 
 
@@ -130,6 +130,13 @@ router.post("/admin/country", countryController.createCountry);
 router.get("/admin/country/:id", countryController.getCountryById);
 router.put("/admin/country/:id", countryController.updateCountry);
 router.delete("/admin/country/:id", countryController.deleteCountry);
+
+// User Management Routes
+router.get("/admin/users", userController.getAllUsers);
+router.post("/admin/users", userController.createUser);
+router.put("/admin/users/:id", userController.updateUser);
+router.delete("/admin/users/:id", userController.deleteUser);
+router.patch("/admin/users/:id/status", userController.updateUserStatus);
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));

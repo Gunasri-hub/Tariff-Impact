@@ -32,6 +32,21 @@ export const updateCountry = (id, data) =>
 export const deleteCountry = (id) =>
   API.delete(`/metadata/admin/country/${id}`);
 
+export const getUsers = () =>
+  API.get("/metadata/admin/users");
+
+export const createUser = (userData) =>
+  API.post("/metadata/admin/users", userData);
+
+export const updateUser = (id, userData) =>
+  API.put(`/metadata/admin/users/${id}`, userData);
+
+export const deleteUser = (id) =>
+  API.delete(`/metadata/admin/users/${id}`);
+
+export const updateUserStatus = (id, statusData) =>
+  API.patch(`/metadata/admin/users/${id}/status`, statusData);
+
 // ========== LOGOUT ==========
 export const logout = () => {
   localStorage.removeItem('token');
