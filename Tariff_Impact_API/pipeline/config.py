@@ -16,6 +16,6 @@ DB_CONFIG = {
     "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
-    "password": "Gayu_1999",
+    "password": "102006",
     "database": "trump_tariff",
 }
