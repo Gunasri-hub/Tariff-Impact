@@ -6,12 +6,11 @@ import {
   FiBarChart2,
   FiDollarSign,
   FiGlobe,
-  FiDatabase,
   FiSettings,
   FiLogOut,
   FiFileText,
-  FiTrendingUp,
 } from "react-icons/fi";
+import TariffImpactAnalysis from "./TariffImpactAnalysis";
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: <FiHome /> },
@@ -31,153 +30,133 @@ const UserDashboard = () => {
     window.location.reload();
   };
 
-  // ✅ IndustryExplorerPage (INLINE)
+  /* ✅ PLACEHOLDER PAGES */
   const IndustryExplorerPage = () => (
-    <div style={{ padding: "20px 0" }}>
+    <div className="page-padding">
       <section className="welcome-strip">
         <h1>🏭 Industry Explorer</h1>
         <p>Analyze trade volumes and agreements by industry sector</p>
       </section>
-      
     </div>
   );
 
-  // ✅ TariffImpactAnalysis (INLINE)
-  const TariffImpactAnalysis = () => (
-    <div style={{ padding: "20px 0" }}>
-      <section className="welcome-strip">
-        <h1>📊 Tariff Impact Analysis</h1>
-        <p>Compare tariff impacts across countries, products, and time periods</p>
-      </section>
-      
-    </div>
-  );
-
-  // ✅ TaxationModule (INLINE)
   const TaxationModule = () => (
-    <div style={{ padding: "20px 0" }}>
+    <div className="page-padding">
       <section className="welcome-strip">
         <h1>💰 Taxation Module</h1>
         <p>Complete tax calculation including VAT, GST, duties, and levies</p>
       </section>
-      
     </div>
   );
 
-  // ✅ ForexAnalysis (INLINE)
   const ForexAnalysis = () => (
-    <div style={{ padding: "20px 0" }}>
+    <div className="page-padding">
       <section className="welcome-strip">
         <h1>💱 Forex Analysis</h1>
-        <p>Track currency trends, volatility, and exchange rate impacts</p>
+        <p>Track currency trends and exchange rate impacts</p>
       </section>
-      
     </div>
   );
 
-  // ✅ CostCalculator (INLINE)
   const CostCalculator = () => (
-    <div style={{ padding: "20px 0" }}>
+    <div className="page-padding">
       <section className="welcome-strip">
         <h1>🧮 Cost Calculator</h1>
-        <p>Calculate complete landed costs including all fees and charges</p>
+        <p>Calculate landed costs including all charges</p>
       </section>
-      
     </div>
   );
 
-  // ✅ Settings (INLINE)
   const Settings = () => (
-    <div style={{ padding: "20px 0" }}>
+    <div className="page-padding">
       <section className="welcome-strip">
         <h1>⚙️ Settings</h1>
-        <p>Manage your account preferences and application settings</p>
+        <p>Manage account preferences</p>
       </section>
-      
-      
-        
     </div>
   );
 
+  /* ✅ MAIN RENDER SWITCH */
   const renderContent = () => {
     switch (active) {
       case "industry":
         return <IndustryExplorerPage />;
+
       case "tariff":
         return <TariffImpactAnalysis />;
+
       case "taxation":
         return <TaxationModule />;
+
       case "forex":
         return <ForexAnalysis />;
+
       case "cost":
         return <CostCalculator />;
+
       case "settings":
         return <Settings />;
+
       default:
-        // Main dashboard view (default)
         return (
           <>
-            {/* Top blue banner */}
+            {/* Welcome Banner */}
             <section className="welcome-strip">
               <h2>Welcome to TariffIntel</h2>
               <p>
-                Comprehensive analysis tools for understanding global tariff impacts
-                and trade dynamics.
+                Comprehensive analysis tools for understanding global tariff
+                impacts and trade dynamics.
               </p>
             </section>
 
-            {/* Quick Actions row */}
+            {/* Quick Actions */}
             <section className="qa-section">
               <h3 className="section-title">Quick Actions</h3>
 
               <div className="qa-grid">
-                {/* Industry Explorer */}
                 <div className="qa-card" onClick={() => setActive("industry")}>
                   <div className="qa-icon qa-blue">
                     <FiLayers />
                   </div>
                   <div className="qa-text">
                     <h4>Industry Explorer</h4>
-                    <p>Analyze trade volumes and agreements by industry.</p>
+                    <p>Explore industry-wise trade data</p>
                   </div>
                 </div>
 
-                {/* Tariff Impact Analysis */}
                 <div className="qa-card" onClick={() => setActive("tariff")}>
                   <div className="qa-icon qa-indigo">
                     <FiBarChart2 />
                   </div>
                   <div className="qa-text">
                     <h4>Tariff Impact Analysis</h4>
-                    <p>Compare tariff impacts across different periods.</p>
+                    <p>Visualize tariff impact with charts</p>
                   </div>
                 </div>
 
-                {/* Cost Calculator */}
                 <div className="qa-card" onClick={() => setActive("cost")}>
                   <div className="qa-icon qa-green">
                     <FiDollarSign />
                   </div>
                   <div className="qa-text">
                     <h4>Cost Calculator</h4>
-                    <p>Calculate landed costs with all fees included.</p>
+                    <p>Calculate landed cost</p>
                   </div>
                 </div>
 
-                {/* Forex Analysis */}
                 <div className="qa-card" onClick={() => setActive("forex")}>
                   <div className="qa-icon qa-purple">
                     <FiGlobe />
                   </div>
                   <div className="qa-text">
                     <h4>Forex Analysis</h4>
-                    <p>Track currency trends and volatility.</p>
+                    <p>Currency impact analysis</p>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* Dashboard Row */}
+            {/* Dashboard Row: Recent Analyses + Key Insights */}
             <section className="dash-row">
               {/* Recent Analyses */}
               <div className="panel panel-left">
@@ -192,17 +171,13 @@ const UserDashboard = () => {
                     </div>
                     <span className="status-pill">Completed</span>
                   </div>
-
                   <div className="recent-item">
                     <div>
-                      <p className="recent-title">
-                        Automotive Parts Tariff Impact
-                      </p>
+                      <p className="recent-title">Automotive Parts Tariff Impact</p>
                       <p className="recent-meta">1 day ago</p>
                     </div>
                     <span className="status-pill">Completed</span>
                   </div>
-
                   <div className="recent-item">
                     <div>
                       <p className="recent-title">Textile Trade Comparison 2024</p>
@@ -211,26 +186,20 @@ const UserDashboard = () => {
                     <span className="status-pill">Completed</span>
                   </div>
                 </div>
-
                 <button className="view-all-btn">View All</button>
               </div>
 
               {/* Key Insights */}
               <div className="panel panel-right">
                 <h3 className="section-title">Key Insights</h3>
-
                 <div className="insight-line insight-blue">
-                  Average tariff increase on Chinese imports:{" "}
-                  <strong>18.7%</strong>
+                  Average tariff increase on Chinese imports: <strong>18.7%</strong>
                 </div>
-
                 <div className="insight-line insight-green">
                   Trade agreements active: <strong>38 countries</strong>
                 </div>
-
                 <div className="insight-line insight-red">
-                  High-impact industries:{" "}
-                  <strong>Electronics, Automotive, Steel</strong>
+                  High-impact industries: <strong>Electronics, Automotive, Steel</strong>
                 </div>
               </div>
             </section>
@@ -252,9 +221,7 @@ const UserDashboard = () => {
           {menuItems.map((item) => (
             <button
               key={item.id}
-              className={
-                active === item.id ? "sidebar-item active" : "sidebar-item"
-              }
+              className={active === item.id ? "sidebar-item active" : "sidebar-item"}
               onClick={() => setActive(item.id)}
             >
               <span className="icon">{item.icon}</span>
@@ -269,7 +236,7 @@ const UserDashboard = () => {
         </button>
       </aside>
 
-      {/* Main content */}
+      {/* Main Content */}
       <main className="main">
         <header className="main-header">
           <h1>Trump Tariff Impact Analysis</h1>

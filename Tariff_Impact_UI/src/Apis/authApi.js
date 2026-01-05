@@ -51,3 +51,16 @@ export const updateUserStatus = (id, statusData) =>
 export const logout = () => {
   localStorage.removeItem('token');
 };
+
+// ========== TARIFF IMPACT ANALYSIS ==========
+export const getTariffs = () =>
+  API.get("/impact-analysis/tariff");
+
+export const getCurrencies = () =>
+  API.get("/impact-analysis/currency");
+
+export const getDutyTypes = () =>
+  API.get("/impact-analysis/duty-type");
+
+export default API;
+
