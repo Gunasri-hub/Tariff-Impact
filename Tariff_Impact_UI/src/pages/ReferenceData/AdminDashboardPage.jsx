@@ -1,6 +1,8 @@
 // src/components/AdminDashboardPage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProductLibraryPage from "./ProductLibraryPage";
+
 import {
   FiPieChart,
   FiUsers,
@@ -12,6 +14,11 @@ import {
   FiMessageSquare,
   FiLogOut,
 } from "react-icons/fi";
+import CountryDatabasePage from "./CountryDatabasePage";
+import UserManagementPage from "./UserManagementPage";
+import AgreementsManagementPage from "./AgreementsManagementPage";
+
+
 
 function AdminDashboardPage() {
   const navigate = useNavigate();
@@ -153,9 +160,12 @@ function AdminDashboardPage() {
       {/* Main content (for /admin internal views) */}
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
-        {currentPage === "users" && <UserManagement />}
+        {currentPage === "users" && <UserManagementPage />}
         {currentPage === "agreements" && <AgreementsManagement />}
         {currentPage === "countries" && <CountryTable />}
+        {currentPage === "products" && <ProductLibraryPage />}
+        {currentPage === "agreements" && <AgreementsManagementPage />}
+        {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibrary />}
         {currentPage === "reports" && <Reports />}
         {currentPage === "feedback" && <FeedbackInbox />}
