@@ -46,16 +46,16 @@ export const deleteUser = (id) =>
 
 export const updateUserStatus = (id, statusData) =>
   API.patch(`/metadata/admin/users/${id}/status`, statusData);
+
 // ====== FOREX ANALYSIS ======
 
 // get currencies
 export const getForexCurrencies = () =>
-  API.get("/currencies");
+  API.get("/forex/currencies");
 
 // analyze forex
 export const analyzeForex = (payload) =>
-  API.post("/analyze", payload);
-
+  API.post("/forex/analyze", payload);
 // ========== LOGOUT ==========
 export const logout = () => {
   localStorage.removeItem('token');

@@ -193,13 +193,7 @@ const handleExportExcel = () => {
           <button className="view-all-btn" onClick={loadData} disabled={loading}>
             {loading ? "Loading..." : "Apply Filters"}
           </button>
-          <button
-            className="view-all-btn"
-            onClick={handleLiveRefresh}
-            disabled={loading}
-          >
-            {loading ? "Refreshing..." : "Sync Electronics (Live)"}
-          </button>
+         
         </div>
       </section>
 

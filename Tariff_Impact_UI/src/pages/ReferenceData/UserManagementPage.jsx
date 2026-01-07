@@ -452,17 +452,18 @@ function UserManagementPage() {
       minHeight: "100vh"
     },
     blueHeader: {
-      background: "linear-gradient(135deg, #0d47a1, #1565c0)",
-      color: "white",
-      padding: "20px 0px",
-      marginBottom: "0",
-      marginTop: "15px",
-      boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
-      borderBottomLeftRadius: "20px",
-      borderBottomRightRadius: "20px",
-      position: "relative",
-      overflow: "hidden"
-    },
+  background: "linear-gradient(90deg, #1E51DB 0%, #225CE4 100%)",
+  color: "white",
+  padding: "20px 0px",
+  marginBottom: "0",
+  marginTop: "15px",
+  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.15)",
+  borderRadius: "20px",
+
+  position: "relative",
+  overflow: "hidden"
+},
+
     headerContent: {
       display: "flex",
       alignItems: "center",

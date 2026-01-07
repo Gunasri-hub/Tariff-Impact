@@ -183,7 +183,7 @@ router.get("/taxation/export", taxationController.exportTaxationExcel);
 // simple currencies list for dropdowns
 const forexController = require("../controller/metadata/forexController");
 
-router.get('/currencies', (req, res) => {
+router.get('/forex/currencies', (req, res) => {
   const currencies = {
     USD: 'US Dollar',
     EUR: 'Euro',
@@ -213,7 +213,7 @@ router.get('/currencies', (req, res) => {
 });
 
 // main analysis endpoint
-router.post('/analyze', forexController.analyze);
+router.post('/forex/analyze', forexController.analyze);
 
 // ========== AGREEMENT MASTER ==========
 const agreementController = require("../controller/metadata/agreementController");

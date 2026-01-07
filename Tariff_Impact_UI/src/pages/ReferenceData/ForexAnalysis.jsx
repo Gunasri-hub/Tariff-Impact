@@ -184,11 +184,12 @@ function ForexAnalysis() {
       color: "#111827",
     },
     forexChartWrapper: {
-      background: "#f9fafb",
-      borderRadius: "10px",
-      padding: "10px 12px",
-      height: "350px",
-    },
+  background: "#f9fafb",
+  borderRadius: "10px",
+  padding: "10px 12px",
+  height: "350px",
+  minHeight: "350px",  // Add this
+},
     forexVolatilityChartWrapper: {
       background: "#f9fafb",
       borderRadius: "10px",
@@ -317,27 +318,32 @@ function ForexAnalysis() {
   };
 
   // load currency list from backend
-  useEffect(() => {
-    async function loadCurrencies() {
-      try {
-        const res = await getForexCurrencies();
-        const list = res.data.currencies || {};
-        setCurrencies(list);
+ useEffect(() => {
+  async function loadCurrencies() {
+    try {
+      const res = await getForexCurrencies();
+      const list = res.data.currencies || {};
+      setCurrencies(list);
 
-        if (!from && list.USD) setFrom("USD");
-        if (!to && list.EUR) setTo("EUR");
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load currencies");
+      if (!from && list.USD) setFrom("USD");
+      if (!to && list.EUR) setTo("EUR");
+      
+      // Auto-analyze with defaults after loading
+      if (list.USD && list.EUR) {
+        setTimeout(() => handleAnalyze(), 500); // Brief delay for state update
       }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to load currencies");
     }
-    loadCurrencies();
-  }, []);
+  }
+  loadCurrencies();
+}, []);
+
 
   // analyze forex via /api/forex/analyze
   const handleAnalyze = async () => {
     if (!from || !to) {
-      setError("Please select base and target currencies");
       return;
     }
 
