@@ -69,6 +69,66 @@ export const logout = () => {
   localStorage.removeItem("token");
 };
 
+// =======================INDUSTRY EXPLORER=======================
+
+export const getCountriesList = () =>
+  API.get("/countries-list");
+
+export const getCurrenciesList = () =>
+  API.get("/currencies");
+
+export const getIndustriesList = () =>
+  API.get("/industries-list");
+
+export const getSubIndustriesList = (industry) =>
+  API.get("/sub-industries-list", {
+    params: { industry },
+  });
+
+export const getHtsCodesList = (industry, subIndustry) =>
+  API.get("/hts-codes-list", {
+    params: {
+      industry,
+      subIndustry,
+    },
+  });
+
+// Analysis
+export const getIndustryTrend = (industry, subIndustry) =>
+  API.get("/industry/trend", {
+    params: {
+      industry,
+      subIndustry,
+    },
+  });
+
+export const getIndustryDistribution = (year, industry) =>
+  API.get("/industry/distribution", {
+    params: {
+      year,
+      industry,
+    },
+  });
+
+export const getSubIndustryDuties = (year, industry) =>
+  API.get("/industry/sub-industry-duties", {
+    params: {
+      year,
+      industry,
+    },
+  });
+
+export const getIndustryHtsCodes = (industry, subIndustry, htsCode) =>
+  API.get("/industry/hts-codes", {
+    params: {
+      industry,
+      subIndustry,
+      htsCode,
+    },
+  });
+// ========== TARIFF IMPACT ANALYSIS ==========
+export const getTariffs = () =>
+  API.get("/impact-analysis/tariff");
 // TARIFF DATA
 export const getTariffs = () => API.get("/impact-analysis/tariff");
 export const getCurrencies = () => API.get("/impact-analysis/currency");
@@ -109,6 +169,7 @@ export const deleteAgreement = (code) =>
 
 
 export default API;
+
 
 // UPDATE product
 export const updateProduct = async (id, data) => {
