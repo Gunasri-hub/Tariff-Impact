@@ -72,8 +72,10 @@ function ProductLibraryPage() {
     <div style={styles.page}>
       {/* HEADER */}
       <div style={styles.header}>
-        <h2>Product Library</h2>
-        <p>Manage HS-based product master data</p>
+        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600 }}> 📦 Product Library</h2>
+       <p style={{ margin: "4px 0 0 0", fontSize: 14 }}>
+        Manage HS-based product master data
+      </p>
       </div>
 
       {/* TOOLBAR */}
@@ -195,15 +197,33 @@ function ProductLibraryPage() {
 
 /* ================= STYLES ================= */
 const styles = {
-  page: { padding: 24, fontFamily: "Inter, system-ui" },
-
-  header: {
-    background: "linear-gradient(90deg,#2563eb,#1e40af)",
-    color: "#fff",
-    padding: 20,
-    borderRadius: 12,
-    marginBottom: 20,
+  // remove horizontal padding so header can stretch
+  page: {
+    padding: 0,
+    fontFamily: "Inter, system-ui",
+    backgroundColor: "#f5f6fa",
+    minHeight: "100vh",
   },
+
+  // new container for inner content below the header
+  content: {
+    padding: "24px 32px",
+  },
+
+
+header: {
+  background: "linear-gradient(90deg,#2563eb,#1e40af)",
+  color: "#fff",
+  padding: "20px 32px",
+  borderRadius: "24px",
+  margin: "16px 24px 24px 24px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  minHeight: 90,
+},
+
+   
 
   toolbar: {
     display: "flex",
@@ -212,7 +232,7 @@ const styles = {
   },
 
   search: {
-    width: 320,
+    width: 850,
     padding: 10,
     borderRadius: 8,
     border: "1px solid #d1d5db",

@@ -5,9 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     hts_code: DataTypes.STRING,
     industry: DataTypes.TEXT,
     sub_industry: DataTypes.TEXT,
-    general_duty: DataTypes.FLOAT,
-    special_duty: DataTypes.FLOAT,
-    column2_duty: DataTypes.FLOAT,
+    general_duty: DataTypes.TEXT,
+    special_duty: DataTypes.TEXT,
+    column2_duty: DataTypes.TEXT,
     year: DataTypes.INTEGER
     // NOTE: no "country" column here
   }, {

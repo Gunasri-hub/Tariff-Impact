@@ -12,6 +12,7 @@ const userController = require('../controller/metadata/userController');
 
 
 
+
 // Log all requests
 router.use((req, res, next) => {
   console.log('REQUEST:', req.method, req.url, req.body);
@@ -167,11 +168,22 @@ router.post("/admin/country", countryController.createCountry);
 router.get("/admin/country/:id", countryController.getCountryById);
 router.put("/admin/country/:id", countryController.updateCountry);
 router.delete("/admin/country/:id", countryController.deleteCountry);
+// ========== TAXATION MODULE ==========
+const taxationController = require("../controller/metadata/taxationController");
+
+router.get("/taxation/industry-rates", taxationController.getAllIndustryRates);
+router.get("/taxation/summary", taxationController.getSummary);
+router.post("/taxation/refresh", taxationController.refreshTaxData);
+router.get("/taxation/export", taxationController.exportTaxationExcel);
+
+
+
+
 // =======forex analysis ====//
 // simple currencies list for dropdowns
 const forexController = require("../controller/metadata/forexController");
 
-router.get('/currencies', (req, res) => {
+router.get('/forex/currencies', (req, res) => {
   const currencies = {
     USD: 'US Dollar',
     EUR: 'Euro',
@@ -201,7 +213,7 @@ router.get('/currencies', (req, res) => {
 });
 
 // main analysis endpoint
-router.post('/analyze', forexController.analyze);
+router.post('/forex/analyze', forexController.analyze);
 
 // ========== AGREEMENT MASTER ==========
 const agreementController = require("../controller/metadata/agreementController");
@@ -220,6 +232,7 @@ router.post("/admin/users", userController.createUser);
 router.put("/admin/users/:id", userController.updateUser);
 router.delete("/admin/users/:id", userController.deleteUser);
 router.patch("/admin/users/:id/status", userController.updateUserStatus);
+
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));

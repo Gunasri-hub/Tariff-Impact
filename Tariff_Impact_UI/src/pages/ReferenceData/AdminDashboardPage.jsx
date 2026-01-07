@@ -1,7 +1,7 @@
 // src/components/AdminDashboardPage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProductLibraryPage from "./ProductLibraryPage";
+
 
 import {
   FiPieChart,
@@ -17,6 +17,7 @@ import {
 import CountryDatabasePage from "./CountryDatabasePage";
 import UserManagementPage from "./UserManagementPage";
 import AgreementsManagementPage from "./AgreementsManagementPage";
+import ProductLibraryPage from "./ProductLibraryPage";
 
 
 
@@ -90,7 +91,7 @@ function AdminDashboardPage() {
   const ProductLibrary = () => (
     <div style={{ padding: "20px 0" }}>
       <section className="admin-hero">
-        <h1>📦 Product Library</h1>
+        <h2>📦 Product Library</h2>
         <p>Maintain HS codes, product categories, and tariff classifications</p>
       </section>
       
@@ -161,12 +162,9 @@ function AdminDashboardPage() {
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
         {currentPage === "users" && <UserManagementPage />}
-        {currentPage === "agreements" && <AgreementsManagement />}
-        {currentPage === "countries" && <CountryTable />}
-        {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
-        {currentPage === "products" && <ProductLibrary />}
+        {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "reports" && <Reports />}
         {currentPage === "feedback" && <FeedbackInbox />}
 

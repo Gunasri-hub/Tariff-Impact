@@ -1,9 +1,7 @@
-import API from "./ApiConfig";
+import API from './ApiConfig';
 
-// ADMIN LOGIN
+// ========== ADMIN LOGIN ==========
 export const adminLogin = async (data) => {
-  const response = await API.post("/admin/login", data);
-  localStorage.setItem("token", response.data.token);
   const response = await API.post('/admin/login', {
     email: data.email,
     password: data.password,
@@ -12,14 +10,8 @@ export const adminLogin = async (data) => {
   return response.data;
 };
 
-// USER LOGIN
+// ========== USER LOGIN ==========
 export const userLogin = async (data) => {
-  const response = await API.post("/user/login", data);
-  localStorage.setItem("token", response.data.token);
-  return response.data;
-};
-
-// LOGOUT
   const response = await API.post('/user/login', {
     email: data.email,
     password: data.password,
@@ -54,19 +46,19 @@ export const deleteUser = (id) =>
 
 export const updateUserStatus = (id, statusData) =>
   API.patch(`/metadata/admin/users/${id}/status`, statusData);
+
 // ====== FOREX ANALYSIS ======
 
 // get currencies
 export const getForexCurrencies = () =>
-  API.get("/currencies");
+  API.get("/forex/currencies");
 
 // analyze forex
 export const analyzeForex = (payload) =>
-  API.post("/analyze", payload);
-
+  API.post("/forex/analyze", payload);
 // ========== LOGOUT ==========
 export const logout = () => {
-  localStorage.removeItem("token");
+  localStorage.removeItem('token');
 };
 
 // =======================INDUSTRY EXPLORER=======================
@@ -126,13 +118,32 @@ export const getIndustryHtsCodes = (industry, subIndustry, htsCode) =>
       htsCode,
     },
   });
+
 // ========== TARIFF IMPACT ANALYSIS ==========
 export const getTariffs = () =>
   API.get("/impact-analysis/tariff");
-// TARIFF DATA
-export const getTariffs = () => API.get("/impact-analysis/tariff");
-export const getCurrencies = () => API.get("/impact-analysis/currency");
-export const getDutyTypes = () => API.get("/impact-analysis/duty-type");
+
+export const getCurrencies = () =>
+  API.get("/impact-analysis/currency");
+
+export const getDutyTypes = () =>
+  API.get("/impact-analysis/duty-type");
+
+
+// ========== AgreementManagementPage ==========
+
+export const getAgreements = () =>
+  API.get("/metadata/admin/agreement");
+
+export const createAgreement = (data) =>
+  API.post("/metadata/admin/agreement", data);
+
+export const updateAgreement = (code, data) =>
+  API.put(`/metadata/admin/agreement/${code}`, data);
+
+export const deleteAgreement = (code) =>
+  API.delete(`/metadata/admin/agreement/${code}`);
+
 
 // PRODUCT CRUD
 // GET all products
@@ -153,23 +164,6 @@ export const createProduct = async (data) => {
   return response.data;
 };
 
-// ========== AgreementManagementPage ==========
-
-export const getAgreements = () =>
-  API.get("/metadata/admin/agreement");
-
-export const createAgreement = (data) =>
-  API.post("/metadata/admin/agreement", data);
-
-export const updateAgreement = (code, data) =>
-  API.put(`/metadata/admin/agreement/${code}`, data);
-
-export const deleteAgreement = (code) =>
-  API.delete(`/metadata/admin/agreement/${code}`);
-
-
-export default API;
-
 
 // UPDATE product
 export const updateProduct = async (id, data) => {
@@ -182,6 +176,34 @@ export const deleteProduct = async (id) => {
   const response = await API.delete(`/products/${id}`);
   return response.data;
 };
+
+
+// ===== TAXATION API HELPERS =====//
+
+// Trigger refresh + recompute from World Bank
+export const refreshTaxData = () =>
+  API.post("/taxation/refresh");
+
+// Get per‑industry tax rates for a country
+export const getIndustryRates = (country = "US") =>
+  API.get("/taxation/industry-rates", {
+    params: { country }, // backend can read req.query.country
+  });
+
+// Get summary averages for a country
+export const getTaxSummary = (country = "US") =>
+  API.get("/taxation/summary", {
+    params: { country },
+  });
+
+//excel//
+export const exportTaxationExcel = (params) =>
+  API.get("/taxation/export", {
+    params,              // dynamic filters from UI
+    responseType: "blob"
+  });
+
+
 
 
 export default API;
