@@ -11,6 +11,7 @@ import {
   FiFileText,
 } from "react-icons/fi";
 import TariffImpactAnalysis from "./TariffImpactAnalysis";
+import IndustryExplorerPage from "./IndustryExplorer";
 import ForexAnalysis from "./ForexAnalysis";
 import TaxationModule from "./TaxationModule";
 
@@ -33,15 +34,9 @@ const UserDashboard = () => {
     window.location.reload();
   };
 
+  
+
   /* ✅ PLACEHOLDER PAGES */
-  const IndustryExplorerPage = () => (
-    <div className="page-padding">
-      <section className="welcome-strip">
-        <h1>🏭 Industry Explorer</h1>
-        <p>Analyze trade volumes and agreements by industry sector</p>
-      </section>
-    </div>
-  );
 
 
   
