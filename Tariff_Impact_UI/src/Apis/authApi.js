@@ -119,4 +119,32 @@ export const deleteProduct = async (id) => {
 };
 
 
+// ===== TAXATION API HELPERS =====//
+
+// Trigger refresh + recompute from World Bank
+export const refreshTaxData = () =>
+  API.post("/taxation/refresh");
+
+// Get per‑industry tax rates for a country
+export const getIndustryRates = (country = "US") =>
+  API.get("/taxation/industry-rates", {
+    params: { country }, // backend can read req.query.country
+  });
+
+// Get summary averages for a country
+export const getTaxSummary = (country = "US") =>
+  API.get("/taxation/summary", {
+    params: { country },
+  });
+
+//excel//
+export const exportTaxationExcel = (params) =>
+  API.get("/taxation/export", {
+    params,              // dynamic filters from UI
+    responseType: "blob"
+  });
+
+
+
+
 export default API;

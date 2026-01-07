@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import TariffImpactAnalysis from "./TariffImpactAnalysis";
 import ForexAnalysis from "./ForexAnalysis";
+import TaxationModule from "./TaxationModule";
 
 
 const menuItems = [
@@ -42,14 +43,6 @@ const UserDashboard = () => {
     </div>
   );
 
-  const TaxationModule = () => (
-    <div className="page-padding">
-      <section className="welcome-strip">
-        <h1>💰 Taxation Module</h1>
-        <p>Complete tax calculation including VAT, GST, duties, and levies</p>
-      </section>
-    </div>
-  );
 
   
 
