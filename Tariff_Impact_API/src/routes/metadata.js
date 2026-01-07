@@ -112,6 +112,28 @@ router.post('/user/login', async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 });
+//========== INDUSTRY EXPLORER ==========
+
+const Controller = require("../controller/metadata/industryController");
+
+// ================= BASIC LISTS =================
+router.get("/hts-full", Controller.getAllHts);
+router.get("/country-currency", Controller.getAllCountryCurrency);
+
+// ================= ANALYTICS =================
+router.get("/industry/trend", Controller.getTariffTrend);
+router.get("/industry/distribution", Controller.getIndustryDistribution);
+router.get("/industry/hts-codes", Controller.getHtsCodes);
+router.get("/industry/sub-industry-duties", Controller.getSubIndustryDuties);
+
+// ================= DROPDOWNS =================
+router.get("/currencies", Controller.getCurrencies);
+router.get("/countries-list", Controller.getCountriesList);
+router.get("/industries-list", Controller.getIndustriesList);
+router.get("/sub-industries-list", Controller.getSubIndustriesList);
+router.get("/hts-codes-list", Controller.getHtsCodesList);
+
+
 // ==========  TARIFF IMPACT ANALYSIS ==========
 
 const controller = require("../controller/metadata/impact_analysis.controller");
@@ -119,6 +141,7 @@ const controller = require("../controller/metadata/impact_analysis.controller");
 router.get("/impact-analysis/currency", controller.getCurrencyData);
 router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
+
 
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));
