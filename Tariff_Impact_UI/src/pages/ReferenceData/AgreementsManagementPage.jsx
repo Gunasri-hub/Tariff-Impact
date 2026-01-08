@@ -1,6 +1,12 @@
 // src/components/AgreementsManagementPage.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  getAgreements,
+  createAgreement,
+  updateAgreement,
+   deleteAgreement as deleteAgreementApi,
+} from "../../Apis/authApi";
 
 const EMPTY_FORM = {
   AgreementCode: "",
@@ -24,12 +30,16 @@ const AgreementsManagementPage = () => {
   /* =========================
        LOAD DATA
   ========================= */
-  const loadAgreements = () => {
-    fetch("http://localhost:8080/api/metadata/admin/agreement")
-      .then((res) => res.json())
-      .then((data) => setAgreements(Array.isArray(data) ? data : []))
-      .catch(() => setAgreements([]));
-  };
+const loadAgreements = async () => {
+  try {
+    const res = await getAgreements();
+    setAgreements(Array.isArray(res.data) ? res.data : []);
+  } catch (err) {
+    console.error(err);
+    setAgreements([]);
+  }
+};
+
 
   useEffect(() => {
     loadAgreements();
@@ -132,36 +142,47 @@ const filtered = agreements.filter((a) => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = async (e) => {
-    e.preventDefault();
-   const payload = {
-    ...form,
-    oldCode: isEdit ? editingCode : form.AgreementCode,
+const handleSave = async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    AgreementCode: form.AgreementCode,
+    AgreementName: form.AgreementName,
+    CountriesIncluded: form.CountriesIncluded,
+    ValidityPeriod: form.ValidityPeriod,
+    Status: form.Status,
   };
 
-
-    const url = isEdit
-      ? `http://localhost:8080/api/metadata/admin/agreement/${editingCode}`
-      : "http://localhost:8080/api/metadata/admin/agreement";
-
-    await fetch(url, {
-      method: isEdit ? "PUT" : "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+  try {
+    if (isEdit) {
+      await updateAgreement(editingCode, payload);
+      alert("✅ Agreement updated successfully!");
+    } else {
+      await createAgreement(payload);
+      alert("✅ Agreement created successfully!");
+    }
 
     setShowForm(false);
     loadAgreements();
-  };
+  } catch (err) {
+    console.error(err);
+    alert(err.response?.data?.message || "Failed to save agreement");
+  }
+};
 
-  const handleDelete = async (code) => {
-    if (!window.confirm("Delete this agreement?")) return;
-    await fetch(
-      `http://localhost:8080/api/metadata/admin/agreement/${code}`,
-      { method: "DELETE" }
-    );
+
+const handleDelete = async (code) => {
+  if (!window.confirm("Delete this agreement?")) return;
+
+  try {
+    await deleteAgreementApi(code);
+    alert("✅ Agreement deleted successfully!");
     loadAgreements();
-  };
+  } catch (err) {
+    alert(err.response?.data?.message || "Failed to delete agreement");
+  }
+};
+
 
   const statusClass = (status) => {
     if (status === "In force") return "active";
