@@ -1,5 +1,11 @@
 // src/pages/CountryDatabasePage.jsx
 import { useEffect, useState } from "react";
+import {
+  getCountries,
+  createCountry,
+  updateCountry,
+  deleteCountry as deleteCountryApi,
+} from "../../Apis/authApi";
 
 function CountryDatabasePage() {
   const [countries, setCountries] = useState([]);
@@ -21,83 +27,50 @@ function CountryDatabasePage() {
     eligibility_criteria: "",
   });
 
-  const API_URL = "http://localhost:8080/api/metadata/admin/country";
+  
 
   // Fetch countries from backend
-  const fetchCountries = async () => {
-    try {
-      setLoading(true);
-      setApiError("");
-      
-      const res = await fetch(API_URL);
-      
-      if (!res.ok) {
-        const errorText = await res.text();
-        setApiError(`API Error ${res.status}: ${errorText || 'Failed to fetch countries'}`);
-        setCountries([]);
-        return;
-      }
+ const fetchCountries = async () => {
+  try {
+    setLoading(true);
+    setApiError("");
 
-      const data = await res.json();
-      
-      // Extract countries array from response
-      let allCountries = [];
-      if (Array.isArray(data)) {
-        allCountries = data;
-      } else if (data && typeof data === 'object') {
-        if (Array.isArray(data.data)) allCountries = data.data;
-        else if (Array.isArray(data.countries)) allCountries = data.countries;
-        else if (Array.isArray(data.items)) allCountries = data.items;
-        else if (Array.isArray(data.rows)) allCountries = data.rows;
-        else if (Array.isArray(data.result)) allCountries = data.result;
-        else if (Array.isArray(data.content)) allCountries = data.content;
-        else {
-          const arrayKeys = Object.keys(data).filter(key => Array.isArray(data[key]));
-          if (arrayKeys.length > 0) {
-            allCountries = data[arrayKeys[0]];
-          }
-        }
-      }
-      
-      // Extract unique regions for dropdown
-      const regions = [...new Set(allCountries
-        .map(c => c.region)
-        .filter(Boolean)
-        .sort()
-      )];
-      setAllRegions(regions);
-      
-      // Apply filters on frontend
-      let filteredCountries = [...allCountries];
-      
-      // Region filter
-      if (region !== "All") {
-        filteredCountries = filteredCountries.filter(country => 
-          country.region && 
-          country.region.toLowerCase() === region.toLowerCase()
-        );
-      }
-      
-      // Search filter
-      if (search.trim()) {
-        const searchLower = search.toLowerCase();
-        filteredCountries = filteredCountries.filter(country => 
-          (country.country_name && country.country_name.toLowerCase().includes(searchLower)) ||
-          (country.iso_code && country.iso_code.toLowerCase().includes(searchLower)) ||
-          (country.currency && country.currency.toLowerCase().includes(searchLower)) ||
-          (country.region && country.region.toLowerCase().includes(searchLower))
-        );
-      }
-      
-      setCountries(filteredCountries);
-      
-    } catch (err) {
-      setApiError(`Network error: ${err.message}`);
-      setCountries([]);
-    } finally {
-      setLoading(false);
+    const res = await getCountries(); // axios call
+    const allCountries = res.data || [];
+
+    // regions
+    const regions = [
+      ...new Set(allCountries.map(c => c.region).filter(Boolean)),
+    ];
+    setAllRegions(regions);
+
+    let filtered = [...allCountries];
+
+    if (region !== "All") {
+      filtered = filtered.filter(
+        c => c.region?.toLowerCase() === region.toLowerCase()
+      );
     }
-  };
+
+    if (search.trim()) {
+      const s = search.toLowerCase();
+      filtered = filtered.filter(
+        c =>
+          c.country_name?.toLowerCase().includes(s) ||
+          c.iso_code?.toLowerCase().includes(s) ||
+          c.currency?.toLowerCase().includes(s)
+      );
+    }
+
+    setCountries(filtered);
+  } catch (err) {
+    setApiError(err.response?.data?.message || "Failed to fetch countries");
+    setCountries([]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchCountries();
@@ -180,130 +153,50 @@ function CountryDatabasePage() {
     }
   };
 
-  const saveCountry = async () => {
-    // Validate form before sending
-    if (!validateForm()) {
-      alert("Please fix the validation errors before saving.");
-      return;
-    }
+ const saveCountry = async () => {
+  if (!validateForm()) {
+    alert("Please fix the validation errors before saving.");
+    return;
+  }
 
-    try {
-      const method = editingId ? "PUT" : "POST";
-      const url = editingId ? `${API_URL}/${editingId}` : API_URL;
-      
-      // Try different payload formats - backend might expect different structure
-      const payloads = [
-        // Format 1: snake_case (most common)
-        {
-          country_name: form.country_name.trim(),
-          iso_code: form.iso_code.trim().toUpperCase(),
-          currency: form.currency.trim(),
-          region: form.region.trim(),
-          status: form.status.trim(),
-          eligibility_criteria: form.eligibility_criteria?.trim() || "",
-        },
-        // Format 2: camelCase
-        {
-          countryName: form.country_name.trim(),
-          isoCode: form.iso_code.trim().toUpperCase(),
-          currency: form.currency.trim(),
-          region: form.region.trim(),
-          status: form.status.trim(),
-          eligibilityCriteria: form.eligibility_criteria?.trim() || "",
-        },
-        // Format 3: With ID for update
-        editingId ? {
-          id: editingId,
-          country_name: form.country_name.trim(),
-          iso_code: form.iso_code.trim().toUpperCase(),
-          currency: form.currency.trim(),
-          region: form.region.trim(),
-          status: form.status.trim(),
-          eligibility_criteria: form.eligibility_criteria?.trim() || "",
-        } : {
-          country_name: form.country_name.trim(),
-          iso_code: form.iso_code.trim().toUpperCase(),
-          currency: form.currency.trim(),
-          region: form.region.trim(),
-          status: form.status.trim(),
-          eligibility_criteria: form.eligibility_criteria?.trim() || "",
-        }
-      ];
-
-      console.log("Sending payload:", payloads[0]);
-
-      const res = await fetch(url, {
-        method,
-        headers: { 
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payloads[0]), // Try first format
-      });
-
-      const responseText = await res.text();
-      console.log("Response:", responseText);
-
-      if (!res.ok) {
-        // If first format fails, try second format
-        console.log("First format failed, trying second format...");
-        const res2 = await fetch(url, {
-          method,
-          headers: { 
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payloads[1]),
-        });
-        
-        const responseText2 = await res2.text();
-        console.log("Response for format 2:", responseText2);
-        
-        if (!res2.ok) {
-          let errorMessage = `HTTP ${res2.status}`;
-          try {
-            const errorData = JSON.parse(responseText2);
-            errorMessage += `: ${errorData.error || errorData.message || responseText2}`;
-          } catch (e) {
-            errorMessage += `: ${responseText2}`;
-          }
-          throw new Error(errorMessage);
-        }
-        
-        // If second format works
-        alert(editingId ? "✅ Country updated successfully!" : "✅ Country added successfully!");
-        closeModal();
-        fetchCountries();
-        return;
-      }
-
-      // If first format works
-      alert(editingId ? "✅ Country updated successfully!" : "✅ Country added successfully!");
-      closeModal();
-      fetchCountries();
-      
-    } catch (err) {
-      console.error("Error saving country:", err);
-      alert(`Failed to save country: ${err.message}`);
-    }
+  const payload = {
+    country_name: form.country_name.trim(),
+    iso_code: form.iso_code.trim().toUpperCase(),
+    currency: form.currency.trim(),
+    region: form.region.trim(),
+    status: form.status.trim(),
+    eligibility_criteria: form.eligibility_criteria?.trim() || "",
   };
+
+  try {
+    if (editingId) {
+      await updateCountry(editingId, payload);
+      alert("✅ Country updated successfully!");
+    } else {
+      await createCountry(payload);
+      alert("✅ Country added successfully!");
+    }
+
+    closeModal();
+    fetchCountries();
+  } catch (err) {
+    console.error("Error saving country:", err);
+    alert(err.response?.data?.message || "Failed to save country");
+  }
+};
+
 
   const deleteCountry = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this country?")) return;
-    
-    try {
-      const res = await fetch(`${API_URL}/${id}`, { 
-        method: "DELETE" 
-      });
-      
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-      
-      alert("✅ Country deleted successfully!");
-      fetchCountries();
-    } catch (err) {
-      alert(`Failed to delete country: ${err.message}`);
-    }
-  };
+  if (!window.confirm("Are you sure you want to delete this country?")) return;
+
+  try {
+    await deleteCountryApi(id);
+    alert("✅ Country deleted successfully!");
+    fetchCountries();
+  } catch (err) {
+    alert(err.response?.data?.message || "Failed to delete country");
+  }
+};
 
   // Enhanced inline styles to match the image
   const styles = {

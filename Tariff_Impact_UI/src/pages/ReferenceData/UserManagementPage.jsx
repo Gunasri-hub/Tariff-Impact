@@ -1,4 +1,11 @@
 import { useEffect, useState } from "react";
+import {
+  getUsers,
+  createUser,
+  updateUser,
+  updateUserStatus as updateUserStatusApi,
+  deleteUser as deleteUserApi,
+} from "../../Apis/authApi";
 
 function UserManagementPage() {
   const [users, setUsers] = useState([]);
@@ -20,89 +27,55 @@ function UserManagementPage() {
     status: "Active",
   });
 
-  const API_URL = "http://localhost:8080/api/metadata/admin/users";
+ 
 
   // Fetch users from backend
-  const fetchUsers = async () => {
-    try {
-      setLoading(true);
-      setApiError("");
-      
-      const res = await fetch(API_URL);
-      
-      if (!res.ok) {
-        const errorText = await res.text();
-        setApiError(`API Error ${res.status}: ${errorText || 'Failed to fetch users'}`);
-        setUsers([]);
-        return;
-      }
+const fetchUsers = async () => {
+  try {
+    setLoading(true);
+    setApiError("");
 
-      const data = await res.json();
-      
-      // Extract users array from response
-      let allUsers = [];
-      if (Array.isArray(data)) {
-        allUsers = data;
-      } else if (data && typeof data === 'object') {
-        if (Array.isArray(data.data)) allUsers = data.data;
-        else if (Array.isArray(data.users)) allUsers = data.users;
-        else if (Array.isArray(data.items)) allUsers = data.items;
-        else if (Array.isArray(data.rows)) allUsers = data.rows;
-        else if (Array.isArray(data.result)) allUsers = data.result;
-        else if (Array.isArray(data.content)) allUsers = data.content;
-        else {
-          const arrayKeys = Object.keys(data).filter(key => Array.isArray(data[key]));
-          if (arrayKeys.length > 0) {
-            allUsers = data[arrayKeys[0]];
-          }
-        }
-      }
-      
-      // Extract unique roles for dropdown
-      const roles = ["All", ...new Set(allUsers
-        .map(u => u.role)
-        .filter(Boolean)
-        .sort()
-      )];
-      setAllRoles(roles);
-      
-      // Apply filters on frontend
-      let filteredUsers = [...allUsers];
-      
-      // Role filter
-      if (roleFilter !== "All") {
-        filteredUsers = filteredUsers.filter(user => 
-          user.role && 
-          user.role.toLowerCase() === roleFilter.toLowerCase()
-        );
-      }
-      
-      // Status filter
-      if (statusFilter !== "All") {
-        filteredUsers = filteredUsers.filter(user => 
-          user.status && 
-          user.status.toLowerCase() === statusFilter.toLowerCase()
-        );
-      }
-      
-      // Search filter - Removed role from search
-      if (search.trim()) {
-        const searchLower = search.toLowerCase();
-        filteredUsers = filteredUsers.filter(user => 
-          (user.name && user.name.toLowerCase().includes(searchLower)) ||
-          (user.email && user.email.toLowerCase().includes(searchLower))
-        );
-      }
-      
-      setUsers(filteredUsers);
-      
-    } catch (err) {
-      setApiError(`Network error: ${err.message}`);
-      setUsers([]);
-    } finally {
-      setLoading(false);
+    const res = await getUsers();
+    const allUsers = Array.isArray(res.data) ? res.data : [];
+
+    // extract roles
+    const roles = ["All", ...new Set(
+      allUsers.map(u => u.role).filter(Boolean)
+    )];
+    setAllRoles(roles);
+
+    let filtered = [...allUsers];
+
+    if (roleFilter !== "All") {
+      filtered = filtered.filter(
+        u => u.role?.toLowerCase() === roleFilter.toLowerCase()
+      );
     }
-  };
+
+    if (statusFilter !== "All") {
+      filtered = filtered.filter(
+        u => u.status?.toLowerCase() === statusFilter.toLowerCase()
+      );
+    }
+
+    if (search.trim()) {
+      const s = search.toLowerCase();
+      filtered = filtered.filter(
+        u =>
+          u.name?.toLowerCase().includes(s) ||
+          u.email?.toLowerCase().includes(s)
+      );
+    }
+
+    setUsers(filtered);
+  } catch (err) {
+    setApiError(err.response?.data?.message || "Failed to fetch users");
+    setUsers([]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchUsers();
@@ -210,102 +183,63 @@ function UserManagementPage() {
     setSearch(e.target.value);
   };
 
-  const saveUser = async () => {
-    // Validate form before sending
-    if (!validateForm()) {
-      alert("Please fix the validation errors before saving.");
-      return;
+const saveUser = async () => {
+  if (!validateForm()) {
+    alert("Please fix the validation errors before saving.");
+    return;
+  }
+
+  try {
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      role: form.role.trim(),
+      status: form.status.trim(),
+    };
+
+    if (form.password.trim()) {
+      payload.password = form.password.trim();
     }
 
-    try {
-      const method = editingId ? "PUT" : "POST";
-      const url = editingId ? `${API_URL}/${editingId}` : API_URL;
-      
-      // Prepare payload (exclude password if empty for edit)
-      const payload = {
-        name: form.name.trim(),
-        email: form.email.trim(),
-        role: form.role.trim(),
-        status: form.status.trim(),
-      };
-      
-      // Only include password if provided (for new users or password change)
-      if (form.password.trim()) {
-        payload.password = form.password.trim();
-      }
-
-      console.log("Saving user:", payload);
-
-      const res = await fetch(url, {
-        method,
-        headers: { 
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const responseText = await res.text();
-      console.log("Response:", responseText);
-
-      if (!res.ok) {
-        let errorMessage = `HTTP ${res.status}`;
-        try {
-          const errorData = JSON.parse(responseText);
-          errorMessage += `: ${errorData.error || errorData.message || responseText}`;
-        } catch (e) {
-          errorMessage += `: ${responseText}`;
-        }
-        throw new Error(errorMessage);
-      }
-
-      alert(editingId ? "✅ User updated successfully!" : "✅ User added successfully!");
-      closeModal();
-      fetchUsers();
-      
-    } catch (err) {
-      console.error("Error saving user:", err);
-      alert(`Failed to save user: ${err.message}`);
+    if (editingId) {
+      await updateUser(editingId, payload);
+      alert("✅ User updated successfully!");
+    } else {
+      await createUser(payload);
+      alert("✅ User created successfully!");
     }
-  };
 
-  const deleteUser = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this user?")) return;
-    
-    try {
-      const res = await fetch(`${API_URL}/${id}`, { 
-        method: "DELETE" 
-      });
-      
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-      
-      alert("✅ User deleted successfully!");
-      fetchUsers();
-    } catch (err) {
-      alert(`Failed to delete user: ${err.message}`);
-    }
-  };
+    closeModal();
+    fetchUsers();
+  } catch (err) {
+    console.error(err);
+    alert(err.response?.data?.message || "Failed to save user");
+  }
+};
 
-  const updateUserStatus = async (id, newStatus) => {
-    try {
-      const res = await fetch(`${API_URL}/${id}/status`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
+const deleteUser = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this user?")) return;
 
-      fetchUsers();
-    } catch (err) {
-      alert(`Failed to update status: ${err.message}`);
-    }
-  };
+  try {
+    await deleteUserApi(id);
+    alert("✅ User deleted successfully!");
+    fetchUsers();
+  } catch (err) {
+    alert(err.response?.data?.message || "Failed to delete user");
+  }
+};
+
+
+const updateUserStatus = async (id, newStatus) => {
+  try {
+    await updateUserStatusApi(id, { status: newStatus });
+    fetchUsers();
+  } catch (err) {
+    alert(err.response?.data?.message || "Failed to update status");
+  }
+};
+
 
   // Format date - Improved to handle various date formats
   const formatDate = (dateString) => {

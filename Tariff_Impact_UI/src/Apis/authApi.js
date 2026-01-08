@@ -21,31 +21,31 @@ export const userLogin = async (data) => {
 };
 
 export const getCountries = () =>
-  API.get("/metadata/admin/country");
+  API.get("/admin/country");
 
 export const createCountry = (data) =>
-  API.post("/metadata/admin/country", data);
+  API.post("/admin/country", data);
 
 export const updateCountry = (id, data) =>
-  API.put(`/metadata/admin/country/${id}`, data);
+  API.put(`/admin/country/${id}`, data);
 
 export const deleteCountry = (id) =>
-  API.delete(`/metadata/admin/country/${id}`);
+  API.delete(`/admin/country/${id}`);
 
 export const getUsers = () =>
-  API.get("/metadata/admin/users");
+  API.get("/admin/users");
 
 export const createUser = (userData) =>
-  API.post("/metadata/admin/users", userData);
+  API.post("admin/users", userData);
 
 export const updateUser = (id, userData) =>
-  API.put(`/metadata/admin/users/${id}`, userData);
+  API.put(`/admin/users/${id}`, userData);
 
 export const deleteUser = (id) =>
-  API.delete(`/metadata/admin/users/${id}`);
+  API.delete(`/admin/users/${id}`);
 
 export const updateUserStatus = (id, statusData) =>
-  API.patch(`/metadata/admin/users/${id}/status`, statusData);
+  API.patch(`/admin/users/${id}/status`, statusData);
 
 // ====== FOREX ANALYSIS ======
 
@@ -133,16 +133,16 @@ export const getDutyTypes = () =>
 // ========== AgreementManagementPage ==========
 
 export const getAgreements = () =>
-  API.get("/metadata/admin/agreement");
+  API.get("/admin/agreement");
 
 export const createAgreement = (data) =>
-  API.post("/metadata/admin/agreement", data);
+  API.post("/admin/agreement", data);
 
 export const updateAgreement = (code, data) =>
-  API.put(`/metadata/admin/agreement/${code}`, data);
+  API.put(`/admin/agreement/${code}`, data);
 
 export const deleteAgreement = (code) =>
-  API.delete(`/metadata/admin/agreement/${code}`);
+  API.delete(`/admin/agreement/${code}`);
 
 
 // PRODUCT CRUD
