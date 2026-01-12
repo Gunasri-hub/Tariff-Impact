@@ -8,6 +8,7 @@ const BASE = "";   // empty string
 const db = require('../../models');  // adjust the path if needed
 const { Country } = db;
 
+const userController = require('../controller/metadata/userController');
 
 
 
@@ -121,6 +122,28 @@ router.post('/user/login', async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 });
+//========== INDUSTRY EXPLORER ==========
+
+const Controller = require("../controller/metadata/industryController");
+
+// ================= BASIC LISTS =================
+router.get("/hts-full", Controller.getAllHts);
+router.get("/country-currency", Controller.getAllCountryCurrency);
+
+// ================= ANALYTICS =================
+router.get("/industry/trend", Controller.getTariffTrend);
+router.get("/industry/distribution", Controller.getIndustryDistribution);
+router.get("/industry/hts-codes", Controller.getHtsCodes);
+router.get("/industry/sub-industry-duties", Controller.getSubIndustryDuties);
+
+// ================= DROPDOWNS =================
+router.get("/currencies", Controller.getCurrencies);
+router.get("/countries-list", Controller.getCountriesList);
+router.get("/industries-list", Controller.getIndustriesList);
+router.get("/sub-industries-list", Controller.getSubIndustriesList);
+router.get("/hts-codes-list", Controller.getHtsCodesList);
+
+
 // ==========  TARIFF IMPACT ANALYSIS ==========
 
 const controller = require("../controller/metadata/impact_analysis.controller");
@@ -129,14 +152,18 @@ router.get("/impact-analysis/currency", controller.getCurrencyData);
 router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
-const productController = require("../controller/metadata/productController");
+// src/routes/metadata.js
+const productController = require("../Controller/metadata/productController");
 
-/* PRODUCTS */
-router.get("/products", productController.getAll);
-router.get("/products/:id", productController.getById);
-router.post("/products", productController.create);
-router.put("/products/:id", productController.update);
-router.delete("/products/:id", productController.remove);
+// Product routes - ADD THESE
+router.get("/admin/products", productController.getAll);
+router.post("/admin/products", productController.create);
+router.put("/admin/products/:id", productController.update);
+router.delete("/admin/products/:id", productController.delete);
+
+
+
+
 // ========== COUNTRY MASTER ==========
 const countryController = require("../controller/metadata/country");
 
@@ -145,11 +172,22 @@ router.post("/admin/country", countryController.createCountry);
 router.get("/admin/country/:id", countryController.getCountryById);
 router.put("/admin/country/:id", countryController.updateCountry);
 router.delete("/admin/country/:id", countryController.deleteCountry);
+// ========== TAXATION MODULE ==========
+const taxationController = require("../controller/metadata/taxationController");
+
+router.get("/taxation/industry-rates", taxationController.getAllIndustryRates);
+router.get("/taxation/summary", taxationController.getSummary);
+router.post("/taxation/refresh", taxationController.refreshTaxData);
+router.get("/taxation/export", taxationController.exportTaxationExcel);
+
+
+
+
 // =======forex analysis ====//
 // simple currencies list for dropdowns
 const forexController = require("../controller/metadata/forexController");
 
-router.get('/currencies', (req, res) => {
+router.get('/forex/currencies', (req, res) => {
   const currencies = {
     USD: 'US Dollar',
     EUR: 'Euro',
@@ -179,7 +217,7 @@ router.get('/currencies', (req, res) => {
 });
 
 // main analysis endpoint
-router.post('/analyze', forexController.analyze);
+router.post('/forex/analyze', forexController.analyze);
 
 // ========== AGREEMENT MASTER ==========
 const agreementController = require("../controller/metadata/agreementController");
@@ -190,6 +228,14 @@ router.get("/admin/agreement/:code", agreementController.getAgreementByCode);
 router.put("/admin/agreement/:code", agreementController.updateAgreement);
 router.delete("/admin/agreement/:code", agreementController.deleteAgreement);
 
+
+
+// User Management Routes
+router.get("/admin/users", userController.getAllUsers);
+router.post("/admin/users", userController.createUser);
+router.put("/admin/users/:id", userController.updateUser);
+router.delete("/admin/users/:id", userController.deleteUser);
+router.patch("/admin/users/:id/status", userController.updateUserStatus);
 
 
 // Health check
