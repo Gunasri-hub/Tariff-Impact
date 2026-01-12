@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+// src/components/ProductLibraryPage.jsx
+import React, { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   getProducts,
   createProduct,
@@ -6,7 +9,7 @@ import {
   deleteProduct,
 } from "../../Apis/authApi";
 
-const emptyForm = {
+const EMPTY_FORM = {
   hts_code: "",
   product: "",
   general_rate_of_duty: "",
@@ -15,327 +18,442 @@ const emptyForm = {
 };
 
 function ProductLibraryPage() {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [search, setSearch] = useState("");
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const [showForm, setShowForm] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
-  const [editing, setEditing] = useState(null);
-  const [form, setForm] = useState(emptyForm);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
 
-  const loadProducts = async () => {
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [isEdit, setIsEdit] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+
+  
+
+  /* =========================
+     LOAD DATA
+  ========================= */
+  const loadProducts = useCallback(async (searchText = "") => {
     setLoading(true);
-    const data = await getProducts();
-    setProducts(data);
-    setFiltered(data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    loadProducts();
+    try {
+      console.log("Loading products with search:", searchText); // Debug log
+      const params = searchText ? { search: searchText.trim() } : {};
+      const res = await getProducts(params);
+      console.log("API Response:", res); // Debug full response
+      const dataArray = Array.isArray(res.data) ? res.data : res.data?.data || res.data?.products || [];
+      setProducts(dataArray);
+      setTotal(res.data?.total || res.data?.count || dataArray.length || 0);
+    } catch (err) {
+      console.error("Load products error:", err.response?.data || err); // Better logging
+      alert(
+        err.response?.data?.message ||
+        `Request failed (${err.response?.status})` ||
+        "Failed to load products - check console for details"
+      );
+      setProducts([]);
+      setTotal(0);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
-    const f = products.filter((p) =>
-      `${p.hts_code} ${p.product}`.toLowerCase().includes(search.toLowerCase())
-    );
-    setFiltered(f);
-  }, [search, products]);
+    loadProducts();
+  }, [loadProducts]);
 
-  const openAdd = () => {
-    setEditing(null);
-    setForm(emptyForm);
-    setShowForm(true);
+  /* =========================
+     FORM HANDLERS
+  ========================= */
+  const openCreate = () => {
+    setIsEdit(false);
+    setEditingId(null);
+    setForm(EMPTY_FORM);
+    setIsFormOpen(true);
   };
 
   const openEdit = (p) => {
-    setEditing(p);
-    setForm(p);
-    setShowForm(true);
+    setIsEdit(true);
+    setEditingId(p.id);
+    setForm({
+      hts_code: p.hts_code || "",
+      product: p.product || "",
+      general_rate_of_duty: p.general_rate_of_duty || "",
+      special_rate_of_duty: p.special_rate_of_duty || "",
+      column2_rate_of_duty: p.column2_rate_of_duty || "",
+    });
+    setIsFormOpen(true);
   };
 
-  const saveProduct = async () => {
-    editing ? await updateProduct(editing.id, form) : await createProduct(form);
-    setShowForm(false);
-    loadProducts();
+  const closeForm = () => {
+    setIsFormOpen(false);
+    setForm(EMPTY_FORM);
   };
 
-  const confirmDelete = async () => {
-    await deleteProduct(editing.id);
-    setShowDelete(false);
-    loadProducts();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      hts_code: form.hts_code,
+      product: form.product,
+      general_rate_of_duty: form.general_rate_of_duty,
+      special_rate_of_duty: form.special_rate_of_duty,
+      column2_rate_of_duty: form.column2_rate_of_duty,
+    };
+
+    try {
+      if (isEdit && editingId) {
+        await updateProduct(editingId, payload);
+        alert("✅ Product updated successfully!");
+      } else {
+        await createProduct(payload);
+        alert("✅ Product created successfully!");
+      }
+      await loadProducts(search.trim());
+      closeForm();
+    } catch (err) {
+      console.error("Submit error:", err);
+      alert(err.response?.data?.message || "Failed to save product");
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!productToDelete?.id) return;
+
+    try {
+      await deleteProduct(productToDelete.id);
+      alert("✅ Product deleted successfully!");
+      await loadProducts(search.trim());
+      closeDeleteConfirm();
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert(err.response?.data?.message || "Failed to delete product");
+    }
+  };
+
+  const openDeleteConfirm = (p) => {
+    setProductToDelete(p);
+    setIsDeleteOpen(true);
+  };
+
+  const closeDeleteConfirm = () => {
+    setIsDeleteOpen(false);
+    setProductToDelete(null);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    loadProducts(search.trim());
   };
 
   return (
-    <div style={styles.page}>
-      {/* HEADER */}
-      <div style={styles.header}>
-        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600 }}> 📦 Product Library</h2>
-       <p style={{ margin: "4px 0 0 0", fontSize: 14 }}>
-        Manage HS-based product master data
-      </p>
-      </div>
+    <div className="admin-layout">
 
-      {/* TOOLBAR */}
-      <div style={styles.toolbar}>
-        <input
-          style={styles.search}
-          placeholder="Search HTS or Product..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button style={styles.primaryBtn} onClick={openAdd}>
-          + Add Product
-        </button>
-      </div>
+       <style>{`
+    /* ---------- Product Library layout ---------- */
 
-      {/* TABLE */}
-      <div style={styles.card}>
-        {loading ? (
-          <p style={{ padding: 12 }}>Loading...</p>
-        ) : (
-          <table style={styles.table}>
-            <colgroup>
-              <col style={{ width: "12%" }} />
-              <col style={{ width: "22%" }} />
-              <col style={{ width: "10%" }} />
-              <col style={{ width: "28%" }} /> {/* SPECIAL */}
-              <col style={{ width: "18%" }} /> {/* COLUMN 2 */}
-              <col style={{ width: "10%" }} />
-            </colgroup>
+    .dashboard {
+      min-height: 100vh;
+      display: flex;
+      background: #f5f7fb;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
 
-            <thead>
-              <tr>
-                <th style={styles.th}>HTS Code</th>
-                <th style={styles.th}>Product</th>
-                <th style={styles.th}>General</th>
-                <th style={styles.th}>Special</th>
-                <th style={styles.th}>Column 2</th>
-                <th style={styles.th}>Action</th>
-              </tr>
-            </thead>
+    .sidebar .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 0 4px;
+    }
 
-            <tbody>
-              {filtered.map((p) => (
-                <tr key={p.id}>
-                  <td style={styles.td}>{p.hts_code}</td>
-                  <td style={{ ...styles.td, textAlign: "left" }}>
-                    {p.product}
-                  </td>
-                  <td style={styles.td}>{p.general_rate_of_duty}</td>
-                  <td style={styles.td}>{p.special_rate_of_duty}</td>
-                  <td style={styles.td}>{p.column2_rate_of_duty}</td>
-                  <td style={styles.td}>
-                    <div style={styles.actionCell}>
-                      <button style={styles.iconBtn} onClick={() => openEdit(p)}>
-                        ✏️
-                      </button>
-                      <button
-                        style={styles.iconBtnDanger}
-                        onClick={() => {
-                          setEditing(p);
-                          setShowDelete(true);
-                        }}
-                      >
-                        🗑️
-                      </button>
+    .sidebar-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: #1d4ed8;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .sidebar-brand-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .dashboard .main {
+      flex: 1;
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: none;
+    }
+
+    .dashboard .main .card {
+      width: 100%;
+      max-width: none;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-breadcrumb {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .topbar-title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .metric-value {
+      font-size: 14px;
+    }
+
+    .metric-value.text-green {
+      color: #16a34a;
+    }
+
+    .metric-value.text-orange {
+      color: #f59e0b;
+    }
+
+    /* ===== Product Library full-width content ===== */
+
+   .admin-main-inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+    .admin-main-inner .card {
+      width: 100%;
+      padding: 20px 24px 16px;
+    }
+      
+  `}</style>
+      
+
+      {/* Main content */}
+      <main className="admin-main">
+        <div className="admin-main-inner">
+          <section className="admin-hero">
+            <div>
+              <h1>Product &amp; HTS Code Library</h1>
+              <p>Browse, add, and manage tariff products and HS codes.</p>
+            </div>
+          </section>
+
+          <section className="card">
+            <div className="card-toolbar">
+              <form className="card-search-group" onSubmit={handleSearchSubmit}>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Search by product name or HS code..."
+                  value={search}
+                  onChange={handleSearchChange}
+                />
+                <button className="primary-button small" type="submit">
+                  Search
+                </button>
+              </form>
+
+              <div className="card-right-group">
+                <button className="primary-button" type="button" onClick={openCreate}>
+                  + Add Product
+                </button>
+                <span className="card-total-pill">Total: {total} products</span>
+              </div>
+            </div>
+
+            {loading ? (
+              <p>Loading products...</p>
+            ) : (
+              <div className="table-wrapper">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>HS Code</th>
+                      <th>General Rate</th>
+                      <th>Special Rate</th>
+                      <th>Column 2 Rate</th>
+                      <th style={{ width: 120 }}>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {products.map((p) => (
+                      <tr key={p.id}>
+                        <td>{p.product}</td>
+                        <td className="tag tag-soft">{p.hts_code}</td>
+                        <td>{p.general_rate_of_duty || "—"}</td>
+                        <td>{p.special_rate_of_duty || "—"}</td>
+                        <td>{p.column2_rate_of_duty || "—"}</td>
+                        <td>
+                          <button
+                            className="icon-button edit-icon"
+                            type="button"
+                            onClick={() => openEdit(p)}
+                            aria-label="Edit product"
+                          >
+                            ✏️
+                          </button>
+                          <button
+                            className="icon-button delete-icon"
+                            type="button"
+                            onClick={() => openDeleteConfirm(p)}
+                            aria-label="Delete product"
+                          >
+                            🗑️
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                    {products.length === 0 && !loading && (
+                      <tr>
+                        <td colSpan={6} className="empty-row">
+                          No products match this search. Try adding one!
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        </div>
+
+        {/* Modals - unchanged */}
+        {isFormOpen && (
+          <div className="side-modal-backdrop" onClick={closeForm}>
+            <div className="side-modal" onClick={(e) => e.stopPropagation()}>
+              <header className="side-modal-header">
+                <h2>{isEdit ? "Edit Product" : "Add New Product"}</h2>
+                <button className="icon-button" type="button" onClick={closeForm}>
+                  ✕
+                </button>
+              </header>
+
+              <form className="side-modal-body" onSubmit={handleSubmit}>
+                <div className="field-row">
+                  <label className="field">
+                    <span className="field-label">Product Name *</span>
+                    <input
+                      name="product"
+                      value={form.product}
+                      onChange={handleChange}
+                      placeholder="Enter product name"
+                      required
+                    />
+                  </label>
+
+                  <label className="field">
+                    <span className="field-label">HS Code *</span>
+                    <input
+                      name="hts_code"
+                      value={form.hts_code}
+                      onChange={handleChange}
+                      placeholder="e.g., 8517.12"
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="field">
+                  <span className="field-label">Duty Rates (%)</span>
+                  <div className="duty-grid">
+                    <div>
+                      <span className="field-label">General</span>
+                      <input
+                        name="general_rate_of_duty"
+                        value={form.general_rate_of_duty}
+                        onChange={handleChange}
+                        placeholder="0"
+                      />
                     </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <div>
+                      <span className="field-label">Special</span>
+                      <input
+                        name="special_rate_of_duty"
+                        value={form.special_rate_of_duty}
+                        onChange={handleChange}
+                        placeholder="0"
+                      />
+                    </div>
+                    <div>
+                      <span className="field-label">Column 2</span>
+                      <input
+                        name="column2_rate_of_duty"
+                        value={form.column2_rate_of_duty}
+                        onChange={handleChange}
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="side-modal-footer">
+                  <button type="button" className="ghost-button" onClick={closeForm}>
+                    Cancel
+                  </button>
+                  <button className="primary-button" type="submit">
+                    {isEdit ? "Save Changes" : "Create Product"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         )}
-      </div>
 
-      {/* ADD / EDIT MODAL */}
-      {showForm && (
-        <div style={styles.overlay}>
-          <div style={styles.modal}>
-            <h3>{editing ? "Edit Product" : "Add Product"}</h3>
-
-            {Object.keys(emptyForm).map((k) => (
-              <input
-                key={k}
-                style={styles.input}
-                placeholder={k.replaceAll("_", " ").toUpperCase()}
-                value={form[k]}
-                onChange={(e) => setForm({ ...form, [k]: e.target.value })}
-              />
-            ))}
-
-            <div style={styles.modalActions}>
-              <button onClick={() => setShowForm(false)}>Cancel</button>
-              <button style={styles.primaryBtn} onClick={saveProduct}>
-                Save
-              </button>
+        {isDeleteOpen && (
+          <div className="confirm-backdrop" onClick={closeDeleteConfirm}>
+            <div className="confirm-modal" onClick={(e) => e.stopPropagation()}>
+              <h3>Delete Product</h3>
+              <p>
+                Are you sure you want to delete "{productToDelete?.product}"? This action cannot be undone.
+              </p>
+              <div className="confirm-actions">
+                <button type="button" className="ghost-button" onClick={closeDeleteConfirm}>
+                  Cancel
+                </button>
+                <button type="button" className="primary-button danger" onClick={handleConfirmDelete}>
+                  Delete Product
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* DELETE CONFIRM */}
-      {showDelete && (
-        <div style={styles.overlay}>
-          <div style={styles.modal}>
-            <h3>Delete Product?</h3>
-            <p>This action cannot be undone.</p>
-            <div style={styles.modalActions}>
-              <button onClick={() => setShowDelete(false)}>Cancel</button>
-              <button style={styles.dangerBtn} onClick={confirmDelete}>
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+      </main>
     </div>
   );
 }
-
-/* ================= STYLES ================= */
-const styles = {
-  // remove horizontal padding so header can stretch
-  page: {
-    padding: 0,
-    fontFamily: "Inter, system-ui",
-    backgroundColor: "#f5f6fa",
-    minHeight: "100vh",
-  },
-
-  // new container for inner content below the header
-  content: {
-    padding: "24px 32px",
-  },
-
-
-header: {
-  background: "linear-gradient(90deg,#2563eb,#1e40af)",
-  color: "#fff",
-  padding: "20px 32px",
-  borderRadius: "24px",
-  margin: "16px 24px 24px 24px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  minHeight: 90,
-},
-
-   
-
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: 16,
-  },
-
-  search: {
-    width: 850,
-    padding: 10,
-    borderRadius: 8,
-    border: "1px solid #d1d5db",
-  },
-
-  card: {
-    background: "#fff",
-    borderRadius: 12,
-    boxShadow: "0 4px 12px rgba(0,0,0,.05)",
-    overflowX: "auto",
-  },
-
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
-    tableLayout: "fixed",
-  },
-
-  th: {
-    textAlign: "center",
-    padding: 12,
-    fontWeight: 600,
-    borderBottom: "1px solid #e5e7eb",
-  },
-
-  td: {
-    textAlign: "center",
-    padding: 12,
-    verticalAlign: "top",
-    borderBottom: "1px solid #f1f5f9",
-    whiteSpace: "normal",
-    wordBreak: "break-word",
-  },
-
-  actionCell: {
-    display: "flex",
-    justifyContent: "center",
-    gap: 8,
-  },
-
-  iconBtn: {
-    width: 32,
-    height: 32,
-    borderRadius: 6,
-    border: "1px solid #c7d2fe",
-    background: "#eef2ff",
-    cursor: "pointer",
-  },
-
-  iconBtnDanger: {
-    width: 32,
-    height: 32,
-    borderRadius: 6,
-    border: "1px solid #fecaca",
-    background: "#fee2e2",
-    cursor: "pointer",
-  },
-
-  primaryBtn: {
-    background: "#2563eb",
-    color: "#fff",
-    border: "none",
-    padding: "10px 16px",
-    borderRadius: 8,
-  },
-
-  dangerBtn: {
-    background: "#dc2626",
-    color: "#fff",
-    border: "none",
-    padding: "10px 16px",
-    borderRadius: 8,
-  },
-
-  overlay: {
-    position: "fixed",
-    inset: 0,
-    background: "rgba(0,0,0,.4)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  modal: {
-    background: "#fff",
-    padding: 24,
-    borderRadius: 12,
-    width: 420,
-  },
-
-  input: {
-    width: "100%",
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 8,
-    border: "1px solid #d1d5db",
-  },
-
-  modalActions: {
-    display: "flex",
-    justifyContent: "flex-end",
-    gap: 10,
-  },
-};
 
 export default ProductLibraryPage;

@@ -152,14 +152,18 @@ router.get("/impact-analysis/currency", controller.getCurrencyData);
 router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
-const productController = require("../controller/metadata/productController");
+// src/routes/metadata.js
+const productController = require("../Controller/metadata/productController");
 
-/* PRODUCTS */
-router.get("/products", productController.getAll);
-router.get("/products/:id", productController.getById);
-router.post("/products", productController.create);
-router.put("/products/:id", productController.update);
-router.delete("/products/:id", productController.remove);
+// Product routes - ADD THESE
+router.get("/admin/products", productController.getAll);
+router.post("/admin/products", productController.create);
+router.put("/admin/products/:id", productController.update);
+router.delete("/admin/products/:id", productController.delete);
+
+
+
+
 // ========== COUNTRY MASTER ==========
 const countryController = require("../controller/metadata/country");
 
