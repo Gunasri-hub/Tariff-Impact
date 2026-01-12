@@ -144,6 +144,7 @@ router.get("/sub-industries-list", Controller.getSubIndustriesList);
 router.get("/hts-codes-list", Controller.getHtsCodesList);
 
 
+
 // ==========  TARIFF IMPACT ANALYSIS ==========
 
 const controller = require("../controller/metadata/impact_analysis.controller");
@@ -236,6 +237,13 @@ router.post("/admin/users", userController.createUser);
 router.put("/admin/users/:id", userController.updateUser);
 router.delete("/admin/users/:id", userController.deleteUser);
 router.patch("/admin/users/:id/status", userController.updateUserStatus);
+
+
+//cost calculator//
+const costCalculator = require("../controller/metadata/costCalculator.controller");
+
+router.get("/calculator/ping", costCalculator.pingCalculator);
+router.post("/calculator/run", costCalculator.runCostCalculator);
 
 
 // Health check

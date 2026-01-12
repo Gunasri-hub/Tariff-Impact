@@ -185,6 +185,13 @@ export const exportTaxationExcel = (params) =>
     responseType: "blob"
   });
 
+  //cost calculator api//
+  export const runCostCalculator = (payload) =>
+  API.post("/calculator/run", payload);   // ✅ FIXED
+
+export const pingCalculator = () =>
+  API.get("/calculator/ping");
+
 
 
 
