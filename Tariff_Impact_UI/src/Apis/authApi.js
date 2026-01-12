@@ -144,38 +144,20 @@ export const updateAgreement = (code, data) =>
 export const deleteAgreement = (code) =>
   API.delete(`/admin/agreement/${code}`);
 
+// api/product.js
+export const getProducts = (params = {}) =>
+  API.get("/admin/products", { params });
 
-// PRODUCT CRUD
-// GET all products
-export const getProducts = async (params = {}) => {
-  const response = await API.get("/products", { params });
-  return response.data;
-};
+export const createProduct = (data) =>
+  API.post("/admin/products", data);
 
-// GET single product
-export const getProductById = async (id) => {
-  const response = await API.get(`/products/${id}`);
-  return response.data;
-};
+export const updateProduct = (id, data) =>
+  API.put(`/admin/products/${id}`, data);
 
-// CREATE product
-export const createProduct = async (data) => {
-  const response = await API.post("/products", data);
-  return response.data;
-};
+export const deleteProduct = (id) =>
+  API.delete(`/admin/products/${id}`);
 
 
-// UPDATE product
-export const updateProduct = async (id, data) => {
-  const response = await API.put(`/products/${id}`, data);
-  return response.data;
-};
-
-// DELETE product
-export const deleteProduct = async (id) => {
-  const response = await API.delete(`/products/${id}`);
-  return response.data;
-};
 
 
 // ===== TAXATION API HELPERS =====//
@@ -202,6 +184,13 @@ export const exportTaxationExcel = (params) =>
     params,              // dynamic filters from UI
     responseType: "blob"
   });
+
+  //cost calculator api//
+  export const runCostCalculator = (payload) =>
+  API.post("/calculator/run", payload);   // ✅ FIXED
+
+export const pingCalculator = () =>
+  API.get("/calculator/ping");
 
 
 

@@ -14,6 +14,7 @@ import TariffImpactAnalysis from "./TariffImpactAnalysis";
 import IndustryExplorerPage from "./IndustryExplorer";
 import ForexAnalysis from "./ForexAnalysis";
 import TaxationModule from "./TaxationModule";
+import CostCalculatorWizard from "./CostCalculatorWizard";
 
 
 const menuItems = [
@@ -77,7 +78,7 @@ const UserDashboard = () => {
         return <ForexAnalysis />;
 
       case "cost":
-        return <CostCalculator />;
+        return <CostCalculatorWizard />;
 
       case "settings":
         return <Settings />;
