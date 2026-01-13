@@ -220,6 +220,28 @@ router.get('/forex/currencies', (req, res) => {
 // main analysis endpoint
 router.post('/forex/analyze', forexController.analyze);
 
+// In your route file
+const buyerController = require("../controller/metadata/buyerController");
+
+router.get("/buyers", buyerController.getAllBuyers);
+router.get("/buyers/stats", buyerController.getBuyerStats); // Optional
+router.get("/buyers/:id", buyerController.getBuyerById);
+router.post("/buyers", buyerController.createBuyer);
+router.put("/buyers/:id", buyerController.updateBuyer);
+router.delete("/buyers/:id", buyerController.deleteBuyer);
+
+
+
+const sellerController = require('../controller/metadata/sellerController');
+
+router.get('/sellers', sellerController.getAllSellers);
+router.get('/sellers/stats', sellerController.getSellerStats);
+router.get('/sellers/:id', sellerController.getSellerById);
+router.post('/sellers', sellerController.createSeller);
+router.put('/sellers/:id', sellerController.updateSeller);
+router.delete('/sellers/:id', sellerController.deleteSeller);
+router.get('/sellers/next-id', sellerController.generateNextSellerId);
+
 // ========== AGREEMENT MASTER ==========
 const agreementController = require("../controller/metadata/agreementController");
 
