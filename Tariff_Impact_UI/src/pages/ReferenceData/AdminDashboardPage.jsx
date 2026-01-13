@@ -18,8 +18,8 @@ import CountryDatabasePage from "./CountryDatabasePage";
 import UserManagementPage from "./UserManagementPage";
 import AgreementsManagementPage from "./AgreementsManagementPage";
 import ProductLibraryPage from "./ProductLibraryPage";
-
-
+import BuyerManagementPage from "./BuyerManagementPage";
+import SellerManagementPage from "./SellerManagementPage";
 
 function AdminDashboardPage() {
   const navigate = useNavigate();
@@ -40,6 +40,8 @@ function AdminDashboardPage() {
   const menuItems = [
     { id: "dashboard", label: "Admin Dashboard", icon: <FiPieChart /> },
     { id: "users", label: "User Management", icon: <FiUsers /> },
+    { id: "buyers", label: "Buyer Management", icon: <FiUsers /> },
+    { id: "sellers", label: "Seller Management", icon: <FiUsers /> },
     { id: "agreements", label: "Agreements Management", icon: <FiFileText /> },
     { id: "countries", label: "Country Database", icon: <FiGlobe /> },
     { id: "products", label: "Product Library", icon: <FiBox /> },
@@ -162,6 +164,8 @@ function AdminDashboardPage() {
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
         {currentPage === "users" && <UserManagementPage />}
+        {currentPage === "buyers" && <BuyerManagementPage />}
+        {currentPage === "sellers" && <SellerManagementPage />}
         {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibraryPage />}
