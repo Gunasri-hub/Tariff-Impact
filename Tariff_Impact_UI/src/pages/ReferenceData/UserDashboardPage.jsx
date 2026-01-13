@@ -15,6 +15,8 @@ import IndustryExplorerPage from "./IndustryExplorer";
 import ForexAnalysis from "./ForexAnalysis";
 import TaxationModule from "./TaxationModule";
 import CostCalculatorWizard from "./CostCalculatorWizard";
+import UserTransactionData from "./UserTransactionData";
+
 
 
 const menuItems = [
@@ -24,6 +26,7 @@ const menuItems = [
   { id: "taxation", label: "Taxation Module", icon: <FiFileText /> },
   { id: "forex", label: "Forex Analysis", icon: <FiDollarSign /> },
   { id: "cost", label: "Cost Calculator", icon: <FiGlobe /> },
+  { id: "transaction", label: "Transaction Data", icon: <FiFileText /> },
   { id: "settings", label: "Settings", icon: <FiSettings /> },
 ];
 
@@ -49,6 +52,15 @@ const UserDashboard = () => {
       <section className="welcome-strip">
         <h1>🧮 Cost Calculator</h1>
         <p>Calculate landed costs including all charges</p>
+      </section>
+    </div>
+  );
+
+  const TransactionData = () => (
+    <div className="page-padding">
+      <section className="welcome-strip">
+        <h1>🧮 Transaction Data</h1>
+        <p>Comprehensive multi-country trade transaction tracking and analytics</p>
       </section>
     </div>
   );
@@ -79,6 +91,9 @@ const UserDashboard = () => {
 
       case "cost":
         return <CostCalculatorWizard />;
+
+      case "transaction":
+        return <UserTransactionData />;
 
       case "settings":
         return <Settings />;
@@ -127,6 +142,17 @@ const UserDashboard = () => {
                   <div className="qa-text">
                     <h4>Cost Calculator</h4>
                     <p>Calculate landed cost</p>
+                  </div>
+                </div>
+
+
+                <div className="qa-card" onClick={() => setActive("cost")}>
+                  <div className="qa-icon qa-green">
+                    <FiDollarSign />
+                  </div>
+                  <div className="qa-text">
+                    <h4>Transaction Data</h4>
+                    <p>Comprehensive multi-country trade transaction tracking and analytics</p>
                   </div>
                 </div>
 
