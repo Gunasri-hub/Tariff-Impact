@@ -18,6 +18,8 @@ import ForexAnalysis from "./ForexAnalysis";
 import TaxationModule from "./TaxationModule";
 import BuyerPage from "./BuyerPage";
 import SellerPage from "./SellerPage"; 
+import CostCalculatorWizard from "./CostCalculatorWizard";
+
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: <FiHome /> },
@@ -74,7 +76,7 @@ const UserDashboard = () => {
         return <ForexAnalysis />;
 
       case "cost":
-        return <CostCalculator />;
+        return <CostCalculatorWizard />;
 
       case "buyer":
         return <BuyerPage />;

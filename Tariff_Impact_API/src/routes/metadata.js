@@ -144,6 +144,7 @@ router.get("/sub-industries-list", Controller.getSubIndustriesList);
 router.get("/hts-codes-list", Controller.getHtsCodesList);
 
 
+
 // ==========  TARIFF IMPACT ANALYSIS ==========
 
 const controller = require("../controller/metadata/impact_analysis.controller");
@@ -152,14 +153,18 @@ router.get("/impact-analysis/currency", controller.getCurrencyData);
 router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
-const productController = require("../controller/metadata/productController");
+// src/routes/metadata.js
+const productController = require("../Controller/metadata/productController");
 
-/* PRODUCTS */
-router.get("/products", productController.getAll);
-router.get("/products/:id", productController.getById);
-router.post("/products", productController.create);
-router.put("/products/:id", productController.update);
-router.delete("/products/:id", productController.remove);
+// Product routes - ADD THESE
+router.get("/admin/products", productController.getAll);
+router.post("/admin/products", productController.create);
+router.put("/admin/products/:id", productController.update);
+router.delete("/admin/products/:id", productController.delete);
+
+
+
+
 // ========== COUNTRY MASTER ==========
 const countryController = require("../controller/metadata/country");
 
@@ -254,6 +259,13 @@ router.post("/admin/users", userController.createUser);
 router.put("/admin/users/:id", userController.updateUser);
 router.delete("/admin/users/:id", userController.deleteUser);
 router.patch("/admin/users/:id/status", userController.updateUserStatus);
+
+
+//cost calculator//
+const costCalculator = require("../controller/metadata/costCalculator.controller");
+
+router.get("/calculator/ping", costCalculator.pingCalculator);
+router.post("/calculator/run", costCalculator.runCostCalculator);
 
 
 // Health check
