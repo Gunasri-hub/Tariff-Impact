@@ -30,6 +30,7 @@ const menuItems = [
   { id: "taxation", label: "Taxation Module", icon: <FiFileText /> },
   { id: "forex", label: "Forex Analysis", icon: <FiDollarSign /> },
   { id: "cost", label: "Cost Calculator", icon: <FiGlobe /> },
+  {id: "transactions", label: "Transaction Data", icon: <FiFileText />},
 ];
 
 const UserDashboard = () => {
@@ -88,6 +89,16 @@ const UserDashboard = () => {
 
       case "cost":
         return <CostCalculatorWizard />;
+
+
+      case "buyer":
+        return <BuyerPage />;
+
+            case "seller":
+        return <SellerPage />;
+        
+      case "transactions":
+        return <UserTransactionData />;
 
       case "settings":
         return <Settings />;

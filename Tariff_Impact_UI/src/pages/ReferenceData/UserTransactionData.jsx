@@ -1,12 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  getCountriesList,
+  getCurrenciesList,
+  
+  getProducts,
+  getAllBuyers,
+  getAllSellers,
+} from "../../Apis/authApi";
+import { createUserTransaction, getNextTransactionCode } from "../../Apis/authApi";
 
 
 
 function UserTransactionData() {
+  const [step, setStep] = useState(1);
+
+  const [countries, setCountries] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
+
+  const [products, setProducts] = useState([]);
+
+  
+  
+
+  
+  const [buyers, setBuyers] = useState([]);
+  const [sellers, setSellers] = useState([]);
+
+ 
+
+
+
+
   const [form, setForm] = useState({
+      transactionId: "",
     transactionType: "",
-    status: "",
     transactionDate: "",
+    status: "",
     buyerId: "",
     buyerName: "",
     buyerType: "",
@@ -23,359 +52,587 @@ function UserTransactionData() {
     originCurrency: "",
     destinationCountry: "",
     destinationCurrency: "",
-    mode: "",
-    productName: "",
-    hsCode: "",
-    industry: "",
-    subIndustry: "",
+    modeOfTransport: "",
+    
+    productsSelected: [
+  { mainCategory: "", subCategory: "", htsCode: "" }
+],
+
   });
+
+  
+
+
+
+  
+  
+
+
+
+  /* ================= SAFE DATA FETCH ================= */
+
+useEffect(() => {
+  getCountriesList().then(res => {
+    const list = res.data?.rows || res.data?.data || res.data || [];
+    setCountries(Array.isArray(list) ? list : []);
+  });
+
+  getCurrenciesList().then(res => {
+    const list = res.data?.rows || res.data?.data || res.data || [];
+    setCurrencies(Array.isArray(list) ? list : []);
+  });
+
+  getAllBuyers().then(res => {
+    const list = res.data?.rows || res.data?.data || res.data || [];
+    setBuyers(Array.isArray(list) ? list : []);
+  });
+
+  getAllSellers().then(res => {
+    const list = res.data?.rows || res.data?.data || res.data || [];
+    setSellers(Array.isArray(list) ? list : []);
+  });
+
+  // ✅ FIXED PRODUCT LOADING (ALL PAGES)
+  async function loadAllProducts() {
+    try {
+      let page = 1;
+      const limit = 200; // you can increase to 500 if backend allows
+      let allProducts = [];
+
+      while (true) {
+        const res = await getProducts({ page, limit });
+
+        const rows = res.data?.data || [];
+        allProducts = [...allProducts, ...rows];
+
+        if (page >= res.data.totalPages) break;
+        page++;
+      }
+
+      console.log("TOTAL PRODUCTS LOADED:", allProducts.length);
+      setProducts(allProducts);
+    } catch (err) {
+      console.error("Failed to load products", err);
+    }
+  }
+
+  loadAllProducts();
+}, []);
+
+
+// ===== DERIVED DROPDOWNS FROM PRODUCT TABLE =====
+
+const normalize = v =>
+  v
+    ?.toString()
+    .replace(/\s+/g, " ")
+    .replace(/:+$/, "")
+    .trim();
+
+    const mainCategories = Array.from(
+  new Set(
+    products
+      .map(p => normalize(p.main_category))
+      .filter(Boolean)
+  )
+);
+
+
+const getSubCategories = (mainCategory) =>
+  Array.from(
+    new Set(
+      products
+        .filter(p => normalize(p.main_category) === normalize(mainCategory))
+        .map(p => normalize(p.subcategory))
+        .filter(Boolean)
+    )
+  );
+
+const getHtsCodes = (mainCategory, subCategory) =>
+  Array.from(
+    new Set(
+      products
+        .filter(
+          p =>
+            normalize(p.main_category) === normalize(mainCategory) &&
+            normalize(p.subcategory) === normalize(subCategory)
+        )
+        .map(p => p.hts_code)
+        .filter(Boolean)
+    )
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleDateChange = (e) => {
+  let value = e.target.value.replace(/\D/g, ""); // only numbers
+
+  if (value.length >= 3)
+    value = value.slice(0, 2) + "/" + value.slice(2);
+  if (value.length >= 6)
+    value = value.slice(0, 5) + "/" + value.slice(5, 9);
+
+  setForm({ ...form, transactionDate: value });
+};
+
+
   
 
-  const handleSave = () => {
-    console.log("User Transaction Data:", form);
-    alert("Transaction saved (UI only)");
-  };
 
-  // ===== INLINE STYLES =====
+  const handleSave = async () => {
+  try {
+    // ⚠️ For now, save ONLY first product
+    
+
+    const payload = {
+      
+      transactionType: form.transactionType,
+      transactionDate: form.transactionDate,
+      status: form.status,
+
+      buyerId: form.buyerId,
+      buyerName: form.buyerName,
+      buyerType: form.buyerType,
+      buyerPhone: form.buyerPhone,
+      buyerEmail: form.buyerEmail,
+      buyerAddress: form.buyerAddress,
+
+      sellerId: form.sellerId,
+      sellerName: form.sellerName,
+      sellerType: form.sellerType,
+      sellerPhone: form.sellerPhone,
+      sellerEmail: form.sellerEmail,
+      sellerAddress: form.sellerAddress,
+
+      originCountry: form.originCountry,
+      originCurrency: form.originCurrency,
+      destinationCountry: form.destinationCountry,
+      destinationCurrency: form.destinationCurrency,
+      modeOfTransport: form.modeOfTransport,
+
+      
+
+      // 🔽 Product & classification
+       mainCategory: form.productsSelected.map(p => p.mainCategory).join(","),
+  subCategory: form.productsSelected.map(p => p.subCategory).join(","),
+  htsCode: form.productsSelected.map(p => p.htsCode).join(","),
+    };
+
+    await createUserTransaction(payload);
+
+    // 🔁 Load NEXT TXN from backend
+    const res = await getNextTransactionCode();
+    // 🔄 Reset for next transaction
+    setForm({
+      transactionId:  res.data.transactionCode,
+      transactionType: "",
+      transactionDate: "",
+      status: "",
+      buyerId: "",
+      buyerName: "",
+      buyerType: "",
+      buyerPhone: "",
+      buyerEmail: "",
+      buyerAddress: "",
+      sellerId: "",
+      sellerName: "",
+      sellerType: "",
+      sellerPhone: "",
+      sellerEmail: "",
+      sellerAddress: "",
+      originCountry: "",
+      originCurrency: "",
+      destinationCountry: "",
+      destinationCurrency: "",
+      modeOfTransport: "",
+      productsSelected: [
+        { mainCategory: "", subCategory: "", htsCode: "" }
+      ]
+    });
+
+    setStep(1);
+    alert("Transaction saved successfully");
+
+  } catch (error) {
+    console.error("Save failed", error);
+    alert("Failed to save transaction");
+  }
+};
+
+
+
+  /* ================= STYLES (UNCHANGED) ================= */
+
   const styles = {
-    page: {
-      padding: "18px 22px",
-    },
+    page: { padding: "24px" },
     card: {
-      background: "#ffffff",
-      borderRadius: "14px",
-      padding: "20px 24px",
-      boxShadow: "0 12px 28px rgba(15,23,42,0.08)",
+      background: "#fff",
+      borderRadius: "16px",
+      padding: "24px",
+      maxWidth: "1220px",
+      boxShadow: "0 12px 28px rgba(0,0,0,0.08)",
     },
-    title: {
-      fontSize: "16px",
-      fontWeight: 600,
-      marginBottom: "14px",
-      color: "#111827",
-    },
-    section: {
-      marginTop: "22px",
-    },
-    sectionTitle: {
-      fontSize: "14px",
-      fontWeight: 600,
-      marginBottom: "10px",
-      color: "#1f2937",
-    },
-    grid2: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "16px",
-    },
-    grid1: {
-      display: "grid",
-      gridTemplateColumns: "1fr",
-      gap: "16px",
-    },
-    field: {
-      label: {
-        fontSize: "12px",
-        color: "#6b7280",
-        marginBottom: "4px",
-        display: "block",
-      },
-      input: {
-        width: "100%",
-        padding: "10px 12px",
-        borderRadius: "10px",
-        border: "1px solid #e5e7eb",
-        background: "#f9fafb",
-        fontSize: "13px",
-      },
-      select: {
-        width: "100%",
-        padding: "10px 12px",
-        borderRadius: "10px",
-        border: "1px solid #e5e7eb",
-        background: "#f9fafb",
-        fontSize: "13px",
-      },
-      textarea: {
-        width: "100%",
-        padding: "10px 12px",
-        borderRadius: "10px",
-        border: "1px solid #e5e7eb",
-        background: "#f9fafb",
-        fontSize: "13px",
-        resize: "none",
-      },
-    },
-    footer: {
-      display: "flex",
-      justifyContent: "flex-end",
-      gap: "12px",
-      marginTop: "26px",
-    },
-    cancelBtn: {
-      padding: "10px 18px",
-      borderRadius: "999px",
-      border: "1px solid #e5e7eb",
-      background: "#ffffff",
-      cursor: "pointer",
-      fontSize: "13px",
-    },
-    saveBtn: {
-      padding: "10px 22px",
-      borderRadius: "999px",
-      border: "none",
-      background: "#0f5ef7",
-      color: "#ffffff",
-      fontSize: "13px",
-      fontWeight: 600,
-      cursor: "pointer",
-    },
+    title: { fontSize: "18px", fontWeight: 600, marginBottom: "16px" },
+    sectionTitle: { fontSize: "14px", fontWeight: 600, marginBottom: "12px" },
+    grid2: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" },
+    input: { width: "100%", padding: "10px 12px", borderRadius: "10px", border: "1px solid #e5e7eb" },
+    select: { width: "100%", padding: "10px 12px", borderRadius: "10px", border: "1px solid #e5e7eb" },
+    textarea: { width: "100%", padding: "10px 12px", borderRadius: "10px", border: "1px solid #e5e7eb" },
+    footer: { display: "flex", justifyContent: "space-between", marginTop: "24px" },
+    btn: { padding: "10px 18px", borderRadius: "999px", border: "1px solid #e5e7eb", background: "#fff" },
+    primaryBtn: { padding: "10px 22px", borderRadius: "999px", border: "none", background: "#155EEF", color: "#fff" }
   };
 
   return (
     <div style={styles.page}>
+      
+{/* 🔵 PAGE HEADER STRIP */}
+<div style={{
+  background: "#2563eb",
+  borderRadius: "14px",
+  padding: "22px 28px",
+  marginBottom: "28px",
+  color: "#fff"
+}}>
+  <h1 style={{
+    margin: 0,
+    fontSize: "22px",
+    fontWeight: 600
+  }}>
+    📦 Transaction Data
+  </h1>
+
+  <p style={{
+    marginTop: "6px",
+    fontSize: "14px",
+    opacity: 0.9
+  }}>
+    Comprehensive multi-country trade transaction tracking and analytics
+  </p>
+</div>
+
       <div style={styles.card}>
-        <h2 style={styles.title}>Transaction Data</h2>
 
-        {/* Transaction Details */}
-        <div style={styles.grid2}>
-          <div>
-            <label style={styles.field.label}>Transaction ID *</label>
-            <input style={styles.field.input} value="TXN-427465" disabled />
-          </div>
-          <div>
-            <label style={styles.field.label}>Transaction Type *</label>
-            <select
-              name="transactionType"
-              onChange={handleChange}
-              style={styles.field.select}
-            >
-              <option value="">Select type</option>
-              <option>Import</option>
-              <option>Export</option>
-            </select>
-          </div>
+        {step === 1 && (
+          <>
+            <h3 style={styles.sectionTitle}>Transaction Details</h3>
+            <div style={styles.grid2}><div>
+  <input
+    value={form.transactionId}
+    disabled
+    style={{
+      ...styles.input,
+      backgroundColor: "#f9fafb",
+      fontWeight: 600
+    }}
+  />
+  <small style={{ color: "#6b7280", marginTop: "4px", display: "block" }}>
+    Auto-generated Transaction ID
+  </small>
+</div>
 
-          <div>
-            <label style={styles.field.label}>Transaction Date *</label>
-            <input
+              <select name="transactionType" onChange={handleChange} style={styles.select}>
+                <option value="">Transaction Type</option>
+                <option>Import</option>
+                <option>Export</option>
+              </select>
+              <input
   type="text"
   name="transactionDate"
   placeholder="dd/mm/yyyy"
-  onChange={handleChange}
-  style={styles.field.input}
+  value={form.transactionDate}
+  onChange={handleDateChange}
+  maxLength={10}
+  style={styles.input}
 />
 
-          </div>
-          <div>
-            <label style={styles.field.label}>Status *</label>
-            <select
-              name="status"
-              onChange={handleChange}
-              style={styles.field.select}
-            >
-              <option value="">Select status</option>
-              <option>Draft</option>
-              <option>Completed</option>
-              <option>Flagged</option>
-            </select>
-          </div>
+
+              <select name="status" onChange={handleChange} style={styles.select}>
+                <option value="">Status</option>
+                <option>Draft</option>
+                <option>Completed</option>
+              </select>
+            </div>
+          </>
+        )}
+
+        {step === 2 && (
+  <>
+    <h3 style={styles.sectionTitle}>Buyer Details</h3>
+    <div style={styles.grid2}>
+
+      {/* Buyer ID */}
+      <select
+        value={form.buyerId}
+        onChange={(e) => {
+          const b = buyers.find(x => x.buyer_id === e.target.value);
+          if (b) {
+            setForm({
+              ...form,
+              buyerId: b.buyer_id,
+              buyerName: b.name,
+              buyerType: b.type,
+              buyerPhone: b.phone_number,
+              buyerEmail: b.email_id,
+              buyerAddress: b.address,
+            });
+          }
+        }}
+        style={styles.select}
+      >
+        <option value="">Select Buyer ID</option>
+        {buyers.map(b => (
+          <option key={b.buyer_id} value={b.buyer_id}>
+            {b.buyer_id}
+          </option>
+        ))}
+      </select>
+
+      <input value={form.buyerName} readOnly placeholder="Buyer Name" style={styles.input} />
+      <input value={form.buyerType} readOnly placeholder="Buyer Type" style={styles.input} />
+      <input value={form.buyerPhone} readOnly placeholder="Phone Number" style={styles.input} />
+      <input value={form.buyerEmail} readOnly placeholder="Email ID" style={styles.input} />
+      <textarea value={form.buyerAddress} readOnly placeholder="Address" style={styles.textarea} />
+
+    </div>
+  </>
+)}
+
+
+        {step === 3 && (
+  <>
+    <h3 style={styles.sectionTitle}>Seller Details</h3>
+    <div style={styles.grid2}>
+
+      {/* Seller ID */}
+      <select
+        value={form.sellerId}
+        onChange={(e) => {
+          const s = sellers.find(x => x.seller_id === e.target.value);
+          if (s) {
+            setForm({
+              ...form,
+              sellerId: s.seller_id,
+              sellerName: s.name,
+              sellerType: s.type,
+              sellerPhone: s.phone,
+              sellerEmail: s.email,
+              sellerAddress: s.address,
+            });
+          }
+        }}
+        style={styles.select}
+      >
+        <option value="">Select Seller ID</option>
+        {sellers.map(s => (
+          <option key={s.seller_id} value={s.seller_id}>
+            {s.seller_id}
+          </option>
+        ))}
+      </select>
+
+      <input value={form.sellerName} readOnly placeholder="Seller Name" style={styles.input} />
+      <input value={form.sellerType} readOnly placeholder="Seller Type" style={styles.input} />
+      <input value={form.sellerPhone} readOnly placeholder="Phone Number" style={styles.input} />
+      <input value={form.sellerEmail} readOnly placeholder="Email ID" style={styles.input} />
+      <textarea value={form.sellerAddress} readOnly placeholder="Address" style={styles.textarea} />
+
+    </div>
+  </>
+)}
+
+        {step === 4 && (
+          <>
+            <h3 style={styles.sectionTitle}>Trade & Logistics</h3>
+            <div style={styles.grid2}>
+              <select
+  name="originCountry"
+  value={form.originCountry}
+  onChange={handleChange}
+  style={styles.select}
+>
+  <option value="">Origin Country</option>
+  {countries.map(c => (
+    <option key={c.id} value={c.country_name || c.name || c.country}>
+  {c.country_name || c.name || c.country}
+</option>
+
+  ))}
+</select>
+
+              <select name="originCurrency" onChange={handleChange} style={styles.select}>
+                <option value="">Origin Currency</option>
+                {currencies.map(c => (
+  <option key={`${c.code}-${c.name}`} value={c.code}>
+    {c.code}
+  </option>
+))}
+              </select>
+              <select
+  name="destinationCountry"
+  value={form.destinationCountry}
+  onChange={handleChange}
+  style={styles.select}
+>
+  <option value="">Destination Country</option>
+  {countries.map(c => (
+    <option key={c.id} value={c.country_name || c.name || c.country}>
+  {c.country_name || c.name || c.country}
+</option>
+
+  ))}
+</select>
+
+              <select name="destinationCurrency" onChange={handleChange} style={styles.select}>
+                <option value="">Destination Currency</option>
+                {currencies.map(c => (
+  <option key={`${c.code}-${c.name}`} value={c.code}>
+  {c.code}
+</option>
+))}
+              </select>
+
+              <select
+  name="modeOfTransport"
+  value={form.modeOfTransport}
+  onChange={handleChange}
+  style={styles.select}
+  required
+>
+  <option value="">Select Mode of Transport *</option>
+  <option value="Sea">Sea</option>
+  <option value="Air">Air</option>
+  <option value="Road">Road</option>
+</select>
+
+            </div>
+          </>
+        )}
+
+        {step === 5 && (
+  <>
+    <h3 style={styles.sectionTitle}>Product & Classification</h3>
+
+    {form.productsSelected.map((prod, index) => (
+      <div key={index} style={{ marginBottom: "20px" }}>
+
+        <div style={styles.grid2}>
+
+          {/* Main Category */}
+          <select
+            value={prod.mainCategory}
+            onChange={(e) => {
+              const updated = [...form.productsSelected];
+              updated[index] = {
+                mainCategory: e.target.value,
+                subCategory: "",
+                htsCode: "",
+              };
+              setForm({ ...form, productsSelected: updated });
+            }}
+            style={styles.select}
+          >
+            <option value="">Select Main Category</option>
+            {mainCategories.map(mc => (
+              <option key={mc} value={mc}>{mc}</option>
+            ))}
+          </select>
+
+          {/* Sub Category */}
+          <select
+            value={prod.subCategory}
+            disabled={!prod.mainCategory}
+            onChange={(e) => {
+              const updated = [...form.productsSelected];
+              updated[index].subCategory = e.target.value;
+              updated[index].htsCode = "";
+              setForm({ ...form, productsSelected: updated });
+            }}
+            style={styles.select}
+          >
+            <option value="">Select Sub Category</option>
+            {getSubCategories(prod.mainCategory).map(sc => (
+              <option key={sc} value={sc}>{sc}</option>
+            ))}
+          </select>
+
+          {/* HTS Code */}
+          <select
+            value={prod.htsCode}
+            disabled={!prod.subCategory}
+            onChange={(e) => {
+              const updated = [...form.productsSelected];
+              updated[index].htsCode = e.target.value;
+              setForm({ ...form, productsSelected: updated });
+            }}
+            style={styles.select}
+          >
+            <option value="">Select HTS Code</option>
+            {getHtsCodes(prod.mainCategory, prod.subCategory).map(h => (
+              <option key={h} value={h}>{h}</option>
+            ))}
+          </select>
+
         </div>
+      </div>
+    ))}
 
-        <div style={styles.section}>
-  <h3 style={styles.sectionTitle}>Buyer Details</h3>
-
-  <div style={styles.grid2}>
-    <input
-      placeholder="Buyer ID *"
-      name="buyerId"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
-
-    <input
-      placeholder="Buyer Name *"
-      name="buyerName"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
-
-    <select
-      name="buyerType"
-      onChange={handleChange}
-      style={styles.field.select}
+    {/* ➕ ADD PRODUCT BUTTON */}
+    <button
+      type="button"
+      style={{ ...styles.btn, marginTop: "10px" }}
+      onClick={() =>
+        setForm({
+          ...form,
+          productsSelected: [
+            ...form.productsSelected,
+            { mainCategory: "", subCategory: "", htsCode: "" }
+          ]
+        })
+      }
     >
-      <option value="">Buyer Type *</option>
-      <option>INDIVIDUAL_IMPORTER</option>
-      <option>CORPORATE_IMPORTER</option>
-      <option>DISTRIBUTOR</option>
-      <option>RETAIL_IMPORTER</option>
-      <option>WHOLESALE_IMPORTER</option>
-      <option>GOVERNMENT_IMPORTER</option>
-    </select>
+      + Add Product
+    </button>
+  </>
+)}
 
-    <input
-      placeholder="Phone Number *"
-      name="buyerPhone"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
 
-    {/* ✅ EMAIL – FULL WIDTH */}
-    <input
-      placeholder="Email ID *"
-      name="buyerEmail"
-      onChange={handleChange}
-      style={{
-        ...styles.field.input,
-        gridColumn: "1 / -1",
-      }}
-    />
-
-    {/* ✅ ADDRESS – FULL WIDTH */}
-    <textarea
-      rows={3}
-      placeholder="Address *"
-      name="buyerAddress"
-      onChange={handleChange}
-      style={{
-        ...styles.field.textarea,
-        gridColumn: "1 / -1",
-      }}
-    />
-  </div>
-</div>
-
-        <div style={styles.section}>
-  <h3 style={styles.sectionTitle}>Seller Details</h3>
-
-  <div style={styles.grid2}>
-    <input
-      placeholder="Seller ID *"
-      name="sellerId"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
-
-    <input
-      placeholder="Seller Name *"
-      name="sellerName"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
-
-    <select
-      name="sellerType"
-      onChange={handleChange}
-      style={styles.field.select}
-    >
-      <option value="">Seller Type *</option>
-      <option>FOREIGN_MANUFACTURER</option>
-      <option>EXPORTER</option>
-      <option>TRADING_COMPANY</option>
-      <option>OEM_SUPPLIER</option>
-      <option>RAW_MATERIAL_SUPPLIER</option>
-    </select>
-
-    <input
-      placeholder="Phone Number *"
-      name="sellerPhone"
-      onChange={handleChange}
-      style={styles.field.input}
-    />
-
-    {/* ✅ EMAIL – FULL WIDTH */}
-    <input
-      placeholder="Email ID *"
-      name="sellerEmail"
-      onChange={handleChange}
-      style={{
-        ...styles.field.input,
-        gridColumn: "1 / -1",
-      }}
-    />
-
-    {/* ✅ ADDRESS – FULL WIDTH */}
-    <textarea
-      rows={3}
-      placeholder="Address *"
-      name="sellerAddress"
-      onChange={handleChange}
-      style={{
-        ...styles.field.textarea,
-        gridColumn: "1 / -1",
-      }}
-    />
-  </div>
-</div>
-        {/* Trade & Logistics */}
-        <div style={styles.section}>
-          <h3 style={styles.sectionTitle}>Trade & Logistics Details</h3>
-          <div style={styles.grid2}>
-            <select name="originCountry" onChange={handleChange} style={styles.field.select}>
-              <option value="">Origin Country *</option>
-              <option>USA</option>
-              <option>Germany</option>
-              <option>India</option>
-            </select>
-
-            <select name="originCurrency" onChange={handleChange} style={styles.field.select}>
-              <option value="">Origin Currency *</option>
-              <option>USD</option>
-              <option>EUR</option>
-              <option>INR</option>
-            </select>
-
-            <select name="destinationCountry" onChange={handleChange} style={styles.field.select}>
-              <option value="">Destination Country *</option>
-              <option>USA</option>
-              <option>China</option>
-              <option>Canada</option>
-            </select>
-
-            <select name="destinationCurrency" onChange={handleChange} style={styles.field.select}>
-              <option value="">Destination Currency *</option>
-              <option>USD</option>
-              <option>CNY</option>
-              <option>CAD</option>
-            </select>
-
-            <select name="mode" onChange={handleChange} style={styles.field.select}>
-              <option value="">Mode of Transport *</option>
-              <option>Sea</option>
-              <option>Air</option>
-              <option>Road</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Product */}
-        <div style={styles.section}>
-          <h3 style={styles.sectionTitle}>Product & Classification</h3>
-          <div style={styles.grid2}>
-            <input placeholder="Product Name *" name="productName" onChange={handleChange} style={styles.field.input} />
-            <input placeholder="HS Code *" name="hsCode" onChange={handleChange} style={styles.field.input} />
-            <select name="industry" onChange={handleChange} style={styles.field.select}>
-              <option value="">Industry *</option>
-              <option>Agriculture</option>
-              <option>Automotive</option>
-            </select>
-            <select name="subIndustry" onChange={handleChange} style={styles.field.select}>
-              <option value="">Sub-Industry *</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Footer */}
         <div style={styles.footer}>
-          <button style={styles.cancelBtn}>Cancel</button>
-          <button style={styles.saveBtn} onClick={handleSave}>
-            ✔ Save Transaction
-          </button>
+          <button style={styles.btn} disabled={step === 1} onClick={() => setStep(step - 1)}>Back</button>
+          {step < 5
+            ? <button
+  style={styles.primaryBtn}
+  onClick={() => {
+    if (step === 4 && !form.modeOfTransport) {
+      alert("Please select Mode of Transport");
+      return;
+    }
+    setStep(step + 1);
+  }}
+>
+  Next
+</button>
+
+            : <button style={styles.primaryBtn} onClick={handleSave}>Save Transaction</button>}
         </div>
       </div>
     </div>
