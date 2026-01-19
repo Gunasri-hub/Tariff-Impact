@@ -18,6 +18,9 @@ import CountryDatabasePage from "./CountryDatabasePage";
 import UserManagementPage from "./UserManagementPage";
 import AgreementsManagementPage from "./AgreementsManagementPage";
 import ProductLibraryPage from "./ProductLibraryPage";
+import BuyerManagementPage from "./BuyerManagementPage";
+import SellerManagementPage from "./SellerManagementPage";
+import TransactionManagementPage from "./TransactionManagementPage";
 
 
 
@@ -40,10 +43,13 @@ function AdminDashboardPage() {
   const menuItems = [
     { id: "dashboard", label: "Admin Dashboard", icon: <FiPieChart /> },
     { id: "users", label: "User Management", icon: <FiUsers /> },
+    { id: "buyers", label: "Buyer Management", icon: <FiUsers /> },
+    { id: "sellers", label: "Seller Management", icon: <FiUsers /> },
     { id: "agreements", label: "Agreements Management", icon: <FiFileText /> },
     { id: "countries", label: "Country Database", icon: <FiGlobe /> },
     { id: "products", label: "Product Library", icon: <FiBox /> },
     { id: "reports", label: "Reports", icon: <FiBarChart2 /> },
+    {id:"Transactions", label: "Transaction Management", icon: <FiBell />},
     { id: "feedback", label: "Feedback Inbox", icon: <FiMessageSquare /> },
   ];
 
@@ -84,6 +90,15 @@ function AdminDashboardPage() {
       </section>
       
            
+    </div>
+  );
+  const TransactionManagement = () => (
+    <div style={{ padding: "20px 0" }}>
+      <section className="admin-hero">
+        <h1>👥 Transaction Management</h1>
+        <p>Manage all system transactions, roles, and permissions</p>
+      </section>
+      
     </div>
   );
 
@@ -162,9 +177,12 @@ function AdminDashboardPage() {
       <main className="admin-main">
         {/* ✅ ALL 6 Internal Pages */}
         {currentPage === "users" && <UserManagementPage />}
+        {currentPage === "buyers" && <BuyerManagementPage />}
+        {currentPage === "sellers" && <SellerManagementPage />}
         {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibraryPage />}
+        {currentPage === "Transactions" && <TransactionManagementPage />}
         {currentPage === "reports" && <Reports />}
         {currentPage === "feedback" && <FeedbackInbox />}
 

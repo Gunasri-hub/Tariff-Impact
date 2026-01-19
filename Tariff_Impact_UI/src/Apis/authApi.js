@@ -145,6 +145,7 @@ export const deleteAgreement = (code) =>
   API.delete(`/admin/agreement/${code}`);
 
 // api/product.js
+
 export const getProducts = (params = {}) =>
   API.get("/admin/products", { params });
 
@@ -185,6 +186,7 @@ export const exportTaxationExcel = (params) =>
     responseType: "blob"
   });
 
+// ========== BUYER MANAGEMENT ==========
   //cost calculator api//
   export const runCostCalculator = (payload) =>
   API.post("/calculator/run", payload);   // ✅ FIXED
@@ -195,6 +197,120 @@ export const pingCalculator = () =>
 export const saveCalculation = (data) => 
   API.post("/calculator/save", data);
 
+// GET all buyers with pagination and search
+export const getBuyers = (page = 1, limit = 50, search = "") =>
+  API.get("/buyers", {
+    params: { page, limit, search }
+  });
 
+// GET single buyer by ID  
+export const getBuyerById = (id) =>
+  API.get(`/buyers/${id}`);
+
+// CREATE new buyer
+export const createBuyer = (buyerData) =>
+  API.post("/buyers", buyerData);
+
+// UPDATE buyer
+export const updateBuyer = (id, buyerData) =>
+  API.put(`/buyers/${id}`, buyerData);
+
+// DELETE buyer
+export const deleteBuyer = (id) =>
+  API.delete(`/buyers/${id}`);
+
+// GET all buyers for dropdowns (no pagination)
+export const getAllBuyers = () =>
+  API.get("/buyers", {
+    params: { limit: 1000 }
+  });
+
+
+// ========== SELLER MANAGEMENT ==========
+
+// GET all sellers with pagination and search
+export const getSellers = (page = 1, limit = 50, search = "") =>
+  API.get("/sellers", {
+    params: { page, limit, search }
+  });
+
+// GET single seller by ID  
+export const getSellerById = (id) =>
+  API.get(`/sellers/${id}`);
+
+// ✅ ADD THIS NEW FUNCTION - Get next available seller ID
+export const getNextSellerId = () =>
+  API.get("/sellers/next-id");
+
+// CREATE new seller
+export const createSeller = (sellerData) =>
+  API.post("/sellers", sellerData);
+
+// UPDATE seller
+export const updateSeller = (id, sellerData) =>
+  API.put(`/sellers/${id}`, sellerData);
+
+// DELETE seller
+export const deleteSeller = (id) =>
+  API.delete(`/sellers/${id}`);
+
+// GET all sellers for dropdowns (no pagination)
+export const getAllSellers = () =>
+  API.get("/sellers", {
+    params: { limit: 1000 }
+  });  
+
+
+
+  /* ================= TRANSACTIONS ================= */
+
+// ========== USER TRANSACTION MANAGEMENT ==========
+
+// GET all user transactions with pagination and search
+export const getUserTransactions = (page = 1, limit = 50, search = "") =>
+  API.get("/user/transactions", {
+    params: { page, limit, search }
+  });
+
+// GET single transaction by ID  
+export const getUserTransactionById = (id) =>
+  API.get(`/user/transactions/${id}`);
+
+// CREATE new transaction
+export const createUserTransaction = (transactionData) =>
+  API.post("/user/transactions", transactionData);
+
+// UPDATE transaction
+export const updateUserTransaction = (id, transactionData) =>
+  API.put(`/user/transactions/${id}`, transactionData);
+
+// DELETE transaction
+export const deleteUserTransaction = (id) =>
+  API.delete(`/user/transactions/${id}`);
+
+// GET all transactions for dropdowns (no pagination)
+export const getAllUserTransactions = () =>
+  API.get("/user/transactions", {
+    params: { limit: 1000 }
+  });
+
+// ✅ NEW - Get next available transaction code
+export const getNextTransactionCode = () =>
+  API.get("/user/transactions/next-code");
+
+// ✅ NEW - Export transactions to Excel
+export const exportUserTransactions = (params) =>
+  API.get("/user/transactions/export", {
+    params,
+    responseType: "blob"
+  });
+
+// ✅ NEW - Get transaction dropdown data (countries, currencies, etc.)
+export const getTransactionDropdowns = () =>
+  API.get("/user/transaction-dropdowns");
+
+// ✅ NEW - Get transaction stats/summary
+export const getTransactionStats = () =>
+  API.get("/user/transactions/stats");
 
 export default API;

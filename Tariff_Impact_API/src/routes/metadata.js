@@ -154,14 +154,13 @@ router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
 // src/routes/metadata.js
-const productController = require("../Controller/metadata/productController");
+const productController = require("../controller/metadata/productController");
 
 // Product routes - ADD THESE
 router.get("/admin/products", productController.getAll);
 router.post("/admin/products", productController.create);
 router.put("/admin/products/:id", productController.update);
 router.delete("/admin/products/:id", productController.delete);
-
 
 
 
@@ -220,6 +219,28 @@ router.get('/forex/currencies', (req, res) => {
 // main analysis endpoint
 router.post('/forex/analyze', forexController.analyze);
 
+// In your route file
+const buyerController = require("../controller/metadata/buyerController");
+
+router.get("/buyers", buyerController.getAllBuyers);
+router.get("/buyers/stats", buyerController.getBuyerStats); // Optional
+router.get("/buyers/:id", buyerController.getBuyerById);
+router.post("/buyers", buyerController.createBuyer);
+router.put("/buyers/:id", buyerController.updateBuyer);
+router.delete("/buyers/:id", buyerController.deleteBuyer);
+
+
+
+const sellerController = require('../controller/metadata/sellerController');
+
+router.get('/sellers', sellerController.getAllSellers);
+router.get('/sellers/stats', sellerController.getSellerStats);
+router.get('/sellers/:id', sellerController.getSellerById);
+router.post('/sellers', sellerController.createSeller);
+router.put('/sellers/:id', sellerController.updateSeller);
+router.delete('/sellers/:id', sellerController.deleteSeller);
+router.get('/sellers/next-id', sellerController.generateNextSellerId);
+
 // ========== AGREEMENT MASTER ==========
 const agreementController = require("../controller/metadata/agreementController");
 
@@ -247,6 +268,24 @@ router.post("/calculator/run", costCalculator.runCostCalculator);
 router.post("/calculator/save", costCalculator.saveCalculation);
 
 
+
+// User Transaction Routes//
+
+
+
+const {
+  createUserTransaction,
+  getNextTransactionCode,
+  getAllUserTransactions,
+  updateUserTransaction,
+  deleteUserTransaction
+} = require("../controller/metadata/userTransactionController");
+
+router.get("/user/transactions", getAllUserTransactions);
+router.get("/user/transactions/next-code", getNextTransactionCode);
+router.post("/user/transactions", createUserTransaction);
+router.put("/user/transactions/:id", updateUserTransaction);
+router.delete("/user/transactions/:id", deleteUserTransaction);
 
 
 // Health check
