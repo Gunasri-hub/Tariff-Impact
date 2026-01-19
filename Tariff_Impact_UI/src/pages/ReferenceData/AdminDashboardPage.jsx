@@ -20,6 +20,9 @@ import AgreementsManagementPage from "./AgreementsManagementPage";
 import ProductLibraryPage from "./ProductLibraryPage";
 import BuyerManagementPage from "./BuyerManagementPage";
 import SellerManagementPage from "./SellerManagementPage";
+import TransactionManagementPage from "./TransactionManagementPage";
+
+
 
 function AdminDashboardPage() {
   const navigate = useNavigate();
@@ -46,6 +49,7 @@ function AdminDashboardPage() {
     { id: "countries", label: "Country Database", icon: <FiGlobe /> },
     { id: "products", label: "Product Library", icon: <FiBox /> },
     { id: "reports", label: "Reports", icon: <FiBarChart2 /> },
+    {id:"Transactions", label: "Transaction Management", icon: <FiBell />},
     { id: "feedback", label: "Feedback Inbox", icon: <FiMessageSquare /> },
   ];
 
@@ -86,6 +90,15 @@ function AdminDashboardPage() {
       </section>
       
            
+    </div>
+  );
+  const TransactionManagement = () => (
+    <div style={{ padding: "20px 0" }}>
+      <section className="admin-hero">
+        <h1>👥 Transaction Management</h1>
+        <p>Manage all system transactions, roles, and permissions</p>
+      </section>
+      
     </div>
   );
 
@@ -169,6 +182,7 @@ function AdminDashboardPage() {
         {currentPage === "agreements" && <AgreementsManagementPage />}
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibraryPage />}
+        {currentPage === "Transactions" && <TransactionManagementPage />}
         {currentPage === "reports" && <Reports />}
         {currentPage === "feedback" && <FeedbackInbox />}
 

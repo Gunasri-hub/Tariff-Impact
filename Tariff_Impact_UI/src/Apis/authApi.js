@@ -145,6 +145,7 @@ export const deleteAgreement = (code) =>
   API.delete(`/admin/agreement/${code}`);
 
 // api/product.js
+
 export const getProducts = (params = {}) =>
   API.get("/admin/products", { params });
 
@@ -257,5 +258,57 @@ export const getAllSellers = () =>
     params: { limit: 1000 }
   });  
 
+
+
+  /* ================= TRANSACTIONS ================= */
+
+// ========== USER TRANSACTION MANAGEMENT ==========
+
+// GET all user transactions with pagination and search
+export const getUserTransactions = (page = 1, limit = 50, search = "") =>
+  API.get("/user/transactions", {
+    params: { page, limit, search }
+  });
+
+// GET single transaction by ID  
+export const getUserTransactionById = (id) =>
+  API.get(`/user/transactions/${id}`);
+
+// CREATE new transaction
+export const createUserTransaction = (transactionData) =>
+  API.post("/user/transactions", transactionData);
+
+// UPDATE transaction
+export const updateUserTransaction = (id, transactionData) =>
+  API.put(`/user/transactions/${id}`, transactionData);
+
+// DELETE transaction
+export const deleteUserTransaction = (id) =>
+  API.delete(`/user/transactions/${id}`);
+
+// GET all transactions for dropdowns (no pagination)
+export const getAllUserTransactions = () =>
+  API.get("/user/transactions", {
+    params: { limit: 1000 }
+  });
+
+// ✅ NEW - Get next available transaction code
+export const getNextTransactionCode = () =>
+  API.get("/user/transactions/next-code");
+
+// ✅ NEW - Export transactions to Excel
+export const exportUserTransactions = (params) =>
+  API.get("/user/transactions/export", {
+    params,
+    responseType: "blob"
+  });
+
+// ✅ NEW - Get transaction dropdown data (countries, currencies, etc.)
+export const getTransactionDropdowns = () =>
+  API.get("/user/transaction-dropdowns");
+
+// ✅ NEW - Get transaction stats/summary
+export const getTransactionStats = () =>
+  API.get("/user/transactions/stats");
 
 export default API;

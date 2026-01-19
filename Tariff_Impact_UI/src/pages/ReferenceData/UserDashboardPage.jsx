@@ -19,6 +19,8 @@ import TaxationModule from "./TaxationModule";
 import BuyerPage from "./BuyerPage";
 import SellerPage from "./SellerPage"; 
 import CostCalculatorWizard from "./CostCalculatorWizard";
+import UserTransactionData from "./UserTransactionData";
+
 
 
 const menuItems = [
@@ -28,6 +30,7 @@ const menuItems = [
   { id: "taxation", label: "Taxation Module", icon: <FiFileText /> },
   { id: "forex", label: "Forex Analysis", icon: <FiDollarSign /> },
   { id: "cost", label: "Cost Calculator", icon: <FiGlobe /> },
+  {id: "transactions", label: "Transaction Data", icon: <FiFileText />},
 ];
 
 const UserDashboard = () => {
@@ -46,6 +49,15 @@ const UserDashboard = () => {
       <section className="welcome-strip">
         <h1>Cost Calculator</h1>
         <p>Calculate landed costs including all charges</p>
+      </section>
+    </div>
+  );
+
+  const TransactionData = () => (
+    <div className="page-padding">
+      <section className="welcome-strip">
+        <h1>🧮 Transaction Data</h1>
+        <p>Comprehensive multi-country trade transaction tracking and analytics</p>
       </section>
     </div>
   );
@@ -78,11 +90,15 @@ const UserDashboard = () => {
       case "cost":
         return <CostCalculatorWizard />;
 
+
       case "buyer":
         return <BuyerPage />;
 
-      case "seller":
+            case "seller":
         return <SellerPage />;
+        
+      case "transactions":
+        return <UserTransactionData />;
 
       case "settings":
         return <Settings />;
@@ -128,15 +144,17 @@ const UserDashboard = () => {
             </div>
           </div>
 
-          <div className="qa-card" onClick={() => setActive("forex")}>
-            <div className="qa-icon qa-purple">🌍</div>
-            <div className="qa-text">
-              <h4>Forex Analysis</h4>
-              <p>Currency impact analysis</p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="qa-card" onClick={() => setActive("forex")}>
+                  <div className="qa-icon qa-purple">
+                    <FiGlobe />
+                  </div>
+                  <div className="qa-text">
+                    <h4>Forex Analysis</h4>
+                    <p>Currency impact analysis</p>
+                  </div>
+                </div>
+              </div>
+            </section>
 
       {/* Dashboard Bottom Section */}
       <section className="dash-row">

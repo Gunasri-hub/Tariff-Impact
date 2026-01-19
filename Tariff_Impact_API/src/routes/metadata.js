@@ -154,14 +154,13 @@ router.get("/impact-analysis/duty-type", controller.getDutyTypeData);
 router.get("/impact-analysis/tariff", controller.getTariffData);
 
 // src/routes/metadata.js
-const productController = require("../Controller/metadata/productController");
+const productController = require("../controller/metadata/productController");
 
 // Product routes - ADD THESE
 router.get("/admin/products", productController.getAll);
 router.post("/admin/products", productController.create);
 router.put("/admin/products/:id", productController.update);
 router.delete("/admin/products/:id", productController.delete);
-
 
 
 
@@ -266,6 +265,24 @@ const costCalculator = require("../controller/metadata/costCalculator.controller
 
 router.get("/calculator/ping", costCalculator.pingCalculator);
 router.post("/calculator/run", costCalculator.runCostCalculator);
+
+// User Transaction Routes//
+
+
+
+const {
+  createUserTransaction,
+  getNextTransactionCode,
+  getAllUserTransactions,
+  updateUserTransaction,
+  deleteUserTransaction
+} = require("../controller/metadata/userTransactionController");
+
+router.get("/user/transactions", getAllUserTransactions);
+router.get("/user/transactions/next-code", getNextTransactionCode);
+router.post("/user/transactions", createUserTransaction);
+router.put("/user/transactions/:id", updateUserTransaction);
+router.delete("/user/transactions/:id", deleteUserTransaction);
 
 
 // Health check
