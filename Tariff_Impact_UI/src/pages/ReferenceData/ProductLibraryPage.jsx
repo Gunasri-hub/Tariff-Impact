@@ -1,83 +1,88 @@
 // src/components/ProductLibraryPage.jsx
-import React, { useEffect, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState, useCallback } from "react";
 import {
   getProducts,
   createProduct,
   updateProduct,
-  deleteProduct,
+  deleteProduct as deleteProductApi,
 } from "../../Apis/authApi";
 
-const EMPTY_FORM = {
-  hts_code: "",
-  product: "",
-  general_rate_of_duty: "",
-  special_rate_of_duty: "",
-  column2_rate_of_duty: "",
-};
-
 function ProductLibraryPage() {
-  const navigate = useNavigate();
-
   const [products, setProducts] = useState([]);
-  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [productToDelete, setProductToDelete] = useState(null);
-
-  const [form, setForm] = useState(EMPTY_FORM);
-  const [isEdit, setIsEdit] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [apiError, setApiError] = useState("");
+  const [validationErrors, setValidationErrors] = useState({});
 
-  
+  const [form, setForm] = useState({
+    hts_code: "",
+    product: "",
+    general_rate_of_duty: "",
+    special_rate_of_duty: "",
+    column2_rate_of_duty: "",
+  });
 
-  /* =========================
-     LOAD DATA
-  ========================= */
-  const loadProducts = useCallback(async (searchText = "") => {
-    setLoading(true);
+  // Fetch products from backend
+  const fetchProducts = useCallback(async () => {
     try {
-      console.log("Loading products with search:", searchText); // Debug log
-      const params = searchText ? { search: searchText.trim() } : {};
+      setLoading(true);
+      setApiError("");
+
+      const params = search.trim() ? { search: search.trim() } : {};
       const res = await getProducts(params);
-      console.log("API Response:", res); // Debug full response
-      const dataArray = Array.isArray(res.data) ? res.data : res.data?.data || res.data?.products || [];
-      setProducts(dataArray);
-      setTotal(res.data?.total || res.data?.count || dataArray.length || 0);
+      const allProducts = Array.isArray(res.data) ? res.data : res.data?.data || res.data?.products || [];
+      
+      setProducts(allProducts);
     } catch (err) {
-      console.error("Load products error:", err.response?.data || err); // Better logging
-      alert(
-        err.response?.data?.message ||
-        `Request failed (${err.response?.status})` ||
-        "Failed to load products - check console for details"
-      );
+      setApiError(err.response?.data?.message || "Failed to fetch products");
       setProducts([]);
-      setTotal(0);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [search]);
 
   useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    fetchProducts();
+  }, [fetchProducts]);
 
-  /* =========================
-     FORM HANDLERS
-  ========================= */
-  const openCreate = () => {
-    setIsEdit(false);
-    setEditingId(null);
-    setForm(EMPTY_FORM);
-    setIsFormOpen(true);
+  // Validate form function
+  const validateForm = () => {
+    const errors = {};
+    
+    if (!form.product?.trim()) {
+      errors.product = "Product name is required";
+    }
+    
+    if (!form.hts_code?.trim()) {
+      errors.hts_code = "HS code is required";
+    } else if (form.hts_code.length > 20) {
+      errors.hts_code = "HS code is too long";
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
-  const openEdit = (p) => {
-    setIsEdit(true);
+  const resetForm = () => {
+    setForm({
+      hts_code: "",
+      product: "",
+      general_rate_of_duty: "",
+      special_rate_of_duty: "",
+      column2_rate_of_duty: "",
+    });
+    setValidationErrors({});
+  };
+
+  const startAdd = () => {
+    setEditingId(null);
+    resetForm();
+    setModalOpen(true);
+  };
+
+  const startEdit = (p) => {
     setEditingId(p.id);
     setForm({
       hts_code: p.hts_code || "",
@@ -86,372 +91,538 @@ function ProductLibraryPage() {
       special_rate_of_duty: p.special_rate_of_duty || "",
       column2_rate_of_duty: p.column2_rate_of_duty || "",
     });
-    setIsFormOpen(true);
+    setValidationErrors({});
+    setModalOpen(true);
   };
 
-  const closeForm = () => {
-    setIsFormOpen(false);
-    setForm(EMPTY_FORM);
+  const closeModal = () => {
+    setModalOpen(false);
+    setEditingId(null);
+    setValidationErrors({});
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm((f) => ({ ...f, [name]: value }));
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({ ...prev, [name]: "" }));
+    }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const saveProduct = async () => {
+    if (!validateForm()) {
+      alert("Please fix the validation errors before saving.");
+      return;
+    }
+
     const payload = {
-      hts_code: form.hts_code,
-      product: form.product,
-      general_rate_of_duty: form.general_rate_of_duty,
-      special_rate_of_duty: form.special_rate_of_duty,
-      column2_rate_of_duty: form.column2_rate_of_duty,
+      hts_code: form.hts_code.trim(),
+      product: form.product.trim(),
+      general_rate_of_duty: form.general_rate_of_duty.trim(),
+      special_rate_of_duty: form.special_rate_of_duty.trim(),
+      column2_rate_of_duty: form.column2_rate_of_duty.trim(),
     };
 
     try {
-      if (isEdit && editingId) {
+      if (editingId) {
         await updateProduct(editingId, payload);
         alert("✅ Product updated successfully!");
       } else {
         await createProduct(payload);
-        alert("✅ Product created successfully!");
+        alert("✅ Product added successfully!");
       }
-      await loadProducts(search.trim());
-      closeForm();
+
+      closeModal();
+      fetchProducts();
     } catch (err) {
-      console.error("Submit error:", err);
+      console.error("Error saving product:", err);
       alert(err.response?.data?.message || "Failed to save product");
     }
   };
 
-  const handleConfirmDelete = async () => {
-    if (!productToDelete?.id) return;
+  const deleteProduct = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      await deleteProduct(productToDelete.id);
+      await deleteProductApi(id);
       alert("✅ Product deleted successfully!");
-      await loadProducts(search.trim());
-      closeDeleteConfirm();
+      fetchProducts();
     } catch (err) {
-      console.error("Delete error:", err);
       alert(err.response?.data?.message || "Failed to delete product");
     }
   };
 
-  const openDeleteConfirm = (p) => {
-    setProductToDelete(p);
-    setIsDeleteOpen(true);
-  };
-
-  const closeDeleteConfirm = () => {
-    setIsDeleteOpen(false);
-    setProductToDelete(null);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    loadProducts(search.trim());
+  // EXACT CountryDatabasePage STYLES
+  const styles = {
+    page: {
+      padding: "0",
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+      backgroundColor: "#f8f9fa",
+      minHeight: "100vh"
+    },
+    contentContainer: {
+      padding: "8px 24px 24px 24px"
+    },
+    errorBox: {
+      backgroundColor: "#f8d7da",
+      color: "#721c24",
+      padding: "12px 16px",
+      borderRadius: "8px",
+      marginBottom: "20px",
+      border: "1px solid #f5c6cb"
+    },
+    toolbar: {
+      display: "flex",
+      gap: "12px",
+      marginBottom: "20px",
+      flexWrap: "wrap",
+      alignItems: "center",
+      background: "#fff",
+      padding: "16px",
+      borderRadius: "8px",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+      border: "1px solid #e9ecef"
+    },
+    search: {
+      padding: "8px 12px",
+      fontSize: "13px",
+      border: "1px solid #ddd",
+      borderRadius: "6px",
+      flex: 1,
+      minWidth: "200px",
+      transition: "all 0.2s",
+      backgroundColor: "#fff"
+    },
+    primaryBtn: {
+      padding: "8px 16px",
+      background: "#007bff",
+      color: "white",
+      border: "none",
+      borderRadius: "6px",
+      fontWeight: "500",
+      cursor: "pointer",
+      transition: "all 0.2s",
+      whiteSpace: "nowrap",
+      fontSize: "13px",
+      display: "flex",
+      alignItems: "center",
+      gap: "6px"
+    },
+    tableWrapper: {
+      background: "white",
+      borderRadius: "8px",
+      overflow: "hidden",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+      overflowX: "auto",
+      marginTop: "0",
+      border: "1px solid #e9ecef"
+    },
+    table: {
+      width: "100%",
+      borderCollapse: "collapse",
+      fontSize: "12px"
+    },
+    th: {
+      padding: "10px 12px",
+      textAlign: "left",
+      fontWeight: "600",
+      color: "#495057",
+      textTransform: "uppercase",
+      fontSize: "11px",
+      letterSpacing: "0.3px",
+      background: "#f8f9fa",
+      borderBottom: "1px solid #dee2e6",
+      borderRight: "1px solid #e9ecef"
+    },
+    td: {
+      padding: "8px 12px",
+      borderBottom: "1px solid #e9ecef",
+      color: "#495057",
+      verticalAlign: "middle",
+      fontSize: "12px",
+      borderRight: "1px solid #e9ecef"
+    },
+    iconBtn: {
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      fontSize: "12px",
+      padding: "4px 8px",
+      borderRadius: "4px",
+      transition: "all 0.2s",
+      marginRight: "6px",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "4px"
+    },
+    htsCode: {
+      backgroundColor: '#e9ecef', 
+      padding: '2px 6px', 
+      borderRadius: '4px',
+      fontFamily: 'monospace',
+      fontSize: '11px',
+      display: 'inline-block'
+    },
+    loadingText: {
+      textAlign: "center",
+      padding: "40px",
+      color: "#6c757d",
+      fontSize: "14px"
+    },
+    noData: {
+      textAlign: "center",
+      padding: "40px 20px",
+      color: "#6c757d",
+      fontStyle: "italic",
+      fontSize: "14px"
+    },
+    modalBackdrop: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 1000,
+      padding: "20px"
+    },
+    modalPanel: {
+      background: "white",
+      borderRadius: "12px",
+      width: "100%",
+      maxWidth: "500px",
+      maxHeight: "90vh",
+      overflowY: "auto",
+      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)"
+    },
+    modalHeader: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "20px",
+      borderBottom: "1px solid #e9ecef"
+    },
+    modalHeaderH3: {
+      margin: 0,
+      fontSize: "18px",
+      fontWeight: "600",
+      color: "#1a1a1a"
+    },
+    modalBody: {
+      padding: "20px"
+    },
+    formField: {
+      marginBottom: "16px"
+    },
+    formLabel: {
+      display: "block",
+      fontSize: "13px",
+      fontWeight: "500",
+      color: "#495057",
+      marginBottom: "6px"
+    },
+    formInput: {
+      width: "100%",
+      padding: "10px 12px",
+      border: "1px solid #ddd",
+      borderRadius: "6px",
+      fontSize: "13px",
+      transition: "all 0.2s",
+      boxSizing: "border-box"
+    },
+    formSelect: {
+      width: "100%",
+      padding: "10px 12px",
+      border: "1px solid #ddd",
+      borderRadius: "6px",
+      fontSize: "13px",
+      transition: "all 0.2s",
+      boxSizing: "border-box",
+      appearance: "none",
+      backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "right 12px center",
+      backgroundSize: "14px",
+      paddingRight: "35px",
+      backgroundColor: "white"
+    },
+    errorInput: {
+      borderColor: "#dc3545",
+      backgroundColor: "#fff8f8"
+    },
+    errorText: {
+      color: "#dc3545",
+      fontSize: "11px",
+      marginTop: "4px",
+      display: "block"
+    },
+    modalFooter: {
+      display: "flex",
+      justifyContent: "flex-end",
+      gap: "10px",
+      padding: "20px",
+      borderTop: "1px solid #e9ecef",
+      backgroundColor: "#f8f9fa",
+      borderBottomLeftRadius: "12px",
+      borderBottomRightRadius: "12px"
+    }
   };
 
   return (
-    <div className="admin-layout">
+    <div style={styles.page}>
+      {/* NEW HERO HEADER */}
+      <div style={{ padding: "20px 0" }}>
+        <section className="admin-hero">
+          <h1>📦 Product & HTS Code Library</h1>
+          <p>Manage tariff products and HS codes</p>
+        </section>
+      </div>
 
-       <style>{`
-    /* ---------- Product Library layout ---------- */
+      <div style={styles.contentContainer}>
+        {apiError && (
+          <div style={styles.errorBox}>
+            <strong>Error:</strong> {apiError}
+          </div>
+        )}
 
-    .dashboard {
-      min-height: 100vh;
-      display: flex;
-      background: #f5f7fb;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-    }
-
-    .sidebar .sidebar-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-      padding: 0 4px;
-    }
-
-    .sidebar-logo-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: #1d4ed8;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
-    .sidebar-brand-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    .dashboard .main {
-      flex: 1;
-      padding: 24px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: none;
-    }
-
-    .dashboard .main .card {
-      width: 100%;
-      max-width: none;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .topbar-breadcrumb {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-
-    .topbar-title {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    .metric-value {
-      font-size: 14px;
-    }
-
-    .metric-value.text-green {
-      color: #16a34a;
-    }
-
-    .metric-value.text-orange {
-      color: #f59e0b;
-    }
-
-    /* ===== Product Library full-width content ===== */
-
-   .admin-main-inner {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-    .admin-main-inner .card {
-      width: 100%;
-      padding: 20px 24px 16px;
-    }
-      
-  `}</style>
-      
-
-      {/* Main content */}
-      <main className="admin-main">
-        <div className="admin-main-inner">
-          <section className="admin-hero">
-            <div>
-              <h1>Product &amp; HTS Code Library</h1>
-              <p>Browse, add, and manage tariff products and HS codes.</p>
-            </div>
-          </section>
-
-          <section className="card">
-            <div className="card-toolbar">
-              <form className="card-search-group" onSubmit={handleSearchSubmit}>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Search by product name or HS code..."
-                  value={search}
-                  onChange={handleSearchChange}
-                />
-                <button className="primary-button small" type="submit">
-                  Search
-                </button>
-              </form>
-
-              <div className="card-right-group">
-                <button className="primary-button" type="button" onClick={openCreate}>
-                  + Add Product
-                </button>
-                <span className="card-total-pill">Total: {total} products</span>
-              </div>
-            </div>
-
-            {loading ? (
-              <p>Loading products...</p>
-            ) : (
-              <div className="table-wrapper">
-                <table className="data-table">
-                  <thead>
-                    <tr>
-                      <th>Product Name</th>
-                      <th>HS Code</th>
-                      <th>General Rate</th>
-                      <th>Special Rate</th>
-                      <th>Column 2 Rate</th>
-                      <th style={{ width: 120 }}>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {products.map((p) => (
-                      <tr key={p.id}>
-                        <td>{p.product}</td>
-                        <td className="tag tag-soft">{p.hts_code}</td>
-                        <td>{p.general_rate_of_duty || "—"}</td>
-                        <td>{p.special_rate_of_duty || "—"}</td>
-                        <td>{p.column2_rate_of_duty || "—"}</td>
-                        <td>
-                          <button
-                            className="icon-button edit-icon"
-                            type="button"
-                            onClick={() => openEdit(p)}
-                            aria-label="Edit product"
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            className="icon-button delete-icon"
-                            type="button"
-                            onClick={() => openDeleteConfirm(p)}
-                            aria-label="Delete product"
-                          >
-                            🗑️
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                    {products.length === 0 && !loading && (
-                      <tr>
-                        <td colSpan={6} className="empty-row">
-                          No products match this search. Try adding one!
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </section>
+        <div style={styles.toolbar}>
+          <input
+            style={styles.search}
+            placeholder="Search by product name or HS code..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button 
+            style={styles.primaryBtn}
+            onClick={startAdd}
+          >
+            <span>+</span> Add Product
+          </button>
         </div>
 
-        {/* Modals - unchanged */}
-        {isFormOpen && (
-          <div className="side-modal-backdrop" onClick={closeForm}>
-            <div className="side-modal" onClick={(e) => e.stopPropagation()}>
-              <header className="side-modal-header">
-                <h2>{isEdit ? "Edit Product" : "Add New Product"}</h2>
-                <button className="icon-button" type="button" onClick={closeForm}>
-                  ✕
-                </button>
-              </header>
-
-              <form className="side-modal-body" onSubmit={handleSubmit}>
-                <div className="field-row">
-                  <label className="field">
-                    <span className="field-label">Product Name *</span>
-                    <input
-                      name="product"
-                      value={form.product}
-                      onChange={handleChange}
-                      placeholder="Enter product name"
-                      required
-                    />
-                  </label>
-
-                  <label className="field">
-                    <span className="field-label">HS Code *</span>
-                    <input
-                      name="hts_code"
-                      value={form.hts_code}
-                      onChange={handleChange}
-                      placeholder="e.g., 8517.12"
-                      required
-                    />
-                  </label>
-                </div>
-
-                <div className="field">
-                  <span className="field-label">Duty Rates (%)</span>
-                  <div className="duty-grid">
-                    <div>
-                      <span className="field-label">General</span>
-                      <input
-                        name="general_rate_of_duty"
-                        value={form.general_rate_of_duty}
-                        onChange={handleChange}
-                        placeholder="0"
-                      />
-                    </div>
-                    <div>
-                      <span className="field-label">Special</span>
-                      <input
-                        name="special_rate_of_duty"
-                        value={form.special_rate_of_duty}
-                        onChange={handleChange}
-                        placeholder="0"
-                      />
-                    </div>
-                    <div>
-                      <span className="field-label">Column 2</span>
-                      <input
-                        name="column2_rate_of_duty"
-                        value={form.column2_rate_of_duty}
-                        onChange={handleChange}
-                        placeholder="0"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="side-modal-footer">
-                  <button type="button" className="ghost-button" onClick={closeForm}>
-                    Cancel
-                  </button>
-                  <button className="primary-button" type="submit">
-                    {isEdit ? "Save Changes" : "Create Product"}
-                  </button>
-                </div>
-              </form>
-            </div>
+        {loading ? (
+          <div style={styles.loadingText}>
+            ⏳ Loading products...
+          </div>
+        ) : (
+          <div style={styles.tableWrapper}>
+            <table style={styles.table}>
+              <thead>
+                <tr>
+                  <th style={styles.th}>Product Name</th>
+                  <th style={styles.th}>HS Code</th>
+                  <th style={styles.th}>General Rate</th>
+                  <th style={styles.th}>Special Rate</th>
+                  <th style={styles.th}>Column 2 Rate</th>
+                  <th style={styles.th}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.length === 0 ? (
+                  <tr>
+                    <td style={{ ...styles.td, ...styles.noData }} colSpan={6}>
+                      {search ? (
+                        "🔍 No matching products found"
+                      ) : (
+                        "📭 No products in database"
+                      )}
+                    </td>
+                  </tr>
+                ) : (
+                  products.map((p, index) => (
+                    <tr 
+                      key={p.id || index}
+                      style={{ 
+                        backgroundColor: index % 2 === 0 ? '#fff' : '#fafafa'
+                      }}
+                    >
+                      <td style={styles.td}>
+                        <div style={{ fontWeight: "500", color: "#1a1a1a", fontSize: "12px" }}>
+                          {p.product}
+                        </div>
+                      </td>
+                      <td style={styles.td}>
+                        <code style={styles.htsCode}>
+                          {p.hts_code}
+                        </code>
+                      </td>
+                      <td style={styles.td}>
+                        {p.general_rate_of_duty || "—"}
+                      </td>
+                      <td style={styles.td}>
+                        {p.special_rate_of_duty || "—"}
+                      </td>
+                      <td style={styles.td}>
+                        {p.column2_rate_of_duty || "—"}
+                      </td>
+                      <td style={styles.td}>
+                        <button 
+                          style={{ ...styles.iconBtn, color: "#007bff" }}
+                          onClick={() => startEdit(p)}
+                          title="Edit"
+                        >
+                          <span>✏️</span>
+                        </button>
+                        <button 
+                          style={{ ...styles.iconBtn, color: "#dc3545" }}
+                          onClick={() => deleteProduct(p.id)}
+                          title="Delete"
+                        >
+                          <span>🗑️</span> 
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
         )}
 
-        {isDeleteOpen && (
-          <div className="confirm-backdrop" onClick={closeDeleteConfirm}>
-            <div className="confirm-modal" onClick={(e) => e.stopPropagation()}>
-              <h3>Delete Product</h3>
-              <p>
-                Are you sure you want to delete "{productToDelete?.product}"? This action cannot be undone.
-              </p>
-              <div className="confirm-actions">
-                <button type="button" className="ghost-button" onClick={closeDeleteConfirm}>
+        {/* Add/Edit Modal - EXACT CountryDatabasePage Style */}
+        {modalOpen && (
+          <div style={styles.modalBackdrop} onClick={closeModal}>
+            <div style={styles.modalPanel} onClick={(e) => e.stopPropagation()}>
+              <div style={styles.modalHeader}>
+                <h3 style={styles.modalHeaderH3}>
+                  {editingId ? "Edit Product" : "Add New Product"}
+                </h3>
+                <button 
+                  onClick={closeModal}
+                  style={{ 
+                    background: "none", 
+                    border: "none", 
+                    fontSize: "24px", 
+                    cursor: "pointer",
+                    color: "#6c757d",
+                    padding: "0",
+                    width: "32px",
+                    height: "32px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "50%"
+                  }}
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div style={styles.modalBody}>
+                <div style={styles.formField}>
+                  <label style={styles.formLabel}>
+                    Product Name *
+                  </label>
+                  <input
+                    name="product"
+                    value={form.product}
+                    onChange={handleChange}
+                    style={{
+                      ...styles.formInput,
+                      ...(validationErrors.product && styles.errorInput)
+                    }}
+                    placeholder="e.g., Smartphones"
+                  />
+                  {validationErrors.product && (
+                    <span style={styles.errorText}>{validationErrors.product}</span>
+                  )}
+                </div>
+                
+                <div style={styles.formField}>
+                  <label style={styles.formLabel}>
+                    HS Code *
+                  </label>
+                  <input
+                    name="hts_code"
+                    value={form.hts_code}
+                    onChange={handleChange}
+                    style={{
+                      ...styles.formInput,
+                      ...(validationErrors.hts_code && styles.errorInput)
+                    }}
+                    placeholder="e.g., 8517.12"
+                    maxLength="20"
+                  />
+                  {validationErrors.hts_code && (
+                    <span style={styles.errorText}>{validationErrors.hts_code}</span>
+                  )}
+                </div>
+                
+                <div style={styles.formField}>
+                  <label style={styles.formLabel}>
+                    General Rate (%)
+                  </label>
+                  <input
+                    name="general_rate_of_duty"
+                    value={form.general_rate_of_duty}
+                    onChange={handleChange}
+                    style={styles.formInput}
+                    placeholder="e.g., 2.5"
+                  />
+                </div>
+                
+                <div style={styles.formField}>
+                  <label style={styles.formLabel}>
+                    Special Rate (%)
+                  </label>
+                  <input
+                    name="special_rate_of_duty"
+                    value={form.special_rate_of_duty}
+                    onChange={handleChange}
+                    style={styles.formInput}
+                    placeholder="e.g., 0"
+                  />
+                </div>
+                
+                <div style={styles.formField}>
+                  <label style={styles.formLabel}>
+                    Column 2 Rate (%)
+                  </label>
+                  <input
+                    name="column2_rate_of_duty"
+                    value={form.column2_rate_of_duty}
+                    onChange={handleChange}
+                    style={styles.formInput}
+                    placeholder="e.g., 20"
+                  />
+                </div>
+              </div>
+              
+              <div style={styles.modalFooter}>
+                <button 
+                  style={{
+                    padding: "8px 16px",
+                    background: "#6c757d",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "6px",
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    transition: "background-color 0.2s",
+                    fontSize: "13px"
+                  }}
+                  onClick={closeModal}
+                >
                   Cancel
                 </button>
-                <button type="button" className="primary-button danger" onClick={handleConfirmDelete}>
-                  Delete Product
+                <button 
+                  style={styles.primaryBtn}
+                  onClick={saveProduct}
+                  disabled={
+                    !form.product?.trim() || 
+                    !form.hts_code?.trim()
+                  }
+                >
+                  {editingId ? "Update Product" : "Add Product"}
                 </button>
               </div>
             </div>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

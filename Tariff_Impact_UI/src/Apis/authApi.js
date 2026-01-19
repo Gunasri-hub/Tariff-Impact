@@ -194,6 +194,8 @@ export const exportTaxationExcel = (params) =>
 export const pingCalculator = () =>
   API.get("/calculator/ping");
 
+export const saveCalculation = (data) => 
+  API.post("/calculator/save", data);
 
 // GET all buyers with pagination and search
 export const getBuyers = (page = 1, limit = 50, search = "") =>
