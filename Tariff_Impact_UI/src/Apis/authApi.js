@@ -192,6 +192,8 @@ export const exportTaxationExcel = (params) =>
 export const pingCalculator = () =>
   API.get("/calculator/ping");
 
+export const saveCalculation = (data) => 
+  API.post("/calculator/save", data);
 
 
 

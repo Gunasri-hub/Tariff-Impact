@@ -244,6 +244,9 @@ const costCalculator = require("../controller/metadata/costCalculator.controller
 
 router.get("/calculator/ping", costCalculator.pingCalculator);
 router.post("/calculator/run", costCalculator.runCostCalculator);
+router.post("/calculator/save", costCalculator.saveCalculation);
+
+
 
 
 // Health check

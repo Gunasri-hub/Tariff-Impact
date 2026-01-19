@@ -1,5 +1,7 @@
 // controllers/costCalculator.controller.js
-const { Country, ProductTable } = require("../../../models");
+// ADD THIS LINE - same pattern as Country/ProductTable
+const { Country, ProductTable, Calculations } = require("../../../models");
+
 
 exports.pingCalculator = (req, res) => {
   res.json({ status: "calculator-ok", time: new Date().toISOString() });
@@ -234,6 +236,52 @@ exports.runCostCalculator = async (req, res) => {
       message: "Calculation failed",
       detail: error.message,
       ...(process.env.NODE_ENV === "development" && { stack: error.stack }),
+    });
+  }
+};
+
+exports.saveCalculation = async (req, res) => {
+  try {
+    const {
+      shipment,
+      products,
+      charges,
+      totals,
+      shipmentSummary,
+      forexRate
+    } = req.body;
+
+    console.log("💾 SAVING CALCULATION:", {
+      origin: shipment?.originCountry,
+      dest: shipment?.destinationCountry,
+      products: products?.length || 0,
+      totalLandedOrigin: totals?.totalLandCostOrigin
+    });
+
+    const calculation = await Calculations.create({
+      shipment_data: JSON.stringify(shipment || {}),
+      products_data: JSON.stringify(products || []),
+      charges_data: JSON.stringify(charges || {}),
+      total_landed_origin: totals?.totalLandCostOrigin || 0,
+      total_landed_dest: totals?.totalLandCostDest || 0,
+      forex_rate: forexRate || 0,
+      duty_total_origin: totals?.dutyOrigin || 0,
+      duty_total_dest: totals?.dutyDest || 0,
+      user_id: 'anonymous'
+    });
+
+    console.log("✅ Calculation saved, ID:", calculation.id);
+    res.json({ 
+      success: true, 
+      id: calculation.id,
+      message: "Calculation saved automatically"
+    });
+
+  } catch (error) {
+    console.error("💾 SAVE ERROR:", error);
+    res.status(500).json({ 
+      error: "Failed to save calculation",
+      detail: error.message 
     });
   }
 };

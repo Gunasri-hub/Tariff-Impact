@@ -1,7 +1,8 @@
 // src/components/CostCalculatorWizard.js
 import React, { useState, useEffect, useCallback } from "react";
-import { getCountries, getForexCurrencies, getProducts, runCostCalculator } from '../../Apis/authApi.js';
+import { getCountries, getForexCurrencies, getProducts, runCostCalculator, saveCalculation } from '../../Apis/authApi.js';
 import "../../App.css";
+
 // NO API_BASE LINE HERE
 // const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8080";
 // preset options
@@ -120,105 +121,81 @@ export default function CostCalculatorWizard() {
       return;
     }
 
+    // ✅ RUN CALCULATION
     const res = await runCostCalculator(payload);  
     console.log("🔢 FULL RESPONSE:", res);
-    setResult(res.data || res);  // ✅ Fixed data structure
+    setResult(res.data || res);
+    
+    // ✅ AUTO-SAVE TO DATABASE (MANDATORY)
+    console.log("💾 Auto-saving calculation...");
+    const calculationData = {
+      shipment,  // Full shipment details
+      products: lines.map(l => ({
+        productId: l.productId,
+        product_name: l.product_name,
+        hts_code: l.hts_code,
+        main_category: l.main_category,
+        quantity: Number(l.quantity),
+        unitPrice: Number(l.unitPrice)
+      })),
+      charges: {
+        freight: Number(charges.freight),
+        insurance: Number(charges.insurance)
+      },
+      totals: (res.data || res).totals || {},
+      shipmentSummary: (res.data || res).shipmentSummary || {},
+      forexRate: (res.data || res).shipmentSummary?.forexRate || 0
+    };
+    
+    await saveCalculation(calculationData);
+    console.log("✅ Calculation AUTO-SAVED to database!");
+    
     setStep(5);
 
-  } catch (err) {  // ✅ MISSING CATCH BLOCK
+  } catch (err) {
     console.error("Calculator error:", err.response?.data || err.message);
     alert(
       `Error: ${
         err.response?.data?.message || "Failed to calculate costs"
       }`
     );
-  } finally {  // ✅ MISSING FINALLY BLOCK
+  } finally {
     setLoading(false);
   }
 };
+  
 
 
   return (
-    <div className="layout">
-      <div className="main">
-        <div className="main-header">
-          <h1>Cost Calculator</h1>
-        </div>
-
-        <WizardStepper current={step} />
-
-        {loadingRef && (
-          <div className="panel">
-            <p>Loading reference data…</p>
-          </div>
-        )}
-
-        {!loadingRef && errorRef && (
-          <div className="panel">
-            <p style={{ color: "#b91c1c", fontSize: 13 }}>{errorRef}</p>
-          </div>
-        )}
-
-        {!loadingRef && !errorRef && (
-          <>
-            {step === 1 && (
-              <ShipmentStep
-                shipment={shipment}
-                setShipment={setShipment}
-                countries={countries}
-                currencies={currencies}
-                onNext={next}
-              />
-            )}
-
-            {step === 2 && (
-              <ProductsStep
-                lines={lines}
-                setLines={setLines}
-                activeLineId={activeLineId}
-                setActiveLineId={setActiveLineId}
-                searchText={searchText}
-                setSearchText={setSearchText}
-                searchResults={searchResults}
-                setSearchResults={setSearchResults}
-                searchLoading={searchLoading}
-                setSearchLoading={setSearchLoading}
-                searchError={searchError}
-                setSearchError={setSearchError}
-                onNext={next}
-                onBack={prev}
-              />
-            )}
-
-            {step === 3 && (
-              <ChargesStep
-                charges={charges}
-                setCharges={setCharges}
-                onNext={next}
-                onBack={prev}
-              />
-            )}
-
-            {step === 4 && (
-              <ReviewStep
-                shipment={shipment}
-                lines={lines}
-                charges={charges}
-                countries={countries}
-                onBack={prev}
-                onRun={handleRun}
-                loading={loading}
-              />
-            )}
-
-            {step === 5 && result && (
-              <ResultStep result={result} onBack={() => setStep(2)} />
-            )}
-          </>
-        )}
+  <div className="no-scroll-layout">
+    <div className="no-scroll-main">
+      <div className="main-header">
+        <h1>Cost Calculator</h1>
       </div>
+      
+      <WizardStepper current={step} loadingRef={loadingRef} />
+      
+      {!loadingRef && errorRef && (
+        <div className="no-scroll-panel">
+          <p style={{color: '#b91c1c', fontSize: '13px'}}>
+            {errorRef}
+          </p>
+        </div>
+      )}
+      
+      {!loadingRef && !errorRef && (
+        <>
+          {step === 1 && <ShipmentStep shipment={shipment} setShipment={setShipment} countries={countries} currencies={currencies} onNext={next} />}
+          {step === 2 && <ProductsStep lines={lines} setLines={setLines} activeLineId={activeLineId} setActiveLineId={setActiveLineId} searchText={searchText} setSearchText={setSearchText} searchResults={searchResults} setSearchResults={setSearchResults} searchLoading={searchLoading} setSearchLoading={setSearchLoading} searchError={searchError} setSearchError={setSearchError} onNext={next} onBack={prev} />}
+          {step === 3 && <ChargesStep charges={charges} setCharges={setCharges} onNext={next} onBack={prev} />}
+          {step === 4 && <ReviewStep shipment={shipment} lines={lines} charges={charges} countries={countries} onBack={prev} onRun={handleRun} loading={loading} />}
+          {step === 5 && <ResultStep result={result} onBack={() => setStep(2)} />}
+        </>
+      )}
     </div>
-  );
+  </div>
+);
+
 }
 
 /* ---------- Stepper ---------- */
@@ -523,38 +500,38 @@ function ProductsStep({
     setSearchResults([]);
   };
 const doSearch = useCallback(async (q) => {
-  if (!q.trim()) {
+  if (!q.trim() || q.length < 2) {
     setSearchResults([]);
     setSearchError("");
     return;
   }
+  
+  setSearchLoading(true);
   try {
-    setSearchLoading(true);
-    setSearchError("");
-    console.log("🔍 Searching:", q);
+    console.log("🔍 CostCalculator searching:", q);
     
-    const response = await getProducts({ params: { search: q, limit: 10 } });
-    console.log("📦 API Response:", response);
+    // EXACT SAME PARAMS as ProductLibraryPage ✅
+    const params = { search: q.trim() };
+    const res = await getProducts(params);
+    console.log("📦 CostCalculator API Response:", res);
     
-    // Backend returns: { data: [products], total: X, page: 1 }
-    let products = [];
-    if (response?.data?.data && Array.isArray(response.data.data)) {
-      products = response.data.data;
-    } else if (Array.isArray(response.data)) {
-      products = response.data;
-    }
+    // EXACT SAME DATA EXTRACTION as ProductLibraryPage ✅
+    const dataArray = Array.isArray(res.data) 
+      ? res.data 
+      : res.data?.data || res.data?.products || [];
     
-    console.log("✅ Products found:", products.length, products.slice(0, 2));
-    setSearchResults(products);
-  } catch (e) {
-    console.error("❌ Search error:", e);
-    setSearchError("No products found");
+    console.log("✅ CostCalculator found:", dataArray.length, dataArray[0]);
+    setSearchResults(dataArray.slice(0, 10));
+    setSearchError(dataArray.length === 0 ? "No products found" : "");
+    
+  } catch (err) {
+    console.error("CostCalculator search error:", err.response?.data || err);
+    setSearchError("Search failed");
     setSearchResults([]);
   } finally {
     setSearchLoading(false);
   }
-}, [setSearchResults, setSearchLoading, setSearchError, getProducts]);
-
+}, []);
 
 // ✅ Empty deps since set* functions are stable
 
@@ -681,7 +658,9 @@ const doSearch = useCallback(async (q) => {
                     maxHeight: 220,
                     overflowY: "auto",
                     background: "#ffffff",
-                    zIndex: 20,
+                    zIndex: 1000,
+                    position: "relative",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                   }}
                 >
                   {searchResults.map((p) => (
@@ -1285,13 +1264,14 @@ function ResultStep({ result, onBack }) {
           </div>
         </div>
 
-        <div
-          style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}
-        >
-          <button className="ghost-button" onClick={onBack}>
-            Back to Products
-          </button>
-        </div>
+        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}>
+  <button className="ghost-button" onClick={onBack}>
+    Back to Products
+  </button>
+  <div style={{ padding: "8px 16px", background: "#dcfce7", borderRadius: 6, fontSize: 13, color: "#166534", marginLeft: 12 }}>
+    ✅ Calculation auto-saved to database
+  </div>
+</div>
       </div>
     </div>
   );
