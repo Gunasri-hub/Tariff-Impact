@@ -125,11 +125,28 @@ export default function CostCalculatorWizard() {
     const res = await runCostCalculator(payload);  
     console.log("🔢 FULL RESPONSE:", res);
     setResult(res.data || res);
-    
-    // ✅ AUTO-SAVE TO DATABASE (MANDATORY)
-    console.log("💾 Auto-saving calculation...");
+    setStep(5);
+
+
+  } catch (err) {
+    console.error("Calculator error:", err.response?.data || err.message);
+    alert(
+      `Error: ${
+        err.response?.data?.message || "Failed to calculate costs"
+      }`
+    );
+  } finally {
+    setLoading(false);
+  }
+
+const handleSave = async () => {
+  if (!result) {
+    alert('Please run calculation first');
+    return;
+  }
+  try {
     const calculationData = {
-      shipment,  // Full shipment details
+      shipment,
       products: lines.map(l => ({
         productId: l.productId,
         product_name: l.product_name,
@@ -142,26 +159,18 @@ export default function CostCalculatorWizard() {
         freight: Number(charges.freight),
         insurance: Number(charges.insurance)
       },
-      totals: (res.data || res).totals || {},
-      shipmentSummary: (res.data || res).shipmentSummary || {},
-      forexRate: (res.data || res).shipmentSummary?.forexRate || 0
+      totals: result.totals || {},
+      shipmentSummary: result.shipmentSummary || {},
+      forexRate: result.shipmentSummary?.forexRate || 0
     };
-    
     await saveCalculation(calculationData);
-    console.log("✅ Calculation AUTO-SAVED to database!");
-    
-    setStep(5);
-
+    alert('✅ Calculation saved!');
   } catch (err) {
-    console.error("Calculator error:", err.response?.data || err.message);
-    alert(
-      `Error: ${
-        err.response?.data?.message || "Failed to calculate costs"
-      }`
-    );
-  } finally {
-    setLoading(false);
+    alert('❌ Save failed: ' + (err.response?.data?.message || err.message));
   }
+};
+
+
 };
   
 
@@ -189,7 +198,8 @@ export default function CostCalculatorWizard() {
           {step === 2 && <ProductsStep lines={lines} setLines={setLines} activeLineId={activeLineId} setActiveLineId={setActiveLineId} searchText={searchText} setSearchText={setSearchText} searchResults={searchResults} setSearchResults={setSearchResults} searchLoading={searchLoading} setSearchLoading={setSearchLoading} searchError={searchError} setSearchError={setSearchError} onNext={next} onBack={prev} />}
           {step === 3 && <ChargesStep charges={charges} setCharges={setCharges} onNext={next} onBack={prev} />}
           {step === 4 && <ReviewStep shipment={shipment} lines={lines} charges={charges} countries={countries} onBack={prev} onRun={handleRun} loading={loading} />}
-          {step === 5 && <ResultStep result={result} onBack={() => setStep(2)} />}
+          {step === 5 && <ResultStep result={result} onBack={() => setStep(2)} handleSave={handleSave} />}
+
         </>
       )}
     </div>
