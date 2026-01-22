@@ -50,7 +50,7 @@ function AdminDashboardPage() {
     { id: "products", label: "Product Library", icon: <FiBox /> },
     { id: "reports", label: "Reports", icon: <FiBarChart2 /> },
     {id:"Transactions", label: "Transaction Management", icon: <FiBell />},
-    { id: "feedback", label: "Feedback Inbox", icon: <FiMessageSquare /> },
+    
   ];
 
   // All pages now handled internally - NO external navigation
@@ -127,16 +127,7 @@ function AdminDashboardPage() {
     </div>
   );
 
-  // ✅ FeedbackInbox Component (INLINE)
-  const FeedbackInbox = () => (
-    <div style={{ padding: "20px 0" }}>
-      <section className="admin-hero">
-        <h1>💬 Feedback Inbox</h1>
-        <p>User feedback, support tickets, and suggestions</p>
-      </section>
-     
-    </div>
-  );
+  
 
   return (
     <div className="admin-layout">
@@ -184,7 +175,7 @@ function AdminDashboardPage() {
         {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "Transactions" && <TransactionManagementPage />}
         {currentPage === "reports" && <Reports />}
-        {currentPage === "feedback" && <FeedbackInbox />}
+        
 
         {/* Dashboard Page - ALL ORIGINAL CONTENT */}
         {currentPage === "dashboard" && (
@@ -311,6 +302,50 @@ function AdminDashboardPage() {
                     <span className="admin-function-meta">234 reports</span>
                   </div>
                 </div>
+
+                <div
+  className="admin-function-card"
+  onClick={() => setCurrentPage("buyers")}
+  style={{ cursor: "pointer" }}
+>
+  <div className="admin-func-icon user">
+    <span>🧑‍💼</span>
+  </div>
+  <div className="admin-func-content">
+    <h3>Buyer Management</h3>
+    <p>Manage buyer profiles, regions, and trade activity.</p>
+    <span className="admin-function-meta">312 buyers</span>
+  </div>
+</div>
+<div
+  className="admin-function-card"
+  onClick={() => setCurrentPage("sellers")}
+  style={{ cursor: "pointer" }}
+>
+  <div className="admin-func-icon product">
+    <span>🏭</span>
+  </div>
+  <div className="admin-func-content">
+    <h3>Seller Management</h3>
+    <p>Manage sellers, exporters, and compliance details.</p>
+    <span className="admin-function-meta">198 sellers</span>
+  </div>
+</div>
+<div
+  className="admin-function-card"
+  onClick={() => setCurrentPage("Transactions")}
+  style={{ cursor: "pointer" }}
+>
+  <div className="admin-func-icon reports">
+    <span>💳</span>
+  </div>
+  <div className="admin-func-content">
+    <h3>Transaction Management</h3>
+    <p>View, audit, and manage all trade transactions.</p>
+    <span className="admin-function-meta">12,540 transactions</span>
+  </div>
+</div>
+
               </div>
             </section>
 

@@ -154,7 +154,7 @@ const handleExportExcel = () => {
     <>
       {/* Top header */}
       <section className="welcome-strip">
-        <h2>Taxation Module</h2>
+        <h2>📄 Taxation Module</h2>
         <p>Analyze direct, indirect and withholding taxes by industry.</p>
       </section>
 

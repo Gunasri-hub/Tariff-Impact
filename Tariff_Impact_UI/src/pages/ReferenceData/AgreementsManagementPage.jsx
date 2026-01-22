@@ -26,6 +26,11 @@ const AgreementsManagementPage = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [editingCode, setEditingCode] = useState(null);
   const [form, setForm] = useState(EMPTY_FORM);
+  const [toast, setToast] = useState({ open: false, message: "" });
+
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [deleteCode, setDeleteCode] = useState(null);
+
 
   /* =========================
        LOAD DATA
@@ -39,6 +44,15 @@ const loadAgreements = async () => {
     setAgreements([]);
   }
 };
+
+const showSuccessToast = (message) => {
+  setToast({ open: true, message });
+
+  setTimeout(() => {
+    setToast({ open: false, message: "" });
+  }, 3000);
+};
+
 
 
   useEffect(() => {
@@ -155,12 +169,13 @@ const handleSave = async (e) => {
 
   try {
     if (isEdit) {
-      await updateAgreement(editingCode, payload);
-      alert("✅ Agreement updated successfully!");
-    } else {
-      await createAgreement(payload);
-      alert("✅ Agreement created successfully!");
-    }
+  await updateAgreement(editingCode, payload);
+  showSuccessToast("Agreement updated successfully");
+} else {
+  await createAgreement(payload);
+  showSuccessToast("Agreement created successfully");
+}
+
 
     setShowForm(false);
     loadAgreements();
@@ -171,17 +186,24 @@ const handleSave = async (e) => {
 };
 
 
-const handleDelete = async (code) => {
-  if (!window.confirm("Delete this agreement?")) return;
+const openDeleteAgreement = (code) => {
+  setDeleteCode(code);
+  setShowDeleteModal(true);
+};
 
+const confirmDeleteAgreement = async () => {
   try {
-    await deleteAgreementApi(code);
-    alert("✅ Agreement deleted successfully!");
+    await deleteAgreementApi(deleteCode);
+    showSuccessToast("Agreement deleted successfully");
     loadAgreements();
   } catch (err) {
     alert(err.response?.data?.message || "Failed to delete agreement");
+  } finally {
+    setShowDeleteModal(false);
+    setDeleteCode(null);
   }
 };
+
 
 
   const statusClass = (status) => {
@@ -654,7 +676,8 @@ const handleDelete = async (code) => {
                       </button>
                       <button
                         className="agreements-icon-btn delete"
-                        onClick={() => handleDelete(a.AgreementCode)}
+                        onClick={() => openDeleteAgreement(a.AgreementCode)}
+
                       >
                         🗑
                       </button>
@@ -666,6 +689,78 @@ const handleDelete = async (code) => {
           </table>
         </div>
       </div>
+
+      {showDeleteModal && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 2100
+    }}
+  >
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "14px",
+        width: "420px",
+        padding: "24px",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+      }}
+    >
+      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 600 }}>
+        Delete Agreement
+      </h3>
+
+      <p style={{ marginTop: "10px", color: "#4b5563", fontSize: "14px" }}>
+        Are you sure you want to delete this agreement?
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px"
+        }}
+      >
+        <button
+          onClick={() => {
+            setShowDeleteModal(false);
+            setDeleteCode(null);
+          }}
+          style={{
+            background: "#f3f4f6",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            cursor: "pointer"
+          }}
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmDeleteAgreement}
+          style={{
+            background: "#dc2626",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            cursor: "pointer"
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {/* =========================
              MODAL
@@ -759,6 +854,43 @@ const handleDelete = async (code) => {
           </form>
         </div>
       )}
+      {toast.open && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "14px 22px",
+      borderRadius: "10px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.18)",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      zIndex: 3000,
+      fontSize: "14.5px",
+      fontWeight: 500
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔</span>
+    <span>{toast.message}</span>
+
+    <button
+      onClick={() => setToast({ open: false, message: "" })}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ✕
+    </button>
+  </div>
+)}
+
     </>
   );
 };

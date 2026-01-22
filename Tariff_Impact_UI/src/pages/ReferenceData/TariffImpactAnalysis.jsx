@@ -584,7 +584,7 @@ const reactSelectStyles = {
   <div style={styles.tariffContainer}>
     <div style={styles.headerCard}>
   <div style={styles.headerTitle}>
-    📊 Tariff Impact Analysis
+    📈 Tariff Impact Analysis
   </div>
   <div style={styles.headerSubtitle}>
     Compare tariff impacts across countries, products, and time periods

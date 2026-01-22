@@ -15,6 +15,11 @@ function ProductLibraryPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [apiError, setApiError] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
+  const [toast, setToast] = useState({ open: false, message: "" });
+
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);
+
 
   const [form, setForm] = useState({
     hts_code: "",
@@ -23,6 +28,14 @@ function ProductLibraryPage() {
     special_rate_of_duty: "",
     column2_rate_of_duty: "",
   });
+  const showSuccessToast = (message) => {
+  setToast({ open: true, message });
+
+  setTimeout(() => {
+    setToast({ open: false, message: "" });
+  }, 3000);
+};
+
 
   // Fetch products from backend
   const fetchProducts = useCallback(async () => {
@@ -125,12 +138,13 @@ function ProductLibraryPage() {
 
     try {
       if (editingId) {
-        await updateProduct(editingId, payload);
-        alert("✅ Product updated successfully!");
-      } else {
-        await createProduct(payload);
-        alert("✅ Product added successfully!");
-      }
+  await updateProduct(editingId, payload);
+  showSuccessToast("Product updated successfully");
+} else {
+  await createProduct(payload);
+  showSuccessToast("Product added successfully");
+}
+
 
       closeModal();
       fetchProducts();
@@ -140,17 +154,24 @@ function ProductLibraryPage() {
     }
   };
 
-  const deleteProduct = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this product?")) return;
+  const openDeleteProduct = (id) => {
+  setDeleteId(id);
+  setShowDeleteModal(true);
+};
 
-    try {
-      await deleteProductApi(id);
-      alert("✅ Product deleted successfully!");
-      fetchProducts();
-    } catch (err) {
-      alert(err.response?.data?.message || "Failed to delete product");
-    }
-  };
+const confirmDeleteProduct = async () => {
+  try {
+    await deleteProductApi(deleteId);
+    showSuccessToast("Product deleted successfully");
+    fetchProducts();
+  } catch (err) {
+    alert(err.response?.data?.message || "Failed to delete product");
+  } finally {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  }
+};
+
 
   // EXACT CountryDatabasePage STYLES
   const styles = {
@@ -468,7 +489,8 @@ function ProductLibraryPage() {
                         </button>
                         <button 
                           style={{ ...styles.iconBtn, color: "#dc3545" }}
-                          onClick={() => deleteProduct(p.id)}
+                          onClick={() => openDeleteProduct(p.id)}
+
                           title="Delete"
                         >
                           <span>🗑️</span> 
@@ -481,6 +503,78 @@ function ProductLibraryPage() {
             </table>
           </div>
         )}
+
+        {showDeleteModal && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 2100
+    }}
+  >
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "14px",
+        width: "420px",
+        padding: "24px",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+      }}
+    >
+      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 600 }}>
+        Delete Product
+      </h3>
+
+      <p style={{ marginTop: "10px", color: "#4b5563", fontSize: "14px" }}>
+        Are you sure you want to delete this product?
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px"
+        }}
+      >
+        <button
+          onClick={() => {
+            setShowDeleteModal(false);
+            setDeleteId(null);
+          }}
+          style={{
+            background: "#f3f4f6",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            cursor: "pointer"
+          }}
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmDeleteProduct}
+          style={{
+            background: "#dc2626",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            cursor: "pointer"
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
         {/* Add/Edit Modal - EXACT CountryDatabasePage Style */}
         {modalOpen && (
@@ -623,6 +717,44 @@ function ProductLibraryPage() {
           </div>
         )}
       </div>
+
+      {toast.open && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "14px 22px",
+      borderRadius: "10px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.18)",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      zIndex: 3000,
+      fontSize: "14.5px",
+      fontWeight: 500
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔</span>
+    <span>{toast.message}</span>
+
+    <button
+      onClick={() => setToast({ open: false, message: "" })}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ✕
+    </button>
+  </div>
+)}
+
     </div>
   );
 }

@@ -87,6 +87,19 @@ function IndustryExplorerPage() {
 
   const [selectedTreeSubIndustry, setSelectedTreeSubIndustry] = useState("");
 
+  const getCurrencyByCountry = (countryName) => {
+  if (!countryName) return [];
+
+  const normalized = countryName.trim().toLowerCase();
+
+  return currencies.filter(c =>
+    (c.country_name || c.country || "")
+      .toLowerCase()
+      .trim() === normalized
+  );
+};
+
+
   // initial dropdown data
   useEffect(() => {
     const loadInitial = async () => {
@@ -872,7 +885,7 @@ function IndustryExplorerPage() {
         <div className="content-wrapper">
           <div className="industry-header">
             <div className="industry-header-title">
-              🏭 Industry Explorer
+              📊 Industry Explorer
             </div>
             <div className="industry-header-subtitle">
               Analyze trade volumes and agreements by industry sector
@@ -906,11 +919,18 @@ function IndustryExplorerPage() {
             <div className="panel-grid">
               <div className="panel-field">
                 <label>Country</label>
-                <select
-                  name="country"
-                  value={filters.country}
-                  onChange={handleChange}
-                >
+               <select
+  name="country"
+  value={filters.country}
+  onChange={(e) => {
+    setFilters(prev => ({
+      ...prev,
+      country: e.target.value,
+      currency: ""   // reset currency
+    }));
+  }}
+>
+
                   {countries.map((c) => (
                     <option key={c.country} value={c.country}>
                       {c.country}
@@ -933,16 +953,19 @@ function IndustryExplorerPage() {
               <div className="panel-field">
                 <label>Currency</label>
                 <select
-                  name="currency"
-                  value={filters.currency}
-                  onChange={handleChange}
-                >
-                  {currencies.map((c) => (
-                    <option key={c.id} value={c.code}>
-                      {c.code} - {c.currency}
-                    </option>
-                  ))}
-                </select>
+  name="currency"
+  value={filters.currency}
+  onChange={handleChange}
+  disabled={!filters.country}
+>
+  <option value="">Select</option>
+  {getCurrencyByCountry(filters.country).map((c) => (
+    <option key={c.id} value={c.code}>
+      {c.code} - {c.currency}
+    </option>
+  ))}
+</select>
+
               </div>
 
               <div className="panel-field">
