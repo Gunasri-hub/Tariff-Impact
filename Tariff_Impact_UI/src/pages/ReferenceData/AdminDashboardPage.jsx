@@ -21,7 +21,7 @@ import ProductLibraryPage from "./ProductLibraryPage";
 import BuyerManagementPage from "./BuyerManagementPage";
 import SellerManagementPage from "./SellerManagementPage";
 import TransactionManagementPage from "./TransactionManagementPage";
-
+import ReportsPage from "./ReportsPage";
 
 
 function AdminDashboardPage() {
@@ -183,7 +183,7 @@ function AdminDashboardPage() {
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "Transactions" && <TransactionManagementPage />}
-        {currentPage === "reports" && <Reports />}
+        {currentPage === "reports" && <ReportsPage />}
         {currentPage === "feedback" && <FeedbackInbox />}
 
         {/* Dashboard Page - ALL ORIGINAL CONTENT */}
