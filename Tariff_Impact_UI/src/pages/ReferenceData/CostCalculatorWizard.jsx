@@ -44,6 +44,9 @@ export default function CostCalculatorWizard() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [saveLoading, setSaveLoading] = useState(false);
+const [saveSuccess, setSaveSuccess] = useState(false);
+
 
   useEffect(() => {
   const loadRefData = async () => {
@@ -127,7 +130,7 @@ export default function CostCalculatorWizard() {
     setResult(res.data || res);
     
     // ✅ AUTO-SAVE TO DATABASE (MANDATORY)
-    console.log("💾 Auto-saving calculation...");
+    
     const calculationData = {
       shipment,  // Full shipment details
       products: lines.map(l => ({
@@ -147,8 +150,7 @@ export default function CostCalculatorWizard() {
       forexRate: (res.data || res).shipmentSummary?.forexRate || 0
     };
     
-    await saveCalculation(calculationData);
-    console.log("✅ Calculation AUTO-SAVED to database!");
+    
     
     setStep(5);
 
@@ -163,16 +165,128 @@ export default function CostCalculatorWizard() {
     setLoading(false);
   }
 };
+
+const handleSaveTransaction = async () => {
+  if (!result) return;
+
+  setSaveLoading(true);
+  setSaveSuccess(false);
+
+  try {
+    const calculationData = {
+      shipment,
+      products: lines.map(l => ({
+        productId: l.productId,
+        product_name: l.product_name,
+        hts_code: l.hts_code,
+        main_category: l.main_category,
+        quantity: Number(l.quantity),
+        unitPrice: Number(l.unitPrice)
+      })),
+      charges: {
+        freight: Number(charges.freight),
+        insurance: Number(charges.insurance)
+      },
+      totals: result.totals || {},
+      shipmentSummary: result.shipmentSummary || {},
+      forexRate: result.shipmentSummary?.forexRate || 0
+    };
+
+    await saveCalculation(calculationData);
+
+    setSaveSuccess(true); // ✅ THIS drives the success message
+  } catch (err) {
+    alert("Failed to save calculation");
+  } finally {
+    setSaveLoading(false);
+  }
+};
+
+
   
 
 
   return (
   <div className="no-scroll-layout">
     <div className="no-scroll-main">
-      <div className="main-header">
-        <h1>Cost Calculator</h1>
-      </div>
-      
+
+      {/* Blue Header (EXACT like Industry Explorer) */}
+      <section
+  className="welcome-strip"
+  style={{ marginBottom: "16px" }}   // 👈 ADD THIS
+>
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <span style={{ fontSize: 20, lineHeight: 1 }}>💲</span>
+    <div>
+      <h2
+        style={{
+          margin: 0,
+          fontSize: "20px",
+          fontWeight: 600,
+          lineHeight: 1.2,
+        }}
+      >
+        Cost Calculator
+      </h2>
+      <p
+        style={{
+          margin: "4px 0 0",
+          fontSize: "13px",
+          opacity: 0.9,
+        }}
+      >
+        Calculate landed costs including duties, freight, insurance, and forex impact
+      </p>
+    </div>
+  </div>
+</section>
+
+{saveSuccess && (
+  <div
+    style={{
+      position: "fixed",
+      top: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "12px 18px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      zIndex: 9999,
+      minWidth: "320px",
+      maxWidth: "420px"
+    }}
+  >
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+      <span style={{ fontSize: 16 }}>✔</span>
+      Calculations saved successfully
+    </div>
+
+    <button
+      onClick={() => setSaveSuccess(false)}
+      style={{
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        fontSize: 16,
+        lineHeight: 1,
+        color: "#166534",
+      }}
+    >
+      ×
+    </button>
+  </div>
+)}
+
+
+
+
+
+
       <WizardStepper current={step} loadingRef={loadingRef} />
       
       {!loadingRef && errorRef && (
@@ -189,7 +303,16 @@ export default function CostCalculatorWizard() {
           {step === 2 && <ProductsStep lines={lines} setLines={setLines} activeLineId={activeLineId} setActiveLineId={setActiveLineId} searchText={searchText} setSearchText={setSearchText} searchResults={searchResults} setSearchResults={setSearchResults} searchLoading={searchLoading} setSearchLoading={setSearchLoading} searchError={searchError} setSearchError={setSearchError} onNext={next} onBack={prev} />}
           {step === 3 && <ChargesStep charges={charges} setCharges={setCharges} onNext={next} onBack={prev} />}
           {step === 4 && <ReviewStep shipment={shipment} lines={lines} charges={charges} countries={countries} onBack={prev} onRun={handleRun} loading={loading} />}
-          {step === 5 && <ResultStep result={result} onBack={() => setStep(2)} />}
+          {step === 5 && (
+  <ResultStep
+    result={result}
+    onBack={() => setStep(2)}
+    onSave={handleSaveTransaction}
+    saveLoading={saveLoading}
+    saveSuccess={saveSuccess}
+  />
+)}
+
         </>
       )}
     </div>
@@ -1107,7 +1230,8 @@ function ReviewStep({
 }
 
 /* ---------- Step 5: Result ---------- */
-function ResultStep({ result, onBack }) {
+function ResultStep({ result, onBack, onSave, saveLoading, saveSuccess }) {
+
   const safeResult = result || {};
   const shipmentSummary = safeResult.shipmentSummary || {};
   const chargesSummary = safeResult.chargesSummary || {};
@@ -1264,15 +1388,33 @@ function ResultStep({ result, onBack }) {
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
   <button className="ghost-button" onClick={onBack}>
-    Back to Products
+    Back
   </button>
-  <div style={{ padding: "8px 16px", background: "#dcfce7", borderRadius: 6, fontSize: 13, color: "#166534", marginLeft: 12 }}>
-    ✅ Calculation auto-saved to database
+
+  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+   
+
+    <button
+      className="primary-button"
+      onClick={onSave}
+      disabled={saveLoading || saveSuccess}
+    >
+      {saveLoading ? "Saving..." : "Save Calculations"}
+    </button>
+  </div>
+
+
+
+  
+    
+
+   
   </div>
 </div>
+
       </div>
-    </div>
+    
   );
 }

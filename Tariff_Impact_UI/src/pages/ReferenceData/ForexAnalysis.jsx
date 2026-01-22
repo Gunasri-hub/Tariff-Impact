@@ -506,7 +506,7 @@ function ForexAnalysis() {
     className="welcome-strip"
     style={{ marginBottom: "24px" }} //space between bars
   >
-    <h2>💱 Forex Analysis</h2>
+    <h2>🌍 Forex Analysis</h2>
     <p>Track currency trends and exchange rate impacts</p>
   </section>
 </div>

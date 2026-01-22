@@ -3097,3 +3097,961 @@ mysql.connector.errors.DataError: 1406 (22001): Data too long for column 'specia
 2026-01-04 12:53:13,237 [INFO] Inserted records 20501 to 20689
 2026-01-04 12:53:13,237 [INFO] CSV data loaded into DB successfully.
 2026-01-04 12:53:13,239 [INFO] Database connection closed.
+2026-01-19 11:24:13,919 [INFO] Directory ready: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters
+2026-01-19 11:24:15,911 [INFO] Directory ready: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\parsed
+2026-01-19 11:24:15,975 [INFO] ===== Starting HTS Pipeline =====
+2026-01-19 11:24:15,976 [INFO] Directory ready: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters
+2026-01-19 11:24:18,338 [INFO] Downloading chapter 1
+2026-01-19 11:24:18,338 [INFO] Fetching range for chapter 1
+2026-01-19 11:24:18,689 [INFO] Requesting export: from=0101 to=0106.90.01.80
+2026-01-19 11:24:19,170 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx.part
+2026-01-19 11:24:19,170 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:19,170 [INFO] Completed Chapter 1 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-19 11:24:19,675 [INFO] Downloading chapter 2
+2026-01-19 11:24:19,675 [INFO] Fetching range for chapter 2
+2026-01-19 11:24:20,060 [INFO] Requesting export: from=0201 to=0210.99.91.00
+2026-01-19 11:24:21,231 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx.part
+2026-01-19 11:24:21,236 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:21,236 [INFO] Completed Chapter 2 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-19 11:24:21,738 [INFO] Downloading chapter 3
+2026-01-19 11:24:21,739 [INFO] Fetching range for chapter 3
+2026-01-19 11:24:22,133 [INFO] Requesting export: from=0301 to=0309.90.90.00
+2026-01-19 11:24:22,668 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx.part
+2026-01-19 11:24:22,684 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:22,686 [INFO] Completed Chapter 3 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-19 11:24:23,187 [INFO] Downloading chapter 4
+2026-01-19 11:24:23,187 [INFO] Fetching range for chapter 4
+2026-01-19 11:24:23,635 [INFO] Requesting export: from=0401 to=0410.90.00.00
+2026-01-19 11:24:24,337 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx.part
+2026-01-19 11:24:24,338 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:24,338 [INFO] Completed Chapter 4 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-19 11:24:24,847 [INFO] Downloading chapter 5
+2026-01-19 11:24:24,847 [INFO] Fetching range for chapter 5
+2026-01-19 11:24:25,256 [INFO] Requesting export: from=0501.00.00.00 to=0511.99.40.70
+2026-01-19 11:24:25,868 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx.part
+2026-01-19 11:24:25,868 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:25,868 [INFO] Completed Chapter 5 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-19 11:24:26,375 [INFO] Downloading chapter 6
+2026-01-19 11:24:26,377 [INFO] Fetching range for chapter 6
+2026-01-19 11:24:26,794 [INFO] Requesting export: from=0601 to=0604.90.60.00
+2026-01-19 11:24:27,201 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx.part
+2026-01-19 11:24:27,205 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:27,205 [INFO] Completed Chapter 6 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-19 11:24:27,708 [INFO] Downloading chapter 7
+2026-01-19 11:24:27,708 [INFO] Fetching range for chapter 7
+2026-01-19 11:24:28,216 [INFO] Requesting export: from=0701 to=0714.90.61.00
+2026-01-19 11:24:28,935 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx.part
+2026-01-19 11:24:28,946 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:28,946 [INFO] Completed Chapter 7 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-19 11:24:29,449 [INFO] Downloading chapter 8
+2026-01-19 11:24:29,449 [INFO] Fetching range for chapter 8
+2026-01-19 11:24:29,856 [INFO] Requesting export: from=0801 to=0814.00.80.00
+2026-01-19 11:24:30,372 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx.part
+2026-01-19 11:24:30,380 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:30,380 [INFO] Completed Chapter 8 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-19 11:24:30,882 [INFO] Downloading chapter 9
+2026-01-19 11:24:30,882 [INFO] Fetching range for chapter 9
+2026-01-19 11:24:31,399 [INFO] Requesting export: from=0901 to=0910.99.60.00
+2026-01-19 11:24:32,003 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx.part
+2026-01-19 11:24:32,018 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:32,018 [INFO] Completed Chapter 9 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-19 11:24:32,527 [INFO] Downloading chapter 10
+2026-01-19 11:24:32,527 [INFO] Fetching range for chapter 10
+2026-01-19 11:24:32,914 [INFO] Requesting export: from=1001 to=1008.90.01.40
+2026-01-19 11:24:33,321 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx.part
+2026-01-19 11:24:33,337 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:33,346 [INFO] Completed Chapter 10 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-19 11:24:33,848 [INFO] Downloading chapter 11
+2026-01-19 11:24:33,848 [INFO] Fetching range for chapter 11
+2026-01-19 11:24:34,192 [INFO] Requesting export: from=1101.00.00 to=1109.00.90.20
+2026-01-19 11:24:34,869 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx.part
+2026-01-19 11:24:34,884 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:34,884 [INFO] Completed Chapter 11 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-19 11:24:35,389 [INFO] Downloading chapter 12
+2026-01-19 11:24:35,389 [INFO] Fetching range for chapter 12
+2026-01-19 11:24:35,899 [INFO] Requesting export: from=1201 to=1214.90.00.90
+2026-01-19 11:24:36,829 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx.part
+2026-01-19 11:24:36,834 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:36,834 [INFO] Completed Chapter 12 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-19 11:24:37,337 [INFO] Downloading chapter 13
+2026-01-19 11:24:37,337 [INFO] Fetching range for chapter 13
+2026-01-19 11:24:37,739 [INFO] Requesting export: from=1301 to=1302.39.00.90
+2026-01-19 11:24:38,155 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx.part
+2026-01-19 11:24:38,161 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:38,163 [INFO] Completed Chapter 13 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-19 11:24:38,664 [INFO] Downloading chapter 14
+2026-01-19 11:24:38,664 [INFO] Fetching range for chapter 14
+2026-01-19 11:24:39,004 [INFO] Requesting export: from=1401 to=1404.90.90.90
+2026-01-19 11:24:39,652 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx.part
+2026-01-19 11:24:39,652 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:39,652 [INFO] Completed Chapter 14 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-19 11:24:40,163 [INFO] Downloading chapter 15
+2026-01-19 11:24:40,163 [INFO] Fetching range for chapter 15
+2026-01-19 11:24:40,608 [INFO] Requesting export: from=1501 to=1522.00.00.00
+2026-01-19 11:24:41,335 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx.part
+2026-01-19 11:24:41,335 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:41,335 [INFO] Completed Chapter 15 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-19 11:24:41,842 [INFO] Downloading chapter 16
+2026-01-19 11:24:41,844 [INFO] Fetching range for chapter 16
+2026-01-19 11:24:42,248 [INFO] Requesting export: from=1601.00 to=1605.69.00.00
+2026-01-19 11:24:42,835 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx.part
+2026-01-19 11:24:42,850 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:42,850 [INFO] Completed Chapter 16 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-19 11:24:43,353 [INFO] Downloading chapter 17
+2026-01-19 11:24:43,353 [INFO] Fetching range for chapter 17
+2026-01-19 11:24:43,662 [INFO] Requesting export: from=1701 to=1704.90.90.00
+2026-01-19 11:24:44,055 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx.part
+2026-01-19 11:24:44,055 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:44,070 [INFO] Completed Chapter 17 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-19 11:24:44,571 [INFO] Downloading chapter 18
+2026-01-19 11:24:44,573 [INFO] Fetching range for chapter 18
+2026-01-19 11:24:44,891 [INFO] Requesting export: from=1801.00.00.00 to=1806.90.90.90
+2026-01-19 11:24:45,240 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx.part
+2026-01-19 11:24:45,249 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:45,249 [INFO] Completed Chapter 18 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-19 11:24:45,751 [INFO] Downloading chapter 19
+2026-01-19 11:24:45,751 [INFO] Fetching range for chapter 19
+2026-01-19 11:24:46,352 [INFO] Requesting export: from=1901 to=1905.90.90.90
+2026-01-19 11:24:47,003 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx.part
+2026-01-19 11:24:47,009 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:47,009 [INFO] Completed Chapter 19 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-19 11:24:47,512 [INFO] Downloading chapter 20
+2026-01-19 11:24:47,512 [INFO] Fetching range for chapter 20
+2026-01-19 11:24:47,842 [INFO] Requesting export: from=2001 to=2009.90.40.00
+2026-01-19 11:24:48,288 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx.part
+2026-01-19 11:24:48,288 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:48,288 [INFO] Completed Chapter 20 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-19 11:24:48,805 [INFO] Downloading chapter 21
+2026-01-19 11:24:48,805 [INFO] Fetching range for chapter 21
+2026-01-19 11:24:49,225 [INFO] Requesting export: from=2101 to=2106.90.99.98
+2026-01-19 11:24:49,868 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx.part
+2026-01-19 11:24:49,876 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:49,876 [INFO] Completed Chapter 21 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-19 11:24:50,379 [INFO] Downloading chapter 22
+2026-01-19 11:24:50,379 [INFO] Fetching range for chapter 22
+2026-01-19 11:24:50,854 [INFO] Requesting export: from=2201 to=2209.00.00.00
+2026-01-19 11:24:51,567 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx.part
+2026-01-19 11:24:51,577 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:51,577 [INFO] Completed Chapter 22 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-19 11:24:52,080 [INFO] Downloading chapter 23
+2026-01-19 11:24:52,080 [INFO] Fetching range for chapter 23
+2026-01-19 11:24:53,074 [INFO] Requesting export: from=2301 to=2309.90.95.00
+2026-01-19 11:24:53,394 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx.part
+2026-01-19 11:24:53,410 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:53,411 [INFO] Completed Chapter 23 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-19 11:24:53,912 [INFO] Downloading chapter 24
+2026-01-19 11:24:53,912 [INFO] Fetching range for chapter 24
+2026-01-19 11:24:54,353 [INFO] Requesting export: from=2401 to=2404.99.00.00
+2026-01-19 11:24:55,053 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx.part
+2026-01-19 11:24:55,053 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:55,053 [INFO] Completed Chapter 24 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-19 11:24:55,562 [INFO] Downloading chapter 25
+2026-01-19 11:24:55,564 [INFO] Fetching range for chapter 25
+2026-01-19 11:24:55,974 [INFO] Requesting export: from=2501.00.00.00 to=2530.90.80.50
+2026-01-19 11:24:56,601 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx.part
+2026-01-19 11:24:56,603 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:56,603 [INFO] Completed Chapter 25 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-19 11:24:57,108 [INFO] Downloading chapter 26
+2026-01-19 11:24:57,108 [INFO] Fetching range for chapter 26
+2026-01-19 11:24:57,556 [INFO] Requesting export: from=2601 to=2621.90.00.00
+2026-01-19 11:24:57,892 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx.part
+2026-01-19 11:24:57,906 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:57,907 [INFO] Completed Chapter 26 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-19 11:24:58,409 [INFO] Downloading chapter 27
+2026-01-19 11:24:58,409 [INFO] Fetching range for chapter 27
+2026-01-19 11:24:58,728 [INFO] Requesting export: from=2701 to=2716.00.00.00
+2026-01-19 11:24:59,149 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx.part
+2026-01-19 11:24:59,153 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx (content-type=application/octet-stream)
+2026-01-19 11:24:59,155 [INFO] Completed Chapter 27 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-19 11:24:59,657 [INFO] Downloading chapter 28
+2026-01-19 11:24:59,657 [INFO] Fetching range for chapter 28
+2026-01-19 11:25:00,167 [INFO] Requesting export: from=2801 to=2853.90.90.90
+2026-01-19 11:25:00,756 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx.part
+2026-01-19 11:25:00,765 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:00,766 [INFO] Completed Chapter 28 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-19 11:25:01,267 [INFO] Downloading chapter 29
+2026-01-19 11:25:01,267 [INFO] Fetching range for chapter 29
+2026-01-19 11:25:02,034 [INFO] Requesting export: from=2901 to=2942.00.50.00
+2026-01-19 11:25:02,737 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx.part
+2026-01-19 11:25:02,805 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:02,805 [INFO] Completed Chapter 29 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-19 11:25:03,307 [INFO] Downloading chapter 30
+2026-01-19 11:25:03,307 [INFO] Fetching range for chapter 30
+2026-01-19 11:25:03,649 [INFO] Requesting export: from=3001 to=3006.93.80.00
+2026-01-19 11:25:04,368 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx.part
+2026-01-19 11:25:04,376 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:04,376 [INFO] Completed Chapter 30 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-19 11:25:04,879 [INFO] Downloading chapter 31
+2026-01-19 11:25:04,879 [INFO] Fetching range for chapter 31
+2026-01-19 11:25:05,287 [INFO] Requesting export: from=3101.00.00.00 to=3105.90.00.50
+2026-01-19 11:25:05,704 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx.part
+2026-01-19 11:25:05,704 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:05,708 [INFO] Completed Chapter 31 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-19 11:25:06,210 [INFO] Downloading chapter 32
+2026-01-19 11:25:06,210 [INFO] Fetching range for chapter 32
+2026-01-19 11:25:06,524 [INFO] Requesting export: from=3201 to=3215.90.50.00
+2026-01-19 11:25:07,235 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx.part
+2026-01-19 11:25:07,246 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:07,246 [INFO] Completed Chapter 32 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-19 11:25:07,749 [INFO] Downloading chapter 33
+2026-01-19 11:25:07,751 [INFO] Fetching range for chapter 33
+2026-01-19 11:25:08,162 [INFO] Requesting export: from=3301 to=3307.90.00.00
+2026-01-19 11:25:08,499 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx.part
+2026-01-19 11:25:08,502 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:08,503 [INFO] Completed Chapter 33 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-19 11:25:09,004 [INFO] Downloading chapter 34
+2026-01-19 11:25:09,004 [INFO] Fetching range for chapter 34
+2026-01-19 11:25:09,396 [INFO] Requesting export: from=3401 to=3407.00.40.00
+2026-01-19 11:25:09,722 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx.part
+2026-01-19 11:25:09,729 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:09,729 [INFO] Completed Chapter 34 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-19 11:25:10,230 [INFO] Downloading chapter 35
+2026-01-19 11:25:10,230 [INFO] Fetching range for chapter 35
+2026-01-19 11:25:10,720 [INFO] Requesting export: from=3501 to=3507.90.70.00
+2026-01-19 11:25:11,332 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx.part
+2026-01-19 11:25:11,332 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:11,332 [INFO] Completed Chapter 35 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-19 11:25:11,838 [INFO] Downloading chapter 36
+2026-01-19 11:25:11,838 [INFO] Fetching range for chapter 36
+2026-01-19 11:25:12,244 [INFO] Requesting export: from=3601.00.00.00 to=3606.90.80.00
+2026-01-19 11:25:12,663 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx.part
+2026-01-19 11:25:12,670 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:12,672 [INFO] Completed Chapter 36 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-19 11:25:13,173 [INFO] Downloading chapter 37
+2026-01-19 11:25:13,175 [INFO] Fetching range for chapter 37
+2026-01-19 11:25:13,586 [INFO] Requesting export: from=3701 to=3707.90.60.00
+2026-01-19 11:25:14,304 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx.part
+2026-01-19 11:25:14,304 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:14,304 [INFO] Completed Chapter 37 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-19 11:25:14,810 [INFO] Downloading chapter 38
+2026-01-19 11:25:14,810 [INFO] Fetching range for chapter 38
+2026-01-19 11:25:15,217 [INFO] Requesting export: from=3801 to=3827.90.90.00
+2026-01-19 11:25:16,151 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx.part
+2026-01-19 11:25:16,156 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:16,156 [INFO] Completed Chapter 38 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-19 11:25:16,659 [INFO] Downloading chapter 39
+2026-01-19 11:25:16,659 [INFO] Fetching range for chapter 39
+2026-01-19 11:25:17,075 [INFO] Requesting export: from=3901 to=3926.90.99.89
+2026-01-19 11:25:17,719 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx.part
+2026-01-19 11:25:17,730 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:17,730 [INFO] Completed Chapter 39 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-19 11:25:18,234 [INFO] Downloading chapter 40
+2026-01-19 11:25:18,234 [INFO] Fetching range for chapter 40
+2026-01-19 11:25:18,543 [INFO] Requesting export: from=4001 to=4017.00.00.00
+2026-01-19 11:25:18,997 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx.part
+2026-01-19 11:25:19,001 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:19,001 [INFO] Completed Chapter 40 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-19 11:25:19,503 [INFO] Downloading chapter 41
+2026-01-19 11:25:19,503 [INFO] Fetching range for chapter 41
+2026-01-19 11:25:19,946 [INFO] Requesting export: from=4101 to=4115.20.00.00
+2026-01-19 11:25:20,655 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx.part
+2026-01-19 11:25:20,657 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:20,661 [INFO] Completed Chapter 41 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-19 11:25:21,163 [INFO] Downloading chapter 42
+2026-01-19 11:25:21,163 [INFO] Fetching range for chapter 42
+2026-01-19 11:25:21,663 [INFO] Requesting export: from=4201.00 to=4206.00.90.00
+2026-01-19 11:25:22,284 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx.part
+2026-01-19 11:25:22,300 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:22,302 [INFO] Completed Chapter 42 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-19 11:25:22,802 [INFO] Downloading chapter 43
+2026-01-19 11:25:22,804 [INFO] Fetching range for chapter 43
+2026-01-19 11:25:23,155 [INFO] Requesting export: from=4301 to=4304.00.00.00
+2026-01-19 11:25:23,800 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx.part
+2026-01-19 11:25:23,805 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:23,805 [INFO] Completed Chapter 43 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-19 11:25:24,307 [INFO] Downloading chapter 44
+2026-01-19 11:25:24,307 [INFO] Fetching range for chapter 44
+2026-01-19 11:25:24,853 [INFO] Requesting export: from=4401 to=4421.99.98.80
+2026-01-19 11:25:25,468 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx.part
+2026-01-19 11:25:25,468 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:25,468 [INFO] Completed Chapter 44 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-19 11:25:25,977 [INFO] Downloading chapter 45
+2026-01-19 11:25:25,977 [INFO] Fetching range for chapter 45
+2026-01-19 11:25:26,382 [INFO] Requesting export: from=4501 to=4504.90.00.00
+2026-01-19 11:25:26,985 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx.part
+2026-01-19 11:25:27,000 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:27,000 [INFO] Completed Chapter 45 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-19 11:25:27,503 [INFO] Downloading chapter 46
+2026-01-19 11:25:27,503 [INFO] Fetching range for chapter 46
+2026-01-19 11:25:27,950 [INFO] Requesting export: from=4601 to=4602.90.00.00
+2026-01-19 11:25:28,275 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx.part
+2026-01-19 11:25:28,279 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:28,281 [INFO] Completed Chapter 46 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-19 11:25:28,782 [INFO] Downloading chapter 47
+2026-01-19 11:25:28,782 [INFO] Fetching range for chapter 47
+2026-01-19 11:25:29,149 [INFO] Requesting export: from=4701.00.00.00 to=4707.90.00.00
+2026-01-19 11:25:29,564 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx.part
+2026-01-19 11:25:29,570 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:29,571 [INFO] Completed Chapter 47 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-19 11:25:30,072 [INFO] Downloading chapter 48
+2026-01-19 11:25:30,072 [INFO] Fetching range for chapter 48
+2026-01-19 11:25:30,483 [INFO] Requesting export: from=4801.00.01 to=4823.90.86.80
+2026-01-19 11:25:31,203 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx.part
+2026-01-19 11:25:31,203 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:31,203 [INFO] Completed Chapter 48 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-19 11:25:31,709 [INFO] Downloading chapter 49
+2026-01-19 11:25:31,709 [INFO] Fetching range for chapter 49
+2026-01-19 11:25:32,118 [INFO] Requesting export: from=4901 to=4911.99.80.00
+2026-01-19 11:25:32,526 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx.part
+2026-01-19 11:25:32,526 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:32,537 [INFO] Completed Chapter 49 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-19 11:25:33,038 [INFO] Downloading chapter 50
+2026-01-19 11:25:33,040 [INFO] Fetching range for chapter 50
+2026-01-19 11:25:33,327 [INFO] Requesting export: from=5001.00.00.00 to=5007.90.60.90
+2026-01-19 11:25:33,640 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx.part
+2026-01-19 11:25:33,652 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:33,658 [INFO] Completed Chapter 50 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-19 11:25:34,159 [INFO] Downloading chapter 51
+2026-01-19 11:25:34,159 [INFO] Fetching range for chapter 51
+2026-01-19 11:25:34,471 [INFO] Requesting export: from=5101 to=5113.00.00.00
+2026-01-19 11:25:34,882 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx.part
+2026-01-19 11:25:34,891 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:34,893 [INFO] Completed Chapter 51 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-19 11:25:35,394 [INFO] Downloading chapter 52
+2026-01-19 11:25:35,394 [INFO] Fetching range for chapter 52
+2026-01-19 11:25:35,816 [INFO] Requesting export: from=5201.00 to=5212.25.60.90
+2026-01-19 11:25:36,322 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx.part
+2026-01-19 11:25:36,325 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:36,325 [INFO] Completed Chapter 52 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-19 11:25:36,827 [INFO] Downloading chapter 53
+2026-01-19 11:25:36,828 [INFO] Fetching range for chapter 53
+2026-01-19 11:25:37,223 [INFO] Requesting export: from=5301 to=5311.00.60.00
+2026-01-19 11:25:37,562 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx.part
+2026-01-19 11:25:37,562 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:37,562 [INFO] Completed Chapter 53 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-19 11:25:38,070 [INFO] Downloading chapter 54
+2026-01-19 11:25:38,070 [INFO] Fetching range for chapter 54
+2026-01-19 11:25:38,398 [INFO] Requesting export: from=5401 to=5408.34.90.95
+2026-01-19 11:25:38,881 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx.part
+2026-01-19 11:25:38,886 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:38,886 [INFO] Completed Chapter 54 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-19 11:25:39,388 [INFO] Downloading chapter 55
+2026-01-19 11:25:39,388 [INFO] Fetching range for chapter 55
+2026-01-19 11:25:40,212 [INFO] Requesting export: from=5501 to=5516.94.00.90
+2026-01-19 11:25:40,774 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx.part
+2026-01-19 11:25:40,777 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:40,777 [INFO] Completed Chapter 55 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-19 11:25:41,278 [INFO] Downloading chapter 56
+2026-01-19 11:25:41,278 [INFO] Fetching range for chapter 56
+2026-01-19 11:25:41,580 [INFO] Requesting export: from=5601 to=5609.00.40.00
+2026-01-19 11:25:42,031 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx.part
+2026-01-19 11:25:42,039 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:42,042 [INFO] Completed Chapter 56 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-19 11:25:42,543 [INFO] Downloading chapter 57
+2026-01-19 11:25:42,547 [INFO] Fetching range for chapter 57
+2026-01-19 11:25:43,083 [INFO] Requesting export: from=5701 to=5705.00.20.90
+2026-01-19 11:25:43,685 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx.part
+2026-01-19 11:25:43,699 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:43,699 [INFO] Completed Chapter 57 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-19 11:25:44,201 [INFO] Downloading chapter 58
+2026-01-19 11:25:44,201 [INFO] Fetching range for chapter 58
+2026-01-19 11:25:44,614 [INFO] Requesting export: from=5801 to=5811.00.40.00
+2026-01-19 11:25:45,026 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx.part
+2026-01-19 11:25:45,028 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:45,028 [INFO] Completed Chapter 58 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-19 11:25:45,532 [INFO] Downloading chapter 59
+2026-01-19 11:25:45,532 [INFO] Fetching range for chapter 59
+2026-01-19 11:25:45,947 [INFO] Requesting export: from=5901 to=5911.90.00.80
+2026-01-19 11:25:46,551 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx.part
+2026-01-19 11:25:46,565 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:46,566 [INFO] Completed Chapter 59 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-19 11:25:47,069 [INFO] Downloading chapter 60
+2026-01-19 11:25:47,069 [INFO] Fetching range for chapter 60
+2026-01-19 11:25:47,383 [INFO] Requesting export: from=6001 to=6006.90.90.00
+2026-01-19 11:25:47,741 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx.part
+2026-01-19 11:25:47,743 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:47,745 [INFO] Completed Chapter 60 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-19 11:25:48,247 [INFO] Downloading chapter 61
+2026-01-19 11:25:48,247 [INFO] Fetching range for chapter 61
+2026-01-19 11:25:48,596 [INFO] Requesting export: from=6101 to=6117.90.90.95
+2026-01-19 11:25:49,430 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx.part
+2026-01-19 11:25:49,436 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:49,436 [INFO] Completed Chapter 61 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-19 11:25:49,938 [INFO] Downloading chapter 62
+2026-01-19 11:25:49,938 [INFO] Fetching range for chapter 62
+2026-01-19 11:25:50,447 [INFO] Requesting export: from=6201 to=6217.90.90.95
+2026-01-19 11:25:51,317 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx.part
+2026-01-19 11:25:51,337 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:51,337 [INFO] Completed Chapter 62 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-19 11:25:51,838 [INFO] Downloading chapter 63
+2026-01-19 11:25:51,838 [INFO] Fetching range for chapter 63
+2026-01-19 11:25:52,167 [INFO] Requesting export: from=6301 to=6310.90.20.00
+2026-01-19 11:25:52,609 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx.part
+2026-01-19 11:25:52,613 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:52,615 [INFO] Completed Chapter 63 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-19 11:25:53,117 [INFO] Downloading chapter 64
+2026-01-19 11:25:53,117 [INFO] Fetching range for chapter 64
+2026-01-19 11:25:53,558 [INFO] Requesting export: from=6401 to=6406.90.90.00
+2026-01-19 11:25:54,198 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx.part
+2026-01-19 11:25:54,200 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:54,200 [INFO] Completed Chapter 64 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-19 11:25:54,705 [INFO] Downloading chapter 65
+2026-01-19 11:25:54,705 [INFO] Fetching range for chapter 65
+2026-01-19 11:25:55,049 [INFO] Requesting export: from=6501.00 to=6507.00.00.00
+2026-01-19 11:25:55,573 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx.part
+2026-01-19 11:25:55,573 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:55,577 [INFO] Completed Chapter 65 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-19 11:25:56,078 [INFO] Downloading chapter 66
+2026-01-19 11:25:56,078 [INFO] Fetching range for chapter 66
+2026-01-19 11:25:56,505 [INFO] Requesting export: from=6601 to=6603.90.81.00
+2026-01-19 11:25:57,120 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx.part
+2026-01-19 11:25:57,120 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:57,120 [INFO] Completed Chapter 66 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-19 11:25:57,628 [INFO] Downloading chapter 67
+2026-01-19 11:25:57,628 [INFO] Fetching range for chapter 67
+2026-01-19 11:25:58,028 [INFO] Requesting export: from=6701.00 to=6704.90.00.00
+2026-01-19 11:25:58,435 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx.part
+2026-01-19 11:25:58,435 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:58,435 [INFO] Completed Chapter 67 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-19 11:25:58,941 [INFO] Downloading chapter 68
+2026-01-19 11:25:58,941 [INFO] Fetching range for chapter 68
+2026-01-19 11:25:59,246 [INFO] Requesting export: from=6801.00.00.00 to=6815.99.41.70
+2026-01-19 11:25:59,670 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx.part
+2026-01-19 11:25:59,672 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx (content-type=application/octet-stream)
+2026-01-19 11:25:59,673 [INFO] Completed Chapter 68 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-19 11:26:00,175 [INFO] Downloading chapter 69
+2026-01-19 11:26:00,175 [INFO] Fetching range for chapter 69
+2026-01-19 11:26:00,826 [INFO] Requesting export: from=6901.00.00.00 to=6914.90.80.00
+2026-01-19 11:26:01,204 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx.part
+2026-01-19 11:26:01,209 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:01,211 [INFO] Completed Chapter 69 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-19 11:26:01,712 [INFO] Downloading chapter 70
+2026-01-19 11:26:01,712 [INFO] Fetching range for chapter 70
+2026-01-19 11:26:02,026 [INFO] Requesting export: from=7001.00 to=7020.00.60.00
+2026-01-19 11:26:02,479 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx.part
+2026-01-19 11:26:02,491 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:02,493 [INFO] Completed Chapter 70 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-19 11:26:02,996 [INFO] Downloading chapter 71
+2026-01-19 11:26:02,996 [INFO] Fetching range for chapter 71
+2026-01-19 11:26:03,355 [INFO] Requesting export: from=7101 to=7118.90.00.55
+2026-01-19 11:26:03,765 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx.part
+2026-01-19 11:26:03,769 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:03,771 [INFO] Completed Chapter 71 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-19 11:26:04,272 [INFO] Downloading chapter 72
+2026-01-19 11:26:04,272 [INFO] Fetching range for chapter 72
+2026-01-19 11:26:04,789 [INFO] Requesting export: from=7201 to=7229.90.90.00
+2026-01-19 11:26:05,248 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx.part
+2026-01-19 11:26:05,275 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:05,275 [INFO] Completed Chapter 72 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-19 11:26:05,776 [INFO] Downloading chapter 73
+2026-01-19 11:26:05,776 [INFO] Fetching range for chapter 73
+2026-01-19 11:26:06,196 [INFO] Requesting export: from=7301 to=7326.90.86.88
+2026-01-19 11:26:06,682 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx.part
+2026-01-19 11:26:06,696 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:06,698 [INFO] Completed Chapter 73 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-19 11:26:07,199 [INFO] Downloading chapter 74
+2026-01-19 11:26:07,199 [INFO] Fetching range for chapter 74
+2026-01-19 11:26:07,860 [INFO] Requesting export: from=7401.00.00.00 to=7419.80.50.50
+2026-01-19 11:26:08,365 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx.part
+2026-01-19 11:26:08,365 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:08,365 [INFO] Completed Chapter 74 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-19 11:26:08,879 [INFO] Downloading chapter 75
+2026-01-19 11:26:08,879 [INFO] Fetching range for chapter 75
+2026-01-19 11:26:09,371 [INFO] Requesting export: from=7501 to=7508.90.50.00
+2026-01-19 11:26:09,692 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx.part
+2026-01-19 11:26:09,697 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:09,698 [INFO] Completed Chapter 75 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-19 11:26:10,202 [INFO] Downloading chapter 76
+2026-01-19 11:26:10,202 [INFO] Fetching range for chapter 76
+2026-01-19 11:26:10,530 [INFO] Requesting export: from=7601 to=7616.99.51.90
+2026-01-19 11:26:11,234 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx.part
+2026-01-19 11:26:11,234 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:11,234 [INFO] Completed Chapter 76 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-19 11:26:11,746 [INFO] Downloading chapter 77
+2026-01-19 11:26:11,746 [INFO] Fetching range for chapter 77
+2026-01-19 11:26:14,678 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 1/3)
+2026-01-19 11:26:17,689 [INFO] Fetching range for chapter 77
+2026-01-19 11:26:21,103 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 2/3)
+2026-01-19 11:26:24,106 [INFO] Fetching range for chapter 77
+2026-01-19 11:26:26,898 [WARNING] Failed to get range for chapter: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77 (Attempt 3/3)
+2026-01-19 11:26:26,907 [ERROR] Failed to download Chapter 77: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77
+Traceback (most recent call last):
+  File "c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\downloader.py", line 105, in download_all_chapters
+    data = get_chapter_range(session, ch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\utils.py", line 20, in wrapper
+    raise last_exc
+  File "c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\utils.py", line 14, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\downloader.py", line 45, in get_chapter_range
+    r.raise_for_status()
+  File "c:\Users\Gunasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://hts.usitc.gov/reststop/ranges?docNumber=77
+2026-01-19 11:26:26,934 [INFO] Downloading chapter 78
+2026-01-19 11:26:26,936 [INFO] Fetching range for chapter 78
+2026-01-19 11:26:27,516 [INFO] Requesting export: from=7801 to=7806.00.80.00
+2026-01-19 11:26:28,136 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx.part
+2026-01-19 11:26:28,136 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:28,141 [INFO] Completed Chapter 78 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-19 11:26:28,642 [INFO] Downloading chapter 79
+2026-01-19 11:26:28,642 [INFO] Fetching range for chapter 79
+2026-01-19 11:26:28,987 [INFO] Requesting export: from=7901 to=7907.00.60.00
+2026-01-19 11:26:29,363 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx.part
+2026-01-19 11:26:29,366 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:29,366 [INFO] Completed Chapter 79 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-19 11:26:29,868 [INFO] Downloading chapter 80
+2026-01-19 11:26:29,869 [INFO] Fetching range for chapter 80
+2026-01-19 11:26:30,382 [INFO] Requesting export: from=8001 to=8007.00.50.00
+2026-01-19 11:26:31,007 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx.part
+2026-01-19 11:26:31,011 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:31,011 [INFO] Completed Chapter 80 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-19 11:26:31,513 [INFO] Downloading chapter 81
+2026-01-19 11:26:31,515 [INFO] Fetching range for chapter 81
+2026-01-19 11:26:31,870 [INFO] Requesting export: from=8101 to=8113.00.00.00
+2026-01-19 11:26:32,233 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx.part
+2026-01-19 11:26:32,235 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:32,242 [INFO] Completed Chapter 81 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-19 11:26:32,744 [INFO] Downloading chapter 82
+2026-01-19 11:26:32,744 [INFO] Fetching range for chapter 82
+2026-01-19 11:26:33,231 [INFO] Requesting export: from=8201 to=8215.99.50.00
+2026-01-19 11:26:33,866 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx.part
+2026-01-19 11:26:33,881 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:33,882 [INFO] Completed Chapter 82 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-19 11:26:34,384 [INFO] Downloading chapter 83
+2026-01-19 11:26:34,384 [INFO] Fetching range for chapter 83
+2026-01-19 11:26:35,184 [INFO] Requesting export: from=8301 to=8311.90.00.00
+2026-01-19 11:26:35,784 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx.part
+2026-01-19 11:26:35,799 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:35,804 [INFO] Completed Chapter 83 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-19 11:26:36,307 [INFO] Downloading chapter 84
+2026-01-19 11:26:36,307 [INFO] Fetching range for chapter 84
+2026-01-19 11:26:36,674 [INFO] Requesting export: from=8401 to=8487.90.00.80
+2026-01-19 11:26:37,766 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx.part
+2026-01-19 11:26:37,974 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:37,976 [INFO] Completed Chapter 84 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-19 11:26:38,477 [INFO] Downloading chapter 85
+2026-01-19 11:26:38,477 [INFO] Fetching range for chapter 85
+2026-01-19 11:26:39,084 [INFO] Requesting export: from=8501 to=8549.99.00.00
+2026-01-19 11:26:39,950 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx.part
+2026-01-19 11:26:40,017 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:40,017 [INFO] Completed Chapter 85 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-19 11:26:40,526 [INFO] Downloading chapter 86
+2026-01-19 11:26:40,527 [INFO] Fetching range for chapter 86
+2026-01-19 11:26:40,915 [INFO] Requesting export: from=8601 to=8609.00.00.00
+2026-01-19 11:26:41,240 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx.part
+2026-01-19 11:26:41,240 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:41,240 [INFO] Completed Chapter 86 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-19 11:26:41,745 [INFO] Downloading chapter 87
+2026-01-19 11:26:41,745 [INFO] Fetching range for chapter 87
+2026-01-19 11:26:42,202 [INFO] Requesting export: from=8701 to=8716.90.50.60
+2026-01-19 11:26:42,833 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx.part
+2026-01-19 11:26:42,849 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:42,853 [INFO] Completed Chapter 87 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-19 11:26:43,354 [INFO] Downloading chapter 88
+2026-01-19 11:26:43,354 [INFO] Fetching range for chapter 88
+2026-01-19 11:26:43,905 [INFO] Requesting export: from=8801.00.00 to=8807.90.90.60
+2026-01-19 11:26:44,517 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx.part
+2026-01-19 11:26:44,517 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:44,517 [INFO] Completed Chapter 88 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-19 11:26:45,025 [INFO] Downloading chapter 89
+2026-01-19 11:26:45,025 [INFO] Fetching range for chapter 89
+2026-01-19 11:26:45,429 [INFO] Requesting export: from=8901 to=8908.00.00.00
+2026-01-19 11:26:45,851 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx.part
+2026-01-19 11:26:45,854 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:45,854 [INFO] Completed Chapter 89 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-19 11:26:46,356 [INFO] Downloading chapter 90
+2026-01-19 11:26:46,356 [INFO] Fetching range for chapter 90
+2026-01-19 11:26:46,713 [INFO] Requesting export: from=9001 to=9033.00.90.00
+2026-01-19 11:26:47,324 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx.part
+2026-01-19 11:26:47,324 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:47,324 [INFO] Completed Chapter 90 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-19 11:26:47,830 [INFO] Downloading chapter 91
+2026-01-19 11:26:47,830 [INFO] Fetching range for chapter 91
+2026-01-19 11:26:48,308 [INFO] Requesting export: from=9101 to=9114.90.50.00
+2026-01-19 11:26:48,824 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx.part
+2026-01-19 11:26:48,827 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:48,828 [INFO] Completed Chapter 91 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-19 11:26:49,330 [INFO] Downloading chapter 92
+2026-01-19 11:26:49,330 [INFO] Fetching range for chapter 92
+2026-01-19 11:26:49,647 [INFO] Requesting export: from=9201 to=9209.99.80.00
+2026-01-19 11:26:50,199 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx.part
+2026-01-19 11:26:50,202 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:50,205 [INFO] Completed Chapter 92 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-19 11:26:50,706 [INFO] Downloading chapter 93
+2026-01-19 11:26:50,706 [INFO] Fetching range for chapter 93
+2026-01-19 11:26:51,167 [INFO] Requesting export: from=9301 to=9307.00.00.00
+2026-01-19 11:26:51,584 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx.part
+2026-01-19 11:26:51,589 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:51,589 [INFO] Completed Chapter 93 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-19 11:26:52,092 [INFO] Downloading chapter 94
+2026-01-19 11:26:52,093 [INFO] Fetching range for chapter 94
+2026-01-19 11:26:52,700 [INFO] Requesting export: from=9401 to=9406.90.01.90
+2026-01-19 11:26:53,433 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx.part
+2026-01-19 11:26:53,439 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:53,439 [INFO] Completed Chapter 94 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-19 11:26:53,943 [INFO] Downloading chapter 95
+2026-01-19 11:26:53,943 [INFO] Fetching range for chapter 95
+2026-01-19 11:26:54,453 [INFO] Requesting export: from=9503.00.00 to=9508.40.00.00
+2026-01-19 11:26:55,065 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx.part
+2026-01-19 11:26:55,065 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:55,070 [INFO] Completed Chapter 95 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-19 11:26:55,571 [INFO] Downloading chapter 96
+2026-01-19 11:26:55,571 [INFO] Fetching range for chapter 96
+2026-01-19 11:26:55,981 [INFO] Requesting export: from=9601 to=9620.00.70.00
+2026-01-19 11:26:56,700 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx.part
+2026-01-19 11:26:56,711 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:56,711 [INFO] Completed Chapter 96 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-19 11:26:57,214 [INFO] Downloading chapter 97
+2026-01-19 11:26:57,214 [INFO] Fetching range for chapter 97
+2026-01-19 11:26:57,530 [INFO] Requesting export: from=9701 to=9706.90.00.60
+2026-01-19 11:26:57,882 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx.part
+2026-01-19 11:26:57,882 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:57,889 [INFO] Completed Chapter 97 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-19 11:26:58,392 [INFO] Downloading chapter 98
+2026-01-19 11:26:58,392 [INFO] Fetching range for chapter 98
+2026-01-19 11:26:58,836 [INFO] Requesting export: from=9801.00.10 to=9823.53.06
+2026-01-19 11:26:59,567 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx.part
+2026-01-19 11:26:59,582 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx (content-type=application/octet-stream)
+2026-01-19 11:26:59,582 [INFO] Completed Chapter 98 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-19 11:27:00,085 [INFO] Downloading chapter 99
+2026-01-19 11:27:00,085 [INFO] Fetching range for chapter 99
+2026-01-19 11:27:00,493 [INFO] Requesting export: from=9901.00.50 to=9922.52.12
+2026-01-19 11:27:01,367 [INFO] Saving to temporary file c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx.part
+2026-01-19 11:27:01,487 [INFO] Saved export to c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx (content-type=application/octet-stream)
+2026-01-19 11:27:01,487 [INFO] Completed Chapter 99 -> c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-19 11:27:01,988 [INFO] Downloaded 98 chapters successfully.
+2026-01-19 11:27:01,988 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-19 11:27:01,991 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-19 11:27:01,991 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-19 11:27:01,991 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-19 11:27:01,991 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-19 11:27:01,993 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-19 11:27:01,995 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-19 11:27:01,995 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-19 11:27:01,995 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-19 11:27:01,995 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-19 11:27:01,997 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-19 11:27:01,997 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-19 11:27:01,998 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-19 11:27:01,999 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-19 11:27:01,999 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-19 11:27:02,000 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-19 11:27:02,000 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-19 11:27:02,000 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-19 11:27:02,000 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-19 11:27:02,001 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-19 11:27:02,001 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-19 11:27:02,001 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-19 11:27:02,001 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-19 11:27:02,001 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-19 11:27:02,002 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-19 11:27:02,004 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-19 11:27:02,008 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-19 11:27:02,010 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-19 11:27:02,012 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-19 11:27:02,014 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-19 11:27:02,014 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-19 11:27:02,014 [INFO]  - c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-19 11:27:02,016 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_01.xlsx
+2026-01-19 11:27:02,399 [INFO] Parsed 72 rows from Chapter_01.xlsx
+2026-01-19 11:27:02,399 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_02.xlsx
+2026-01-19 11:27:02,450 [INFO] Parsed 134 rows from Chapter_02.xlsx
+2026-01-19 11:27:02,450 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_03.xlsx
+2026-01-19 11:27:02,533 [INFO] Parsed 513 rows from Chapter_03.xlsx
+2026-01-19 11:27:02,533 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_04.xlsx
+2026-01-19 11:27:02,605 [INFO] Parsed 328 rows from Chapter_04.xlsx
+2026-01-19 11:27:02,605 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_05.xlsx
+2026-01-19 11:27:02,650 [INFO] Parsed 21 rows from Chapter_05.xlsx
+2026-01-19 11:27:02,650 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_06.xlsx
+2026-01-19 11:27:02,688 [INFO] Parsed 62 rows from Chapter_06.xlsx
+2026-01-19 11:27:02,688 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_07.xlsx
+2026-01-19 11:27:02,793 [INFO] Parsed 433 rows from Chapter_07.xlsx
+2026-01-19 11:27:02,794 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_08.xlsx
+2026-01-19 11:27:02,849 [INFO] Parsed 203 rows from Chapter_08.xlsx
+2026-01-19 11:27:02,849 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_09.xlsx
+2026-01-19 11:27:02,889 [INFO] Parsed 85 rows from Chapter_09.xlsx
+2026-01-19 11:27:02,889 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_10.xlsx
+2026-01-19 11:27:02,939 [INFO] Parsed 50 rows from Chapter_10.xlsx
+2026-01-19 11:27:02,940 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_11.xlsx
+2026-01-19 11:27:02,981 [INFO] Parsed 21 rows from Chapter_11.xlsx
+2026-01-19 11:27:02,982 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_12.xlsx
+2026-01-19 11:27:03,039 [INFO] Parsed 138 rows from Chapter_12.xlsx
+2026-01-19 11:27:03,039 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_13.xlsx
+2026-01-19 11:27:03,070 [INFO] Parsed 18 rows from Chapter_13.xlsx
+2026-01-19 11:27:03,070 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_14.xlsx
+2026-01-19 11:27:03,118 [INFO] Parsed 9 rows from Chapter_14.xlsx
+2026-01-19 11:27:03,118 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_15.xlsx
+2026-01-19 11:27:03,171 [INFO] Parsed 65 rows from Chapter_15.xlsx
+2026-01-19 11:27:03,171 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_16.xlsx
+2026-01-19 11:27:03,233 [INFO] Parsed 237 rows from Chapter_16.xlsx
+2026-01-19 11:27:03,233 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_17.xlsx
+2026-01-19 11:27:03,284 [INFO] Parsed 115 rows from Chapter_17.xlsx
+2026-01-19 11:27:03,285 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_18.xlsx
+2026-01-19 11:27:03,334 [INFO] Parsed 123 rows from Chapter_18.xlsx
+2026-01-19 11:27:03,334 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_19.xlsx
+2026-01-19 11:27:03,371 [INFO] Parsed 132 rows from Chapter_19.xlsx
+2026-01-19 11:27:03,371 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_20.xlsx
+2026-01-19 11:27:03,438 [INFO] Parsed 323 rows from Chapter_20.xlsx
+2026-01-19 11:27:03,438 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_21.xlsx
+2026-01-19 11:27:03,483 [INFO] Parsed 137 rows from Chapter_21.xlsx
+2026-01-19 11:27:03,483 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_22.xlsx
+2026-01-19 11:27:03,544 [INFO] Parsed 126 rows from Chapter_22.xlsx
+2026-01-19 11:27:03,546 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_23.xlsx
+2026-01-19 11:27:03,587 [INFO] Parsed 36 rows from Chapter_23.xlsx
+2026-01-19 11:27:03,587 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_24.xlsx
+2026-01-19 11:27:03,639 [INFO] Parsed 260 rows from Chapter_24.xlsx
+2026-01-19 11:27:03,639 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_25.xlsx
+2026-01-19 11:27:03,683 [INFO] Parsed 11 rows from Chapter_25.xlsx
+2026-01-19 11:27:03,683 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_26.xlsx
+2026-01-19 11:27:03,720 [INFO] Parsed 37 rows from Chapter_26.xlsx
+2026-01-19 11:27:03,720 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_27.xlsx
+2026-01-19 11:27:03,772 [INFO] Parsed 141 rows from Chapter_27.xlsx
+2026-01-19 11:27:03,772 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_28.xlsx
+2026-01-19 11:27:03,857 [INFO] Parsed 135 rows from Chapter_28.xlsx
+2026-01-19 11:27:03,857 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_29.xlsx
+2026-01-19 11:27:04,046 [INFO] Parsed 1140 rows from Chapter_29.xlsx
+2026-01-19 11:27:04,046 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_30.xlsx
+2026-01-19 11:27:04,082 [INFO] Parsed 134 rows from Chapter_30.xlsx
+2026-01-19 11:27:04,082 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_31.xlsx
+2026-01-19 11:27:04,121 [INFO] Parsed 2 rows from Chapter_31.xlsx
+2026-01-19 11:27:04,121 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_32.xlsx
+2026-01-19 11:27:04,173 [INFO] Parsed 143 rows from Chapter_32.xlsx
+2026-01-19 11:27:04,173 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_33.xlsx
+2026-01-19 11:27:04,221 [INFO] Parsed 51 rows from Chapter_33.xlsx
+2026-01-19 11:27:04,221 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_34.xlsx
+2026-01-19 11:27:04,255 [INFO] Parsed 35 rows from Chapter_34.xlsx
+2026-01-19 11:27:04,255 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_35.xlsx
+2026-01-19 11:27:04,283 [INFO] Parsed 7 rows from Chapter_35.xlsx
+2026-01-19 11:27:04,283 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_36.xlsx
+2026-01-19 11:27:04,317 [INFO] Parsed 2 rows from Chapter_36.xlsx
+2026-01-19 11:27:04,317 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_37.xlsx
+2026-01-19 11:27:04,369 [INFO] Parsed 40 rows from Chapter_37.xlsx
+2026-01-19 11:27:04,369 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_38.xlsx
+2026-01-19 11:27:04,421 [INFO] Parsed 124 rows from Chapter_38.xlsx
+2026-01-19 11:27:04,421 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_39.xlsx
+2026-01-19 11:27:04,488 [INFO] Parsed 215 rows from Chapter_39.xlsx
+2026-01-19 11:27:04,488 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_40.xlsx
+2026-01-19 11:27:04,554 [INFO] Parsed 176 rows from Chapter_40.xlsx
+2026-01-19 11:27:04,554 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_41.xlsx
+2026-01-19 11:27:04,627 [INFO] Parsed 231 rows from Chapter_41.xlsx
+2026-01-19 11:27:04,629 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_42.xlsx
+2026-01-19 11:27:04,673 [INFO] Parsed 164 rows from Chapter_42.xlsx
+2026-01-19 11:27:04,673 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_43.xlsx
+2026-01-19 11:27:04,705 [INFO] Parsed 20 rows from Chapter_43.xlsx
+2026-01-19 11:27:04,705 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_44.xlsx
+2026-01-19 11:27:04,841 [INFO] Parsed 657 rows from Chapter_44.xlsx
+2026-01-19 11:27:04,842 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_45.xlsx
+2026-01-19 11:27:04,882 [INFO] Parsed 6 rows from Chapter_45.xlsx
+2026-01-19 11:27:04,882 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_46.xlsx
+2026-01-19 11:27:04,921 [INFO] Parsed 67 rows from Chapter_46.xlsx
+2026-01-19 11:27:04,921 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_47.xlsx
+2026-01-19 11:27:04,967 [INFO] Parsed 4 rows from Chapter_47.xlsx
+2026-01-19 11:27:04,968 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_48.xlsx
+2026-01-19 11:27:05,033 [INFO] Parsed 319 rows from Chapter_48.xlsx
+2026-01-19 11:27:05,033 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_49.xlsx
+2026-01-19 11:27:05,068 [INFO] Parsed 37 rows from Chapter_49.xlsx
+2026-01-19 11:27:05,068 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_50.xlsx
+2026-01-19 11:27:05,105 [INFO] Parsed 28 rows from Chapter_50.xlsx
+2026-01-19 11:27:05,105 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_51.xlsx
+2026-01-19 11:27:05,155 [INFO] Parsed 120 rows from Chapter_51.xlsx
+2026-01-19 11:27:05,155 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_52.xlsx
+2026-01-19 11:27:05,248 [INFO] Parsed 657 rows from Chapter_52.xlsx
+2026-01-19 11:27:05,248 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_53.xlsx
+2026-01-19 11:27:05,292 [INFO] Parsed 53 rows from Chapter_53.xlsx
+2026-01-19 11:27:05,292 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_54.xlsx
+2026-01-19 11:27:05,351 [INFO] Parsed 327 rows from Chapter_54.xlsx
+2026-01-19 11:27:05,351 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_55.xlsx
+2026-01-19 11:27:05,435 [INFO] Parsed 386 rows from Chapter_55.xlsx
+2026-01-19 11:27:05,435 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_56.xlsx
+2026-01-19 11:27:05,489 [INFO] Parsed 68 rows from Chapter_56.xlsx
+2026-01-19 11:27:05,490 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_57.xlsx
+2026-01-19 11:27:05,566 [INFO] Parsed 67 rows from Chapter_57.xlsx
+2026-01-19 11:27:05,566 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_58.xlsx
+2026-01-19 11:27:05,616 [INFO] Parsed 88 rows from Chapter_58.xlsx
+2026-01-19 11:27:05,616 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_59.xlsx
+2026-01-19 11:27:05,650 [INFO] Parsed 57 rows from Chapter_59.xlsx
+2026-01-19 11:27:05,650 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_60.xlsx
+2026-01-19 11:27:05,705 [INFO] Parsed 96 rows from Chapter_60.xlsx
+2026-01-19 11:27:05,705 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_61.xlsx
+2026-01-19 11:27:05,863 [INFO] Parsed 1106 rows from Chapter_61.xlsx
+2026-01-19 11:27:05,863 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_62.xlsx
+2026-01-19 11:27:06,045 [INFO] Parsed 1851 rows from Chapter_62.xlsx
+2026-01-19 11:27:06,045 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_63.xlsx
+2026-01-19 11:27:06,105 [INFO] Parsed 264 rows from Chapter_63.xlsx
+2026-01-19 11:27:06,114 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_64.xlsx
+2026-01-19 11:27:06,224 [INFO] Parsed 601 rows from Chapter_64.xlsx
+2026-01-19 11:27:06,224 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_65.xlsx
+2026-01-19 11:27:06,266 [INFO] Parsed 86 rows from Chapter_65.xlsx
+2026-01-19 11:27:06,266 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_66.xlsx
+2026-01-19 11:27:06,301 [INFO] Parsed 0 rows from Chapter_66.xlsx
+2026-01-19 11:27:06,301 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_67.xlsx
+2026-01-19 11:27:06,339 [INFO] Parsed 2 rows from Chapter_67.xlsx
+2026-01-19 11:27:06,339 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_68.xlsx
+2026-01-19 11:27:06,398 [INFO] Parsed 72 rows from Chapter_68.xlsx
+2026-01-19 11:27:06,398 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_69.xlsx
+2026-01-19 11:27:06,453 [INFO] Parsed 131 rows from Chapter_69.xlsx
+2026-01-19 11:27:06,454 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_70.xlsx
+2026-01-19 11:27:06,517 [INFO] Parsed 327 rows from Chapter_70.xlsx
+2026-01-19 11:27:06,517 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_71.xlsx
+2026-01-19 11:27:06,574 [INFO] Parsed 127 rows from Chapter_71.xlsx
+2026-01-19 11:27:06,576 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_72.xlsx
+2026-01-19 11:27:06,685 [INFO] Parsed 621 rows from Chapter_72.xlsx
+2026-01-19 11:27:06,685 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_73.xlsx
+2026-01-19 11:27:06,789 [INFO] Parsed 714 rows from Chapter_73.xlsx
+2026-01-19 11:27:06,790 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_74.xlsx
+2026-01-19 11:27:06,837 [INFO] Parsed 132 rows from Chapter_74.xlsx
+2026-01-19 11:27:06,837 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_75.xlsx
+2026-01-19 11:27:06,872 [INFO] Parsed 16 rows from Chapter_75.xlsx
+2026-01-19 11:27:06,872 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_76.xlsx
+2026-01-19 11:27:06,921 [INFO] Parsed 121 rows from Chapter_76.xlsx
+2026-01-19 11:27:06,921 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_78.xlsx
+2026-01-19 11:27:06,949 [INFO] Parsed 4 rows from Chapter_78.xlsx
+2026-01-19 11:27:06,949 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_79.xlsx
+2026-01-19 11:27:06,989 [INFO] Parsed 2 rows from Chapter_79.xlsx
+2026-01-19 11:27:06,989 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_80.xlsx
+2026-01-19 11:27:07,039 [INFO] Parsed 0 rows from Chapter_80.xlsx
+2026-01-19 11:27:07,039 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_81.xlsx
+2026-01-19 11:27:07,081 [INFO] Parsed 36 rows from Chapter_81.xlsx
+2026-01-19 11:27:07,082 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_82.xlsx
+2026-01-19 11:27:07,138 [INFO] Parsed 155 rows from Chapter_82.xlsx
+2026-01-19 11:27:07,138 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_83.xlsx
+2026-01-19 11:27:07,189 [INFO] Parsed 60 rows from Chapter_83.xlsx
+2026-01-19 11:27:07,189 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_84.xlsx
+2026-01-19 11:27:07,440 [INFO] Parsed 1570 rows from Chapter_84.xlsx
+2026-01-19 11:27:07,440 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_85.xlsx
+2026-01-19 11:27:07,590 [INFO] Parsed 910 rows from Chapter_85.xlsx
+2026-01-19 11:27:07,590 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_86.xlsx
+2026-01-19 11:27:07,624 [INFO] Parsed 22 rows from Chapter_86.xlsx
+2026-01-19 11:27:07,624 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_87.xlsx
+2026-01-19 11:27:07,699 [INFO] Parsed 405 rows from Chapter_87.xlsx
+2026-01-19 11:27:07,699 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_88.xlsx
+2026-01-19 11:27:07,738 [INFO] Parsed 59 rows from Chapter_88.xlsx
+2026-01-19 11:27:07,738 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_89.xlsx
+2026-01-19 11:27:07,785 [INFO] Parsed 53 rows from Chapter_89.xlsx
+2026-01-19 11:27:07,786 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_90.xlsx
+2026-01-19 11:27:07,891 [INFO] Parsed 323 rows from Chapter_90.xlsx
+2026-01-19 11:27:07,891 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_91.xlsx
+2026-01-19 11:27:07,932 [INFO] Parsed 197 rows from Chapter_91.xlsx
+2026-01-19 11:27:07,932 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_92.xlsx
+2026-01-19 11:27:07,988 [INFO] Parsed 52 rows from Chapter_92.xlsx
+2026-01-19 11:27:07,988 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_93.xlsx
+2026-01-19 11:27:08,034 [INFO] Parsed 57 rows from Chapter_93.xlsx
+2026-01-19 11:27:08,034 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_94.xlsx
+2026-01-19 11:27:08,096 [INFO] Parsed 337 rows from Chapter_94.xlsx
+2026-01-19 11:27:08,097 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_95.xlsx
+2026-01-19 11:27:08,141 [INFO] Parsed 102 rows from Chapter_95.xlsx
+2026-01-19 11:27:08,141 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_96.xlsx
+2026-01-19 11:27:08,192 [INFO] Parsed 86 rows from Chapter_96.xlsx
+2026-01-19 11:27:08,192 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_97.xlsx
+2026-01-19 11:27:08,220 [INFO] Parsed 10 rows from Chapter_97.xlsx
+2026-01-19 11:27:08,220 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_98.xlsx
+2026-01-19 11:27:08,302 [INFO] Parsed 231 rows from Chapter_98.xlsx
+2026-01-19 11:27:08,302 [INFO] Parsing c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\chapters\Chapter_99.xlsx
+2026-01-19 11:27:08,620 [INFO] Parsed 361 rows from Chapter_99.xlsx
+2026-01-19 11:27:08,832 [INFO] Parsed CSV saved at: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\parsed\hts_all_chapters.csv
+2026-01-19 11:27:08,832 [INFO] Loading CSV into DB: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\parsed\hts_all_chapters.csv
+2026-01-19 11:27:08,834 [INFO] Directory ready: c:\Users\Gunasri\Tariff-Impact\Tariff_Impact_API\pipeline\parsed
+2026-01-19 11:27:09,082 [INFO] Table product_table ready or already exists.
+2026-01-19 11:27:09,217 [INFO] Inserted records 1 to 500
+2026-01-19 11:27:09,254 [INFO] Inserted records 501 to 1000
+2026-01-19 11:27:09,287 [INFO] Inserted records 1001 to 1500
+2026-01-19 11:27:09,332 [INFO] Inserted records 1501 to 2000
+2026-01-19 11:27:09,392 [INFO] Inserted records 2001 to 2500
+2026-01-19 11:27:09,447 [INFO] Inserted records 2501 to 3000
+2026-01-19 11:27:09,499 [INFO] Inserted records 3001 to 3500
+2026-01-19 11:27:09,544 [INFO] Inserted records 3501 to 4000
+2026-01-19 11:27:09,578 [INFO] Inserted records 4001 to 4500
+2026-01-19 11:27:09,622 [INFO] Inserted records 4501 to 5000
+2026-01-19 11:27:09,649 [INFO] Inserted records 5001 to 5500
+2026-01-19 11:27:09,702 [INFO] Inserted records 5501 to 6000
+2026-01-19 11:27:09,752 [INFO] Inserted records 6001 to 6500
+2026-01-19 11:27:09,801 [INFO] Inserted records 6501 to 7000
+2026-01-19 11:27:09,832 [INFO] Inserted records 7001 to 7500
+2026-01-19 11:27:09,887 [INFO] Inserted records 7501 to 8000
+2026-01-19 11:27:09,946 [INFO] Inserted records 8001 to 8500
+2026-01-19 11:27:10,003 [INFO] Inserted records 8501 to 9000
+2026-01-19 11:27:10,052 [INFO] Inserted records 9001 to 9500
+2026-01-19 11:27:10,107 [INFO] Inserted records 9501 to 10000
+2026-01-19 11:27:10,151 [INFO] Inserted records 10001 to 10500
+2026-01-19 11:27:10,192 [INFO] Inserted records 10501 to 11000
+2026-01-19 11:27:10,233 [INFO] Inserted records 11001 to 11500
+2026-01-19 11:27:10,284 [INFO] Inserted records 11501 to 12000
+2026-01-19 11:27:10,315 [INFO] Inserted records 12001 to 12500
+2026-01-19 11:27:10,349 [INFO] Inserted records 12501 to 13000
+2026-01-19 11:27:10,399 [INFO] Inserted records 13001 to 13500
+2026-01-19 11:27:10,459 [INFO] Inserted records 13501 to 14000
+2026-01-19 11:27:10,498 [INFO] Inserted records 14001 to 14500
+2026-01-19 11:27:10,564 [INFO] Inserted records 14501 to 15000
+2026-01-19 11:27:10,585 [INFO] Inserted records 15001 to 15500
+2026-01-19 11:27:10,615 [INFO] Inserted records 15501 to 16000
+2026-01-19 11:27:10,637 [INFO] Inserted records 16001 to 16500
+2026-01-19 11:27:10,671 [INFO] Inserted records 16501 to 17000
+2026-01-19 11:27:10,698 [INFO] Inserted records 17001 to 17500
+2026-01-19 11:27:10,732 [INFO] Inserted records 17501 to 18000
+2026-01-19 11:27:10,756 [INFO] Inserted records 18001 to 18500
+2026-01-19 11:27:10,787 [INFO] Inserted records 18501 to 19000
+2026-01-19 11:27:10,840 [INFO] Inserted records 19001 to 19500
+2026-01-19 11:27:10,866 [INFO] Inserted records 19501 to 20000
+2026-01-19 11:27:10,888 [INFO] Inserted records 20001 to 20500
+2026-01-19 11:27:10,899 [INFO] Inserted records 20501 to 20689
+2026-01-19 11:27:10,899 [INFO] CSV data loaded into DB successfully.
+2026-01-19 11:27:10,899 [INFO] Database connection closed.
+2026-01-19 11:27:10,913 [INFO] Pipeline finished successfully!

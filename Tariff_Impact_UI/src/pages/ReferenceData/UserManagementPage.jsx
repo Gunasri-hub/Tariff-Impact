@@ -18,6 +18,11 @@ function UserManagementPage() {
   const [apiError, setApiError] = useState("");
   const [allRoles, setAllRoles] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
+  const [toast, setToast] = useState({ open: false, message: "" });
+
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -75,6 +80,14 @@ const fetchUsers = async () => {
     setLoading(false);
   }
 };
+const showSuccessToast = (message) => {
+  setToast({ open: true, message });
+
+  setTimeout(() => {
+    setToast({ open: false, message: "" });
+  }, 3000);
+};
+
 
 
   useEffect(() => {
@@ -202,12 +215,13 @@ const saveUser = async () => {
     }
 
     if (editingId) {
-      await updateUser(editingId, payload);
-      alert("✅ User updated successfully!");
-    } else {
-      await createUser(payload);
-      alert("✅ User created successfully!");
-    }
+  await updateUser(editingId, payload);
+  showSuccessToast("User updated successfully");
+} else {
+  await createUser(payload);
+  showSuccessToast("User created successfully");
+}
+
 
     closeModal();
     fetchUsers();
@@ -217,18 +231,24 @@ const saveUser = async () => {
   }
 };
 
+const openDeleteUser = (id) => {
+  setDeleteId(id);
+  setShowDeleteModal(true);
+};
 
-const deleteUser = async (id) => {
-  if (!window.confirm("Are you sure you want to delete this user?")) return;
-
+const confirmDeleteUser = async () => {
   try {
-    await deleteUserApi(id);
-    alert("✅ User deleted successfully!");
+    await deleteUserApi(deleteId);
+    showSuccessToast("User deleted successfully");
     fetchUsers();
   } catch (err) {
     alert(err.response?.data?.message || "Failed to delete user");
+  } finally {
+    setShowDeleteModal(false);
+    setDeleteId(null);
   }
 };
+
 
 
 const updateUserStatus = async (id, newStatus) => {
@@ -950,7 +970,8 @@ const updateUserStatus = async (id, newStatus) => {
                         </button>
                         <button 
                           style={{ ...styles.iconBtn, color: "#dc3545" }}
-                          onClick={() => deleteUser(user.id)}
+                          onClick={() => openDeleteUser(user.id)}
+
                           title="Delete"
                         >
                           <span>🗑️</span> 
@@ -963,6 +984,78 @@ const updateUserStatus = async (id, newStatus) => {
             </table>
           </div>
         )}
+
+        {showDeleteModal && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 2100
+    }}
+  >
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "14px",
+        width: "420px",
+        padding: "24px",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+      }}
+    >
+      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 600 }}>
+        Delete User
+      </h3>
+
+      <p style={{ marginTop: "10px", color: "#4b5563", fontSize: "14px" }}>
+        Are you sure you want to delete this user?
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px"
+        }}
+      >
+        <button
+          onClick={() => {
+            setShowDeleteModal(false);
+            setDeleteId(null);
+          }}
+          style={{
+            background: "#f3f4f6",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            cursor: "pointer"
+          }}
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmDeleteUser}
+          style={{
+            background: "#dc2626",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            cursor: "pointer"
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
         {/* Add/Edit Modal */}
         {modalOpen && (
@@ -1140,6 +1233,44 @@ const updateUserStatus = async (id, newStatus) => {
           </div>
         )}
       </div>
+
+      {toast.open && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "14px 22px",
+      borderRadius: "10px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.18)",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      zIndex: 3000,
+      fontSize: "14.5px",
+      fontWeight: 500
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔</span>
+    <span>{toast.message}</span>
+
+    <button
+      onClick={() => setToast({ open: false, message: "" })}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ✕
+    </button>
+  </div>
+)}
+
     </div>
   );
 }
