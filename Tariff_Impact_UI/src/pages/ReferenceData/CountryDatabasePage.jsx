@@ -17,6 +17,11 @@ function CountryDatabasePage() {
   const [apiError, setApiError] = useState("");
   const [allRegions, setAllRegions] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
+  const [toast, setToast] = useState({ open: false, message: "" });
+
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);
+
 
   const [form, setForm] = useState({
     country_name: "",
@@ -70,6 +75,14 @@ function CountryDatabasePage() {
     setLoading(false);
   }
 };
+const showSuccessToast = (message) => {
+  setToast({ open: true, message });
+
+  setTimeout(() => {
+    setToast({ open: false, message: "" });
+  }, 3000);
+};
+
 
 
   useEffect(() => {
@@ -170,12 +183,13 @@ function CountryDatabasePage() {
 
   try {
     if (editingId) {
-      await updateCountry(editingId, payload);
-      alert("✅ Country updated successfully!");
-    } else {
-      await createCountry(payload);
-      alert("✅ Country added successfully!");
-    }
+  await updateCountry(editingId, payload);
+  showSuccessToast("Country updated successfully");
+} else {
+  await createCountry(payload);
+  showSuccessToast("Country added successfully");
+}
+
 
     closeModal();
     fetchCountries();
@@ -186,17 +200,24 @@ function CountryDatabasePage() {
 };
 
 
-  const deleteCountry = async (id) => {
-  if (!window.confirm("Are you sure you want to delete this country?")) return;
+  const openDeleteCountry = (id) => {
+  setDeleteId(id);
+  setShowDeleteModal(true);
+};
 
+const confirmDeleteCountry = async () => {
   try {
-    await deleteCountryApi(id);
-    alert("✅ Country deleted successfully!");
+    await deleteCountryApi(deleteId);
+    showSuccessToast("Country deleted successfully");
     fetchCountries();
   } catch (err) {
     alert(err.response?.data?.message || "Failed to delete country");
+  } finally {
+    setShowDeleteModal(false);
+    setDeleteId(null);
   }
 };
+
 
   // Enhanced inline styles to match the image
   const styles = {
@@ -662,7 +683,8 @@ function CountryDatabasePage() {
                         </button>
                         <button 
                           style={{ ...styles.iconBtn, color: "#dc3545" }}
-                          onClick={() => deleteCountry(c.id)}
+                          onClick={() => openDeleteCountry(c.id)}
+
                           title="Delete"
                         >
                           <span>🗑️</span> 
@@ -675,6 +697,78 @@ function CountryDatabasePage() {
             </table>
           </div>
         )}
+
+        {showDeleteModal && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 2100
+    }}
+  >
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "14px",
+        width: "420px",
+        padding: "24px",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+      }}
+    >
+      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 600 }}>
+        Delete Country
+      </h3>
+
+      <p style={{ marginTop: "10px", color: "#4b5563", fontSize: "14px" }}>
+        Are you sure you want to delete this country?
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px"
+        }}
+      >
+        <button
+          onClick={() => {
+            setShowDeleteModal(false);
+            setDeleteId(null);
+          }}
+          style={{
+            background: "#f3f4f6",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            cursor: "pointer"
+          }}
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmDeleteCountry}
+          style={{
+            background: "#dc2626",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            cursor: "pointer"
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
         {/* Add/Edit Modal */}
         {modalOpen && (
@@ -859,6 +953,43 @@ function CountryDatabasePage() {
           </div>
         )}
       </div>
+      {toast.open && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "14px 22px",
+      borderRadius: "10px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.18)",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      zIndex: 3000,
+      fontSize: "14.5px",
+      fontWeight: 500
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔</span>
+    <span>{toast.message}</span>
+
+    <button
+      onClick={() => setToast({ open: false, message: "" })}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ✕
+    </button>
+  </div>
+)}
+
     </div>
   );
 }

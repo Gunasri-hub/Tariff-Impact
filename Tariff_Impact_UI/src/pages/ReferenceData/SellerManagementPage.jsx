@@ -15,6 +15,11 @@ function SellerManagementPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [apiError, setApiError] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
+  const [toast, setToast] = useState({ open: false, message: "" });
+
+const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -55,6 +60,14 @@ function SellerManagementPage() {
       setLoading(false);
     }
   }, []);
+  const showSuccessToast = (message) => {
+  setToast({ open: true, message });
+
+  setTimeout(() => {
+    setToast({ open: false, message: "" });
+  }, 3000);
+};
+
 
   // Handle search locally
   const handleSearch = (e) => {
@@ -169,12 +182,13 @@ function SellerManagementPage() {
       };
 
       if (editingId) {
-        await updateSeller(editingId, payload);
-        alert("✅ Seller updated successfully!");
-      } else {
-        await createSeller(payload);
-        alert("✅ Seller created successfully!");
-      }
+  await updateSeller(editingId, payload);
+  showSuccessToast("Seller updated successfully");
+} else {
+  await createSeller(payload);
+  showSuccessToast("Seller created successfully");
+}
+
 
       closeModal();
       // Refetch data
@@ -185,18 +199,24 @@ function SellerManagementPage() {
     }
   };
 
-  const deleteSeller = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this seller?")) return;
+  const openDeleteSeller = (id) => {
+  setDeleteId(id);
+  setShowDeleteModal(true);
+};
 
-    try {
-      await deleteSellerApi(id);
-      alert("✅ Seller deleted successfully!");
-      // Refetch data
-      fetchSellers();
-    } catch (err) {
-      alert(err.response?.data?.message || err.response?.data?.error || "Failed to delete seller");
-    }
-  };
+const confirmDeleteSeller = async () => {
+  try {
+    await deleteSellerApi(deleteId);
+    showSuccessToast("Seller deleted successfully");
+    fetchSellers();
+  } catch (err) {
+    alert(err.response?.data?.message || err.response?.data?.error || "Failed to delete seller");
+  } finally {
+    setShowDeleteModal(false);
+    setDeleteId(null);
+  }
+};
+
 
   // Format date
   const formatDate = (dateString) => {
@@ -603,7 +623,7 @@ function SellerManagementPage() {
         
         <div style={styles.headerContent}>
           <div style={styles.headerIcon}>
-            <span>👥</span>
+            <span>🏭</span>
           </div>
           <div style={styles.headerText}>
             <h3 style={styles.pageTitle}>Seller Management</h3>
@@ -734,7 +754,8 @@ function SellerManagementPage() {
                           </button>
                           <button 
                             style={{ ...styles.iconBtn, color: "#dc3545" }}
-                            onClick={() => deleteSeller(seller.id)}
+                            onClick={() => openDeleteSeller(seller.id)}
+
                             title="Delete"
                           >
                             <span>🗑️</span> 
@@ -762,6 +783,78 @@ function SellerManagementPage() {
             )}
           </>
         )}
+
+        {showDeleteModal && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 2100
+    }}
+  >
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "14px",
+        width: "420px",
+        padding: "24px",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+      }}
+    >
+      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 600 }}>
+        Delete Seller
+      </h3>
+
+      <p style={{ marginTop: "10px", color: "#4b5563", fontSize: "14px" }}>
+        Are you sure you want to delete this seller?
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "10px",
+          marginTop: "20px"
+        }}
+      >
+        <button
+          onClick={() => {
+            setShowDeleteModal(false);
+            setDeleteId(null);
+          }}
+          style={{
+            background: "#f3f4f6",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            cursor: "pointer"
+          }}
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmDeleteSeller}
+          style={{
+            background: "#dc2626",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            cursor: "pointer"
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
         {/* Add/Edit Modal */}
         {modalOpen && (
@@ -928,6 +1021,44 @@ function SellerManagementPage() {
           </div>
         )}
       </div>
+
+      {toast.open && (
+  <div
+    style={{
+      position: "fixed",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "14px 22px",
+      borderRadius: "10px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.18)",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      zIndex: 3000,
+      fontSize: "14.5px",
+      fontWeight: 500
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔</span>
+    <span>{toast.message}</span>
+
+    <button
+      onClick={() => setToast({ open: false, message: "" })}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        fontSize: "16px"
+      }}
+    >
+      ✕
+    </button>
+  </div>
+)}
+
     </div>
   );
 }

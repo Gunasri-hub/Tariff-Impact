@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { createSeller } from "../../Apis/authApi";
 
 function SellerPage() {
@@ -12,7 +13,18 @@ function SellerPage() {
 
   const [loading, setLoading] = useState(false);
   const [nextIdCounter, setNextIdCounter] = useState(1);
-  const [apiMessage, setApiMessage] = useState("");
+  const [successPopup, setSuccessPopup] = useState(false);
+  useEffect(() => {
+  if (successPopup) {
+    const timer = setTimeout(() => {
+      setSuccessPopup(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }
+}, [successPopup]);
+
+
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +44,7 @@ function SellerPage() {
 
     try {
       setLoading(true);
-      setApiMessage("");
+      
 
       // Generate seller ID
       const sellerId = `SEL-${nextIdCounter.toString().padStart(3, '0')}`;
@@ -63,20 +75,15 @@ function SellerPage() {
       });
       
       // Show success message
-      setApiMessage({
-        type: "success",
-        text: `✅ Seller ${sellerId} information saved successfully to database!`
-      });
+      setSuccessPopup(true);
+
       
       // Clear message after 5 seconds
       setTimeout(() => setApiMessage(""), 5000);
       
     } catch (error) {
       console.error("Error saving seller:", error);
-      setApiMessage({
-        type: "error",
-        text: `❌ Failed to save seller: ${error.response?.data?.message || error.message}`
-      });
+      
     } finally {
       setLoading(false);
     }
@@ -90,34 +97,21 @@ function SellerPage() {
       email: "",
       address: "",
     });
-    setApiMessage("");
+    
   };
 
   return (
     <div style={styles.page}>
       {/* HEADER */}
       <div style={styles.header}>
-        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600 }}>👥 Seller Information</h2>
+        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 600 }}>🏭 Seller Information</h2>
         <p style={{ margin: "4px 0 0 0", fontSize: 14 }}>
           Submit seller information for processing (Next Seller ID: <strong>SEL-{nextIdCounter.toString().padStart(3, '0')}</strong>)
         </p>
       </div>
 
       <div style={styles.container}>
-        {/* API Message Display */}
-        {apiMessage && (
-          <div style={{
-            marginBottom: "20px",
-            padding: "12px 16px",
-            borderRadius: "8px",
-            backgroundColor: apiMessage.type === "success" ? "#d1fae5" : "#fee2e2",
-            color: apiMessage.type === "success" ? "#065f46" : "#991b1b",
-            border: `1px solid ${apiMessage.type === "success" ? "#a7f3d0" : "#fecaca"}`,
-            fontWeight: "500"
-          }}>
-            {apiMessage.text}
-          </div>
-        )}
+        
 
         {/* FULL WIDTH FORM */}
         <div style={styles.formSection}>
@@ -252,6 +246,48 @@ function SellerPage() {
           </div>
         </div>
       </div>
+      {successPopup && (
+  <div
+    style={{
+      position: "fixed",
+      top: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "12px 18px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      zIndex: 9999,
+      minWidth: "320px",
+      maxWidth: "420px"
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔️</span>
+
+    <span style={{ fontSize: "14px", fontWeight: 500 }}>
+      Seller saved successfully
+    </span>
+
+    <button
+      onClick={() => setSuccessPopup(false)}
+      style={{
+        marginLeft: "auto",
+        background: "transparent",
+        border: "none",
+        fontSize: "18px",
+        cursor: "pointer",
+        color: "#1e4620"
+      }}
+    >
+      ×
+    </button>
+  </div>
+)}
+
     </div>
   );
 }

@@ -44,6 +44,9 @@ export default function CostCalculatorWizard() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [saveLoading, setSaveLoading] = useState(false);
+const [saveSuccess, setSaveSuccess] = useState(false);
+
 
   useEffect(() => {
   const loadRefData = async () => {
@@ -178,10 +181,84 @@ const handleSave = async () => {
   return (
   <div className="no-scroll-layout">
     <div className="no-scroll-main">
-      <div className="main-header">
-        <h1>Cost Calculator</h1>
-      </div>
-      
+
+      {/* Blue Header (EXACT like Industry Explorer) */}
+      <section
+  className="welcome-strip"
+  style={{ marginBottom: "16px" }}   // 👈 ADD THIS
+>
+  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <span style={{ fontSize: 20, lineHeight: 1 }}>💲</span>
+    <div>
+      <h2
+        style={{
+          margin: 0,
+          fontSize: "20px",
+          fontWeight: 600,
+          lineHeight: 1.2,
+        }}
+      >
+        Cost Calculator
+      </h2>
+      <p
+        style={{
+          margin: "4px 0 0",
+          fontSize: "13px",
+          opacity: 0.9,
+        }}
+      >
+        Calculate landed costs including duties, freight, insurance, and forex impact
+      </p>
+    </div>
+  </div>
+</section>
+
+{saveSuccess && (
+  <div
+    style={{
+      position: "fixed",
+      top: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "12px 18px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      zIndex: 9999,
+      minWidth: "320px",
+      maxWidth: "420px"
+    }}
+  >
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+      <span style={{ fontSize: 16 }}>✔</span>
+      Calculations saved successfully
+    </div>
+
+    <button
+      onClick={() => setSaveSuccess(false)}
+      style={{
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        fontSize: 16,
+        lineHeight: 1,
+        color: "#166534",
+      }}
+    >
+      ×
+    </button>
+  </div>
+)}
+
+
+
+
+
+
       <WizardStepper current={step} loadingRef={loadingRef} />
       
       {!loadingRef && errorRef && (
@@ -1117,7 +1194,8 @@ function ReviewStep({
 }
 
 /* ---------- Step 5: Result ---------- */
-function ResultStep({ result, onBack }) {
+function ResultStep({ result, onBack, onSave, saveLoading, saveSuccess }) {
+
   const safeResult = result || {};
   const shipmentSummary = safeResult.shipmentSummary || {};
   const chargesSummary = safeResult.chargesSummary || {};
@@ -1274,15 +1352,33 @@ function ResultStep({ result, onBack }) {
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 16 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
   <button className="ghost-button" onClick={onBack}>
-    Back to Products
+    Back
   </button>
-  <div style={{ padding: "8px 16px", background: "#dcfce7", borderRadius: 6, fontSize: 13, color: "#166534", marginLeft: 12 }}>
-    ✅ Calculation auto-saved to database
+
+  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+   
+
+    <button
+      className="primary-button"
+      onClick={onSave}
+      disabled={saveLoading || saveSuccess}
+    >
+      {saveLoading ? "Saving..." : "Save Calculations"}
+    </button>
+  </div>
+
+
+
+  
+    
+
+   
   </div>
 </div>
+
       </div>
-    </div>
+    
   );
 }

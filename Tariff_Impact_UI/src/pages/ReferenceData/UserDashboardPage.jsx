@@ -1,5 +1,8 @@
 // src/pages/UserDashboardPage.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 import {
   FiHome,
   FiLayers,
@@ -36,11 +39,13 @@ const menuItems = [
 const UserDashboard = () => {
   const [active, setActive] = useState("dashboard");
   const [openBuyerSeller, setOpenBuyerSeller] = useState(false);
+  const navigate = useNavigate();   // ✅ ADD THIS
 
   const handleLogout = () => {
-    localStorage.removeItem("userToken");
-    window.location.reload();
-  };
+  localStorage.removeItem("userToken");
+  navigate("/");
+};
+
 
   
 
@@ -116,45 +121,117 @@ const UserDashboard = () => {
       </section>
 
       {/* Quick Actions */}
-      <section className="qa-section">
-        <h3 className="section-title">Quick Actions</h3>
+      {/* Quick Actions */}
+<section className="admin-section">
+  <div className="admin-section-header">
+    <h2>Quick Actions</h2>
+  </div>
 
-        <div className="qa-grid">
-          <div className="qa-card" onClick={() => setActive("industry")}>
-            <div className="qa-icon qa-blue">📊</div>
-            <div className="qa-text">
-              <h4>Industry Explorer</h4>
-              <p>Explore industry-wise trade data</p>
-            </div>
-          </div>
+  <div className="admin-functions-grid">
 
-          <div className="qa-card" onClick={() => setActive("tariff")}>
-            <div className="qa-icon qa-indigo">📈</div>
-            <div className="qa-text">
-              <h4>Tariff Impact Analysis</h4>
-              <p>Visualize tariff impact with charts</p>
-            </div>
-          </div>
+    {/* Industry */}
+    <div className="admin-function-card" onClick={() => setActive("industry")}>
+      <div className="admin-func-icon product">
+        📊
+      </div>
+      <div className="admin-func-content">
+        <h3>Industry Explorer</h3>
+        <p>Explore industry-wise trade data</p>
+      </div>
+    </div>
 
-          <div className="qa-card" onClick={() => setActive("cost")}>
-            <div className="qa-icon qa-green">💲</div>
-            <div className="qa-text">
-              <h4>Cost Calculator</h4>
-              <p>Calculate landed cost</p>
-            </div>
-          </div>
+    {/* Tariff */}
+    <div className="admin-function-card" onClick={() => setActive("tariff")}>
+      <div className="admin-func-icon agreements">
+        📈
+      </div>
+      <div className="admin-func-content">
+        <h3>Tariff Impact Analysis</h3>
+        <p>Visualize tariff impact with charts</p>
+      </div>
+    </div>
 
-                <div className="qa-card" onClick={() => setActive("forex")}>
-                  <div className="qa-icon qa-purple">
-                    <FiGlobe />
-                  </div>
-                  <div className="qa-text">
-                    <h4>Forex Analysis</h4>
-                    <p>Currency impact analysis</p>
-                  </div>
-                </div>
-              </div>
-            </section>
+    {/* Cost */}
+    <div className="admin-function-card" onClick={() => setActive("cost")}>
+      <div className="admin-func-icon country">
+        💲
+      </div>
+      <div className="admin-func-content">
+        <h3>Cost Calculator</h3>
+        <p>Calculate landed cost</p>
+      </div>
+    </div>
+
+    {/* Forex */}
+    <div className="admin-function-card" onClick={() => setActive("forex")}>
+      <div className="admin-func-icon reports">
+        🌍
+      </div>
+      <div className="admin-func-content">
+        <h3>Forex Analysis</h3>
+        <p>Currency impact analysis</p>
+      </div>
+    </div>
+
+    {/* Taxation */}
+    <div className="admin-function-card" onClick={() => setActive("taxation")}>
+      <div className="admin-func-icon agreements">
+        📄
+      </div>
+      <div className="admin-func-content">
+        <h3>Taxation Module</h3>
+        <p>View and manage applicable taxes & duties</p>
+      </div>
+    </div>
+
+    {/* Transactions */}
+    <div className="admin-function-card" onClick={() => setActive("transactions")}>
+      <div className="admin-func-icon reports">
+        📦
+      </div>
+      <div className="admin-func-content">
+        <h3>Transaction Data</h3>
+        <p>Track and analyze trade transactions</p>
+      </div>
+    </div>
+
+    {/* Buyer */}
+    <div className="admin-function-card" onClick={() => setActive("buyer")}>
+      <div className="admin-func-icon user">
+        🧑‍💼
+      </div>
+      <div className="admin-func-content">
+        <h3>Buyer Information</h3>
+        <p>View buyer profiles and trade activity</p>
+      </div>
+    </div>
+
+    {/* Seller */}
+    <div className="admin-function-card" onClick={() => setActive("seller")}>
+      <div className="admin-func-icon product">
+        🏭
+      </div>
+      <div className="admin-func-content">
+        <h3>Seller Information</h3>
+        <p>Manage sellers and export data</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+            
+
+
+
+
+
+
+
+
+
+
 
       {/* Dashboard Bottom Section */}
       <section className="dash-row">

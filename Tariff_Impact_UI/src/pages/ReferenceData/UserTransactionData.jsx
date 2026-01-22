@@ -9,10 +9,35 @@ import {
 } from "../../Apis/authApi";
 import { createUserTransaction, getNextTransactionCode } from "../../Apis/authApi";
 
+const Field = ({ label, children }) => (
+  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+    <label
+      style={{
+        fontSize: "13px",
+        fontWeight: 500,
+        color: "#374151"
+      }}
+    >
+      {label}
+    </label>
+    {children}
+  </div>
+);
 
 
 function UserTransactionData() {
   const [step, setStep] = useState(1);
+  const [successPopup, setSuccessPopup] = useState(false);
+
+  const stepLabels = [
+  "Transaction Details",
+  "Buyer Details",
+  "Seller Details",
+  "Trade & Logistics",
+  "Product & Classification",
+  "Review"
+];
+
 
   const [countries, setCountries] = useState([]);
   const [currencies, setCurrencies] = useState([]);
@@ -60,6 +85,17 @@ function UserTransactionData() {
 
   });
 
+  useEffect(() => {
+  if (successPopup) {
+    const timer = setTimeout(() => {
+      setSuccessPopup(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }
+}, [successPopup]);
+
+
   
 
 
@@ -72,6 +108,13 @@ function UserTransactionData() {
   /* ================= SAFE DATA FETCH ================= */
 
 useEffect(() => {
+
+   getNextTransactionCode().then(res => {
+    setForm(prev => ({
+      ...prev,
+      transactionId: res.data.transactionCode
+    }));
+  });
   getCountriesList().then(res => {
     const list = res.data?.rows || res.data?.data || res.data || [];
     setCountries(Array.isArray(list) ? list : []);
@@ -161,6 +204,24 @@ const getHtsCodes = (mainCategory, subCategory) =>
         .filter(Boolean)
     )
   );
+  // 🔹 COUNTRY → CURRENCY MAPPING
+const getCurrencyByCountry = (countryName) => {
+  if (!countryName) return [];
+
+  // normalize country name
+  const normalized = countryName.trim().toLowerCase();
+
+  // match currency table by country name
+  const matched = currencies.filter(c =>
+    (c.country_name || c.country || "")
+      .toLowerCase()
+      .trim() === normalized
+  );
+
+  return matched.map(c => c.code);
+};
+
+
 
 
 
@@ -270,7 +331,8 @@ const getHtsCodes = (mainCategory, subCategory) =>
     });
 
     setStep(1);
-    alert("Transaction saved successfully");
+    setSuccessPopup(true);
+    
 
   } catch (error) {
     console.error("Save failed", error);
@@ -291,6 +353,75 @@ const getHtsCodes = (mainCategory, subCategory) =>
       maxWidth: "1220px",
       boxShadow: "0 12px 28px rgba(0,0,0,0.08)",
     },
+    reviewSection: {
+  border: "1px solid #e5e7eb",
+  borderRadius: "14px",
+  padding: "20px",
+  marginBottom: "20px",
+  background: "#ffffff",
+  boxShadow: "0 8px 18px rgba(0,0,0,0.04)"
+},
+
+reviewTitle: {
+  fontSize: "15px",
+  fontWeight: 600,
+  marginBottom: "12px",
+  color: "#111827"
+},
+
+reviewGrid: {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: "12px"
+},
+
+reviewItem: {
+  fontSize: "14px",
+  color: "#374151"
+},
+
+reviewLabel: {
+  fontWeight: 600,
+  color: "#111827"
+},
+
+productCard: {
+  border: "1px solid #e5e7eb",
+  borderRadius: "12px",
+  padding: "14px",
+  background: "#f9fafb",
+  marginBottom: "12px"
+},
+stepper: {
+  display: "flex",
+  gap: "12px",
+  padding: "14px",
+  borderRadius: "14px",
+  background: "#ffffff",
+  boxShadow: "0 8px 20px rgba(0,0,0,0.06)",
+  marginBottom: "24px"
+},
+
+stepItem: (state) => ({
+  flex: 1,
+  textAlign: "center",
+  padding: "10px 12px",
+  borderRadius: "999px",
+  fontSize: "13px",
+  fontWeight: 600,
+  background:
+    state === "completed"
+      ? "#22c55e"
+      : state === "active"
+      ? "#2563eb"
+      : "#e5e7eb",
+  color:
+    state === "upcoming"
+      ? "#6b7280"
+      : "#ffffff"
+}),
+
+
     title: { fontSize: "18px", fontWeight: 600, marginBottom: "16px" },
     sectionTitle: { fontSize: "14px", fontWeight: 600, marginBottom: "12px" },
     grid2: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" },
@@ -301,6 +432,7 @@ const getHtsCodes = (mainCategory, subCategory) =>
     btn: { padding: "10px 18px", borderRadius: "999px", border: "1px solid #e5e7eb", background: "#fff" },
     primaryBtn: { padding: "10px 22px", borderRadius: "999px", border: "none", background: "#155EEF", color: "#fff" }
   };
+  
 
   return (
     <div style={styles.page}>
@@ -313,6 +445,9 @@ const getHtsCodes = (mainCategory, subCategory) =>
   marginBottom: "28px",
   color: "#fff"
 }}>
+
+ 
+
   <h1 style={{
     margin: 0,
     fontSize: "22px",
@@ -330,48 +465,81 @@ const getHtsCodes = (mainCategory, subCategory) =>
   </p>
 </div>
 
+{/* 🔹 STEP INDICATOR */}
+<div style={styles.stepper}>
+  {stepLabels.map((label, index) => {
+    const stepNo = index + 1;
+
+    let state = "upcoming";
+    if (stepNo < step) state = "completed";
+    if (stepNo === step) state = "active";
+
+    return (
+      <div key={label} style={styles.stepItem(state)}>
+        {stepNo}. {label}
+      </div>
+    );
+  })}
+</div>
+
       <div style={styles.card}>
 
         {step === 1 && (
           <>
             <h3 style={styles.sectionTitle}>Transaction Details</h3>
-            <div style={styles.grid2}><div>
-  <input
-    value={form.transactionId}
-    disabled
-    style={{
-      ...styles.input,
-      backgroundColor: "#f9fafb",
-      fontWeight: 600
-    }}
-  />
-  <small style={{ color: "#6b7280", marginTop: "4px", display: "block" }}>
-    Auto-generated Transaction ID
-  </small>
+            <div style={styles.grid2}>
+
+  <Field label="Transaction ID">
+    <input
+      value={form.transactionId}
+      disabled
+      style={{
+        ...styles.input,
+        backgroundColor: "#f9fafb",
+        fontWeight: 600
+      }}
+    />
+  </Field>
+
+  <Field label="Transaction Type">
+    <select
+      name="transactionType"
+      value={form.transactionType}
+      onChange={handleChange}
+      style={styles.select}
+    >
+      <option value="">Select</option>
+      <option value="Import">Import</option>
+      <option value="Export">Export</option>
+    </select>
+  </Field>
+
+  <Field label="Transaction Date">
+    <input
+      type="text"
+      name="transactionDate"
+      value={form.transactionDate}
+      onChange={handleDateChange}
+      maxLength={10}
+      style={styles.input}
+    />
+  </Field>
+
+  <Field label="Status">
+    <select
+      name="status"
+      value={form.status}
+      onChange={handleChange}
+      style={styles.select}
+    >
+      <option value="">Select</option>
+      <option value="Draft">Draft</option>
+      <option value="Completed">Completed</option>
+    </select>
+  </Field>
+
 </div>
 
-              <select name="transactionType" onChange={handleChange} style={styles.select}>
-                <option value="">Transaction Type</option>
-                <option>Import</option>
-                <option>Export</option>
-              </select>
-              <input
-  type="text"
-  name="transactionDate"
-  placeholder="dd/mm/yyyy"
-  value={form.transactionDate}
-  onChange={handleDateChange}
-  maxLength={10}
-  style={styles.input}
-/>
-
-
-              <select name="status" onChange={handleChange} style={styles.select}>
-                <option value="">Status</option>
-                <option>Draft</option>
-                <option>Completed</option>
-              </select>
-            </div>
           </>
         )}
 
@@ -381,41 +549,58 @@ const getHtsCodes = (mainCategory, subCategory) =>
     <div style={styles.grid2}>
 
       {/* Buyer ID */}
-      <select
-        value={form.buyerId}
-        onChange={(e) => {
-          const b = buyers.find(x => x.buyer_id === e.target.value);
-          if (b) {
-            setForm({
-              ...form,
-              buyerId: b.buyer_id,
-              buyerName: b.name,
-              buyerType: b.type,
-              buyerPhone: b.phone_number,
-              buyerEmail: b.email_id,
-              buyerAddress: b.address,
-            });
-          }
-        }}
-        style={styles.select}
-      >
-        <option value="">Select Buyer ID</option>
-        {buyers.map(b => (
-          <option key={b.buyer_id} value={b.buyer_id}>
-            {b.buyer_id}
-          </option>
-        ))}
-      </select>
+      <Field label="Buyer ID">
+        <select
+          value={form.buyerId}
+          onChange={(e) => {
+            const b = buyers.find(x => x.buyer_id === e.target.value);
+            if (b) {
+              setForm({
+                ...form,
+                buyerId: b.buyer_id,
+                buyerName: b.name,
+                buyerType: b.type,
+                buyerPhone: b.phone_number,
+                buyerEmail: b.email_id,
+                buyerAddress: b.address,
+              });
+            }
+          }}
+          style={styles.select}
+        >
+          <option value="">Select</option>
+          {buyers.map(b => (
+            <option key={b.buyer_id} value={b.buyer_id}>
+              {b.buyer_id}
+            </option>
+          ))}
+        </select>
+      </Field>
 
-      <input value={form.buyerName} readOnly placeholder="Buyer Name" style={styles.input} />
-      <input value={form.buyerType} readOnly placeholder="Buyer Type" style={styles.input} />
-      <input value={form.buyerPhone} readOnly placeholder="Phone Number" style={styles.input} />
-      <input value={form.buyerEmail} readOnly placeholder="Email ID" style={styles.input} />
-      <textarea value={form.buyerAddress} readOnly placeholder="Address" style={styles.textarea} />
+      <Field label="Buyer Name">
+        <input value={form.buyerName} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Buyer Type">
+        <input value={form.buyerType} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Phone Number">
+        <input value={form.buyerPhone} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Email ID">
+        <input value={form.buyerEmail} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Address">
+        <textarea value={form.buyerAddress} readOnly style={styles.textarea} />
+      </Field>
 
     </div>
   </>
 )}
+
 
 
         {step === 3 && (
@@ -424,173 +609,253 @@ const getHtsCodes = (mainCategory, subCategory) =>
     <div style={styles.grid2}>
 
       {/* Seller ID */}
-      <select
-        value={form.sellerId}
-        onChange={(e) => {
-          const s = sellers.find(x => x.seller_id === e.target.value);
-          if (s) {
-            setForm({
-              ...form,
-              sellerId: s.seller_id,
-              sellerName: s.name,
-              sellerType: s.type,
-              sellerPhone: s.phone,
-              sellerEmail: s.email,
-              sellerAddress: s.address,
-            });
-          }
-        }}
-        style={styles.select}
-      >
-        <option value="">Select Seller ID</option>
-        {sellers.map(s => (
-          <option key={s.seller_id} value={s.seller_id}>
-            {s.seller_id}
-          </option>
-        ))}
-      </select>
+      <Field label="Seller ID">
+        <select
+          value={form.sellerId}
+          onChange={(e) => {
+            const s = sellers.find(x => x.seller_id === e.target.value);
+            if (s) {
+              setForm({
+                ...form,
+                sellerId: s.seller_id,
+                sellerName: s.name,
+                sellerType: s.type,
+                sellerPhone: s.phone,
+                sellerEmail: s.email,
+                sellerAddress: s.address,
+              });
+            }
+          }}
+          style={styles.select}
+        >
+          <option value="">Select</option>
+          {sellers.map(s => (
+            <option key={s.seller_id} value={s.seller_id}>
+              {s.seller_id}
+            </option>
+          ))}
+        </select>
+      </Field>
 
-      <input value={form.sellerName} readOnly placeholder="Seller Name" style={styles.input} />
-      <input value={form.sellerType} readOnly placeholder="Seller Type" style={styles.input} />
-      <input value={form.sellerPhone} readOnly placeholder="Phone Number" style={styles.input} />
-      <input value={form.sellerEmail} readOnly placeholder="Email ID" style={styles.input} />
-      <textarea value={form.sellerAddress} readOnly placeholder="Address" style={styles.textarea} />
+      <Field label="Seller Name">
+        <input value={form.sellerName} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Seller Type">
+        <input value={form.sellerType} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Phone Number">
+        <input value={form.sellerPhone} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Email ID">
+        <input value={form.sellerEmail} readOnly style={styles.input} />
+      </Field>
+
+      <Field label="Address">
+        <textarea value={form.sellerAddress} readOnly style={styles.textarea} />
+      </Field>
 
     </div>
   </>
 )}
 
+
         {step === 4 && (
-          <>
-            <h3 style={styles.sectionTitle}>Trade & Logistics</h3>
-            <div style={styles.grid2}>
-              <select
-  name="originCountry"
-  value={form.originCountry}
-  onChange={handleChange}
-  style={styles.select}
->
-  <option value="">Origin Country</option>
-  {countries.map(c => (
-    <option key={c.id} value={c.country_name || c.name || c.country}>
-  {c.country_name || c.name || c.country}
-</option>
+  <>
+    <h3 style={styles.sectionTitle}>Trade & Logistics</h3>
 
-  ))}
-</select>
+    <div style={styles.grid2}>
 
-              <select name="originCurrency" onChange={handleChange} style={styles.select}>
-                <option value="">Origin Currency</option>
-                {currencies.map(c => (
-  <option key={`${c.code}-${c.name}`} value={c.code}>
-    {c.code}
-  </option>
-))}
-              </select>
-              <select
-  name="destinationCountry"
-  value={form.destinationCountry}
-  onChange={handleChange}
-  style={styles.select}
->
-  <option value="">Destination Country</option>
-  {countries.map(c => (
-    <option key={c.id} value={c.country_name || c.name || c.country}>
-  {c.country_name || c.name || c.country}
-</option>
+      <Field label="Origin Country">
+        <select
+          name="originCountry"
+          value={form.originCountry}
+          onChange={(e) => {
+  setForm({
+    ...form,
+    originCountry: e.target.value,
+    originCurrency: ""   // 🔴 reset currency
+  });
+}}
 
-  ))}
-</select>
+          style={styles.select}
+        >
+          <option value="">Select</option>
+          {countries.map(c => (
+            <option
+              key={c.id}
+              value={c.country_name || c.name || c.country}
+            >
+              {c.country_name || c.name || c.country}
+            </option>
+          ))}
+        </select>
+      </Field>
 
-              <select name="destinationCurrency" onChange={handleChange} style={styles.select}>
-                <option value="">Destination Currency</option>
-                {currencies.map(c => (
-  <option key={`${c.code}-${c.name}`} value={c.code}>
-  {c.code}
-</option>
-))}
-              </select>
+      <Field label="Origin Currency">
+  <select
+    name="originCurrency"
+    value={form.originCurrency}
+    onChange={handleChange}
+    style={styles.select}
+    disabled={!form.originCountry}
+  >
+    <option value="">Select</option>
+    {getCurrencyByCountry(form.originCountry).map(code => (
+      <option key={code} value={code}>
+        {code}
+      </option>
+    ))}
+  </select>
+</Field>
 
-              <select
-  name="modeOfTransport"
-  value={form.modeOfTransport}
-  onChange={handleChange}
-  style={styles.select}
-  required
->
-  <option value="">Select Mode of Transport *</option>
-  <option value="Sea">Sea</option>
-  <option value="Air">Air</option>
-  <option value="Road">Road</option>
-</select>
 
-            </div>
-          </>
-        )}
+      <Field label="Destination Country">
+        <select
+          name="destinationCountry"
+          value={form.destinationCountry}
+          onChange={(e) => {
+  setForm({
+    ...form,
+    destinationCountry: e.target.value,
+    destinationCurrency: ""   // 🔴 reset currency
+  });
+}}
+
+          style={styles.select}
+        >
+          <option value="">Select</option>
+          {countries.map(c => (
+            <option
+              key={c.id}
+              value={c.country_name || c.name || c.country}
+            >
+              {c.country_name || c.name || c.country}
+            </option>
+          ))}
+        </select>
+      </Field>
+
+      <Field label="Destination Currency">
+  <select
+    name="destinationCurrency"
+    value={form.destinationCurrency}
+    onChange={handleChange}
+    style={styles.select}
+     disabled={!form.destinationCountry}
+  >
+    <option value="">Select</option>
+    {getCurrencyByCountry(form.destinationCountry).map(code => (
+      <option key={code} value={code}>
+        {code}
+      </option>
+    ))}
+  </select>
+</Field>
+
+
+      <Field label="Mode of Transport">
+        <select
+          name="modeOfTransport"
+          value={form.modeOfTransport}
+          onChange={handleChange}
+          style={styles.select}
+          required
+        >
+          <option value="">Select</option>
+          <option value="Sea">Sea</option>
+          <option value="Air">Air</option>
+          <option value="Road">Road</option>
+        </select>
+      </Field>
+
+    </div>
+  </>
+)}
+
 
         {step === 5 && (
   <>
     <h3 style={styles.sectionTitle}>Product & Classification</h3>
 
     {form.productsSelected.map((prod, index) => (
-      <div key={index} style={{ marginBottom: "20px" }}>
+  <div
+    key={index}
+    style={{
+      border: "1px solid #e5e7eb",
+      borderRadius: "14px",
+      padding: "20px",
+      marginBottom: "24px",
+      boxShadow: "0 8px 18px rgba(0,0,0,0.05)",
+      background: "#ffffff"
+    }}
+  >
+
 
         <div style={styles.grid2}>
 
           {/* Main Category */}
-          <select
-            value={prod.mainCategory}
-            onChange={(e) => {
-              const updated = [...form.productsSelected];
-              updated[index] = {
-                mainCategory: e.target.value,
-                subCategory: "",
-                htsCode: "",
-              };
-              setForm({ ...form, productsSelected: updated });
-            }}
-            style={styles.select}
-          >
-            <option value="">Select Main Category</option>
-            {mainCategories.map(mc => (
-              <option key={mc} value={mc}>{mc}</option>
-            ))}
-          </select>
+          <Field label="Main Category">
+            <select
+              value={prod.mainCategory}
+              onChange={(e) => {
+                const updated = [...form.productsSelected];
+                updated[index] = {
+                  mainCategory: e.target.value,
+                  subCategory: "",
+                  htsCode: "",
+                };
+                setForm({ ...form, productsSelected: updated });
+              }}
+              style={styles.select}
+            >
+              <option value="">Select</option>
+              {mainCategories.map(mc => (
+                <option key={mc} value={mc}>{mc}</option>
+              ))}
+            </select>
+          </Field>
 
           {/* Sub Category */}
-          <select
-            value={prod.subCategory}
-            disabled={!prod.mainCategory}
-            onChange={(e) => {
-              const updated = [...form.productsSelected];
-              updated[index].subCategory = e.target.value;
-              updated[index].htsCode = "";
-              setForm({ ...form, productsSelected: updated });
-            }}
-            style={styles.select}
-          >
-            <option value="">Select Sub Category</option>
-            {getSubCategories(prod.mainCategory).map(sc => (
-              <option key={sc} value={sc}>{sc}</option>
-            ))}
-          </select>
+          <Field label="Sub Category">
+            <select
+              value={prod.subCategory}
+              disabled={!prod.mainCategory}
+              onChange={(e) => {
+                const updated = [...form.productsSelected];
+                updated[index].subCategory = e.target.value;
+                updated[index].htsCode = "";
+                setForm({ ...form, productsSelected: updated });
+              }}
+              style={styles.select}
+            >
+              <option value="">Select</option>
+              {getSubCategories(prod.mainCategory).map(sc => (
+                <option key={sc} value={sc}>{sc}</option>
+              ))}
+            </select>
+          </Field>
 
           {/* HTS Code */}
-          <select
-            value={prod.htsCode}
-            disabled={!prod.subCategory}
-            onChange={(e) => {
-              const updated = [...form.productsSelected];
-              updated[index].htsCode = e.target.value;
-              setForm({ ...form, productsSelected: updated });
-            }}
-            style={styles.select}
-          >
-            <option value="">Select HTS Code</option>
-            {getHtsCodes(prod.mainCategory, prod.subCategory).map(h => (
-              <option key={h} value={h}>{h}</option>
-            ))}
-          </select>
+          <Field label="HTS Code">
+            <select
+              value={prod.htsCode}
+              disabled={!prod.subCategory}
+              onChange={(e) => {
+                const updated = [...form.productsSelected];
+                updated[index].htsCode = e.target.value;
+                setForm({ ...form, productsSelected: updated });
+              }}
+              style={styles.select}
+            >
+              <option value="">Select</option>
+              {getHtsCodes(prod.mainCategory, prod.subCategory).map(h => (
+                <option key={h} value={h}>{h}</option>
+              ))}
+            </select>
+          </Field>
 
         </div>
       </div>
@@ -615,26 +880,163 @@ const getHtsCodes = (mainCategory, subCategory) =>
   </>
 )}
 
+{step === 6 && (
+  <>
+    <h3 style={styles.sectionTitle}>Review Transaction</h3>
+
+    {/* Transaction */}
+    <div style={styles.reviewSection}>
+      <div style={styles.reviewTitle}>Transaction</div>
+      <div style={styles.reviewGrid}>
+        <div><b>ID:</b> {form.transactionId}</div>
+        <div><b>Type:</b> {form.transactionType}</div>
+        <div><b>Date:</b> {form.transactionDate}</div>
+        <div><b>Status:</b> {form.status}</div>
+      </div>
+    </div>
+
+    {/* Buyer */}
+<div style={styles.reviewSection}>
+  <div style={styles.reviewTitle}>Buyer</div>
+  <div style={styles.reviewGrid}>
+    <div>
+      <b>ID:</b> {form.buyerId}
+    </div>
+    <div>
+      <b>{form.buyerName}</b> ({form.buyerType})
+    </div>
+    <div>{form.buyerPhone}</div>
+    <div>{form.buyerEmail}</div>
+    <div>{form.buyerAddress}</div>
+  </div>
+</div>
+
+
+    {/* Seller */}
+<div style={styles.reviewSection}>
+  <div style={styles.reviewTitle}>Seller</div>
+  <div style={styles.reviewGrid}>
+    <div>
+      <b>ID:</b> {form.sellerId}
+    </div>
+    <div>
+      <b>{form.sellerName}</b> ({form.sellerType})
+    </div>
+    <div>{form.sellerPhone}</div>
+    <div>{form.sellerEmail}</div>
+    <div>{form.sellerAddress}</div>
+  </div>
+</div>
+
+
+    {/* Trade */}
+    <div style={styles.reviewSection}>
+      <div style={styles.reviewTitle}>Trade & Logistics</div>
+      <div style={styles.reviewGrid}>
+        <div>
+          <b>Route:</b> {form.originCountry} ({form.originCurrency}) →{" "}
+          {form.destinationCountry} ({form.destinationCurrency})
+        </div>
+        <div>
+          <b>Transport:</b> {form.modeOfTransport}
+        </div>
+      </div>
+    </div>
+
+    {/* Products */}
+    <div style={styles.reviewSection}>
+      <div style={styles.reviewTitle}>Products</div>
+
+      {form.productsSelected.map((p, i) => (
+        <div key={i} style={styles.productCard}>
+          <div><b>Main Category:</b> {p.mainCategory}</div>
+          <div><b>Sub Category:</b> {p.subCategory}</div>
+          <div><b>HTS Code:</b> {p.htsCode}</div>
+        </div>
+      ))}
+    </div>
+  </>
+)}
+
+
+
+
+
 
         <div style={styles.footer}>
-          <button style={styles.btn} disabled={step === 1} onClick={() => setStep(step - 1)}>Back</button>
-          {step < 5
-            ? <button
+  <button
+    style={styles.btn}
+    disabled={step === 1}
+    onClick={() => setStep(step - 1)}
+  >
+    Back
+  </button>
+
+  {step < 6 ? (
+    <button
   style={styles.primaryBtn}
-  onClick={() => {
-    if (step === 4 && !form.modeOfTransport) {
-      alert("Please select Mode of Transport");
-      return;
-    }
-    setStep(step + 1);
-  }}
+  onClick={() => setStep(step + 1)}
 >
   Next
 </button>
 
-            : <button style={styles.primaryBtn} onClick={handleSave}>Save Transaction</button>}
-        </div>
+
+
+  ) : (
+    <button
+      style={styles.primaryBtn}
+      onClick={handleSave}
+    >
+      Save Transaction
+    </button>
+  )}
+</div>
+
       </div>
+
+      {successPopup && (
+  <div
+    style={{
+      position: "fixed",
+      top: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      background: "#e6f4ea",
+      color: "#1e4620",
+      padding: "12px 18px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      zIndex: 9999,
+      minWidth: "320px",
+      maxWidth: "420px"
+    }}
+  >
+    <span style={{ fontSize: "18px" }}>✔️</span>
+
+    <span style={{ fontSize: "14px", fontWeight: 500 }}>
+      Transaction saved successfully
+    </span>
+
+    <button
+      onClick={() => setSuccessPopup(false)}
+      style={{
+        marginLeft: "auto",
+        background: "transparent",
+        border: "none",
+        fontSize: "18px",
+        cursor: "pointer",
+        color: "#1e4620"
+      }}
+    >
+      ×
+    </button>
+  </div>
+)}
+
+
     </div>
   );
 }
