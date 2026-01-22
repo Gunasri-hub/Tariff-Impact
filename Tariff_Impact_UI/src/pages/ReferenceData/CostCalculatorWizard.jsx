@@ -128,31 +128,8 @@ const [saveSuccess, setSaveSuccess] = useState(false);
     const res = await runCostCalculator(payload);  
     console.log("🔢 FULL RESPONSE:", res);
     setResult(res.data || res);
-    
-    // ✅ AUTO-SAVE TO DATABASE (MANDATORY)
-    
-    const calculationData = {
-      shipment,  // Full shipment details
-      products: lines.map(l => ({
-        productId: l.productId,
-        product_name: l.product_name,
-        hts_code: l.hts_code,
-        main_category: l.main_category,
-        quantity: Number(l.quantity),
-        unitPrice: Number(l.unitPrice)
-      })),
-      charges: {
-        freight: Number(charges.freight),
-        insurance: Number(charges.insurance)
-      },
-      totals: (res.data || res).totals || {},
-      shipmentSummary: (res.data || res).shipmentSummary || {},
-      forexRate: (res.data || res).shipmentSummary?.forexRate || 0
-    };
-    
-    
-    
     setStep(5);
+
 
   } catch (err) {
     console.error("Calculator error:", err.response?.data || err.message);
@@ -164,14 +141,12 @@ const [saveSuccess, setSaveSuccess] = useState(false);
   } finally {
     setLoading(false);
   }
-};
 
-const handleSaveTransaction = async () => {
-  if (!result) return;
-
-  setSaveLoading(true);
-  setSaveSuccess(false);
-
+const handleSave = async () => {
+  if (!result) {
+    alert('Please run calculation first');
+    return;
+  }
   try {
     const calculationData = {
       shipment,
@@ -191,18 +166,15 @@ const handleSaveTransaction = async () => {
       shipmentSummary: result.shipmentSummary || {},
       forexRate: result.shipmentSummary?.forexRate || 0
     };
-
     await saveCalculation(calculationData);
-
-    setSaveSuccess(true); // ✅ THIS drives the success message
+    alert('✅ Calculation saved!');
   } catch (err) {
-    alert("Failed to save calculation");
-  } finally {
-    setSaveLoading(false);
+    alert('❌ Save failed: ' + (err.response?.data?.message || err.message));
   }
 };
 
 
+};
   
 
 
@@ -303,15 +275,7 @@ const handleSaveTransaction = async () => {
           {step === 2 && <ProductsStep lines={lines} setLines={setLines} activeLineId={activeLineId} setActiveLineId={setActiveLineId} searchText={searchText} setSearchText={setSearchText} searchResults={searchResults} setSearchResults={setSearchResults} searchLoading={searchLoading} setSearchLoading={setSearchLoading} searchError={searchError} setSearchError={setSearchError} onNext={next} onBack={prev} />}
           {step === 3 && <ChargesStep charges={charges} setCharges={setCharges} onNext={next} onBack={prev} />}
           {step === 4 && <ReviewStep shipment={shipment} lines={lines} charges={charges} countries={countries} onBack={prev} onRun={handleRun} loading={loading} />}
-          {step === 5 && (
-  <ResultStep
-    result={result}
-    onBack={() => setStep(2)}
-    onSave={handleSaveTransaction}
-    saveLoading={saveLoading}
-    saveSuccess={saveSuccess}
-  />
-)}
+          {step === 5 && <ResultStep result={result} onBack={() => setStep(2)} handleSave={handleSave} />}
 
         </>
       )}

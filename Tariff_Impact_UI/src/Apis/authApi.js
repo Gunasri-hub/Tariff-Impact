@@ -259,9 +259,6 @@ export const getAllSellers = () =>
   API.get("/sellers", {
     params: { limit: 1000 }
   });  
-
-
-
   /* ================= TRANSACTIONS ================= */
 
 // ========== USER TRANSACTION MANAGEMENT ==========
@@ -312,5 +309,90 @@ export const getTransactionDropdowns = () =>
 // ✅ NEW - Get transaction stats/summary
 export const getTransactionStats = () =>
   API.get("/user/transactions/stats");
+
+// ========== REPORTS (USER TRANSACTIONS) ==========
+// ========== REPORTS (USER TRANSACTIONS) ==========
+
+export const getSummaryKPIs = async (params) => {
+  const response = await API.get('/reports/summary', { params });
+  return response.data;
+};
+
+export const getTransactionTrend = async (params) => {
+  const response = await API.get('/reports/transactions-trend', { params });
+  return response.data;
+};
+
+export const getIndustryWise = async (params) => {
+  const response = await API.get('/reports/industry-distribution', { params });
+  return response.data;
+};
+
+export const getTransactionTypeAnalysis = async (params) => {
+  const response = await API.get('/reports/transaction-type', { params });
+  return response.data;
+};
+
+export const getCountryWiseTrade = async (params) => {
+  const response = await API.get('/reports/country-wise', { params });
+  return response.data;
+};
+// ===== NEW REPORT APIS =====
+
+export const getExportImportTrend = async (params) => {
+  const response = await API.get('/reports/export-import-trend', { params });
+  return response.data;
+};
+
+export const getTransportDistribution = async (params) => {
+  const response = await API.get('/reports/transport-distribution', { params });
+  return response.data;
+};
+
+export const getTopDestinationCountries = async (params) => {
+  const response = await API.get('/reports/top-destination-countries', { params });
+  return response.data;
+};
+
+export const getStatusBreakdown = async (params) => {
+  const response = await API.get('/reports/status-breakdown', { params });
+  return response.data;
+};
+
+export const getTopBuyers = async (params) => {
+  const response = await API.get('/reports/top-buyers', { params });
+  return response.data;
+};
+
+export const getBothCountries = () => {
+  return API.get('/reports/countries');  // ✅ API (uppercase) + correct path
+};
+
+export const getTopOriginCountries = async (params) => {
+  const response = await API.get('/reports/top-origin-countries', { params });
+  return response.data;
+};
+
+export const getTopTradeRoutes = async (params) => {
+  const response = await API.get('/reports/top-trade-routes', { params });
+  return response.data;
+};
+
+// ✅ ADD THESE 4 MISSING FUNCTIONS
+export const getIndustryTransportMatrix = async (params) => {
+  const response = await API.get('/reports/industry-transport-matrix', { params });
+  return response.data;
+};
+
+export const getTopSellers = async (params) => {
+  const response = await API.get('/reports/top-sellers', { params });
+  return response.data;
+};
+
+export const getBuyerSellerOptions = () => {
+  return API.get('/reports/buyer-seller-options');  // No params needed
+};
+
+
 
 export default API;

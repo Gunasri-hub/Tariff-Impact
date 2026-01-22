@@ -21,7 +21,7 @@ import ProductLibraryPage from "./ProductLibraryPage";
 import BuyerManagementPage from "./BuyerManagementPage";
 import SellerManagementPage from "./SellerManagementPage";
 import TransactionManagementPage from "./TransactionManagementPage";
-
+import ReportsPage from "./ReportsPage";
 
 
 function AdminDashboardPage() {

@@ -6,7 +6,7 @@ import mysql.connector
 DB_CONFIG = dict(
     host="localhost",
     user="root",
-    password="102006",
+    password="Gayu_1999",
     database="trump_tariff",
 )
 

@@ -288,6 +288,27 @@ router.put("/user/transactions/:id", updateUserTransaction);
 router.delete("/user/transactions/:id", deleteUserTransaction);
 
 
+// ========== REPORTS / ANALYTICS ==========
+const reportController = require("../controller/metadata/reportController");
+
+router.get("/reports/summary", reportController.getSummaryKPIs);
+router.get("/reports/transactions-trend", reportController.getTransactionTrend);
+router.get("/reports/industry-distribution", reportController.getIndustryDistribution);
+router.get("/reports/transaction-type", reportController.getTransactionTypeAnalysis);
+router.get("/reports/country-wise", reportController.getCountryWiseTrade);
+router.get("/reports/export-import-trend", reportController.getExportImportTrend);
+router.get("/reports/transport-distribution", reportController.getTransportDistribution);
+router.get("/reports/top-destination-countries", reportController.getTopDestinationCountries);
+router.get("/reports/status-breakdown", reportController.getStatusBreakdown);
+router.get("/reports/top-buyers", reportController.getTopBuyers);
+router.get('/reports/countries', reportController.getCountries);
+router.get("/reports/top-origin-countries", reportController.getTopOriginCountries);
+router.get("/reports/top-trade-routes", reportController.getTopTradeRoutes);
+router.get("/reports/industry-transport-matrix", reportController.getIndustryTransportMatrix);
+router.get("/reports/top-sellers", reportController.getTopSellers);  // If you use top sellers KPI
+router.get("/reports/buyer-seller-options", reportController.getBuyerSellerOptions);  // For dropdown population
+
+
 // Health check
 router.get('/', (req, res) => res.json({ message: 'Backend ready' }));
 
