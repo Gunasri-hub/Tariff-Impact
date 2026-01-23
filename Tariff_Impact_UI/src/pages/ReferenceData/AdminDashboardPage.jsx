@@ -174,7 +174,7 @@ function AdminDashboardPage() {
         {currentPage === "countries" && <CountryDatabasePage />}
         {currentPage === "products" && <ProductLibraryPage />}
         {currentPage === "Transactions" && <TransactionManagementPage />}
-        {currentPage === "reports" && <Reports />}
+        {currentPage === "reports" && <ReportsPage />}
         
 
         {/* Dashboard Page - ALL ORIGINAL CONTENT */}
